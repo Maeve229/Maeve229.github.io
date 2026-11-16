@@ -3,590 +3,771 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descendentes — End Of Magic | RPG Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Descendentes — venvindos ao colegio de Auradon</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --bg-dark: #090614;
-            --bg-card: rgba(23, 15, 38, 0.85);
-            --bg-glass: rgba(18, 11, 31, 0.7);
-            --accent-purple: #8a2be2;
-            --accent-glow: #bd00ff;
-            --accent-gold: #e5c158;
-            --accent-emerald: #10b981;
-            --accent-ruby: #ef4444;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border-glow: rgba(189, 0, 255, 0.3);
-            --border-gold: rgba(229, 193, 88, 0.4);
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #1a0b2e;
+            --secondary: #4a154b;
+            --accent: #d4af37;
+            --accent-hover: #f3e5ab;
+            --gold-dark: #aa8c2c;
+            --light: #f5f3ef;
+            --dark: #0d0614;
+            --card-bg: rgba(26, 11, 46, 0.85);
+            --border-gold: rgba(212, 175, 55, 0.4);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(9, 6, 20, 0.95) 0%, var(--bg-dark) 100%);
+            background-color: var(--dark);
+            color: var(--light);
+            background-image: radial-gradient(circle at 50% 20%, #2e1147 0%, #0d0614 100%);
             background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .brand-text {
+        h1, h2, h3, h4, .nav-brand, .btn-royal {
             font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
         }
 
-        /* Navbar */
-        .navbar {
+        /* HEADER & NAVIGATION */
+        header {
+            background: rgba(13, 6, 20, 0.95);
+            border-bottom: 2px solid var(--accent);
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(9, 6, 20, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glow);
-            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 40px;
+            backdrop-filter: blur(10px);
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .nav-brand {
+            font-size: 1.5rem;
+            color: var(--accent);
             font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--accent-gold);
-            text-shadow: 0 0 10px rgba(229, 193, 88, 0.4);
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
-            border-radius: 50%;
+            letter-spacing: 2px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px var(--accent-glow);
-            font-size: 1.2rem;
+            gap: 10px;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 20px;
             list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            padding: 0.5rem 0.75rem;
-            border-radius: 8px;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--accent-gold);
-            background: rgba(229, 193, 88, 0.1);
-            text-shadow: 0 0 8px rgba(229, 193, 88, 0.5);
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.6rem 1.4rem;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-size: 0.9rem;
-            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links button, .nav-links a {
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 14px;
+            border-radius: 4px;
             text-decoration: none;
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--accent-purple);
-            color: var(--text-main);
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+        .nav-links button:hover, .nav-links a:hover {
+            color: var(--accent);
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        .btn-outline:hover {
-            border-color: var(--accent-glow);
-            background: rgba(138, 43, 226, 0.2);
-            box-shadow: 0 0 15px var(--accent-glow);
+        .btn-login {
+            border: 1px solid var(--accent) !important;
+            color: var(--accent) !important;
         }
 
-        .btn-gold {
-            background: linear-gradient(135deg, #e5c158, #b8860b);
-            color: #090614;
-            font-weight: 700;
-            box-shadow: 0 0 15px rgba(229, 193, 88, 0.3);
+        .btn-login:hover {
+            background: var(--accent) !important;
+            color: var(--dark) !important;
         }
 
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(229, 193, 88, 0.6);
+        /* MAIN CONTAINER */
+        main {
+            margin-top: 100px;
+            padding: 40px 20px;
+            max-width: 1300px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: calc(100vh - 100px);
         }
 
-        /* Hero Section */
+        .section-view {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .section-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HERO / HOME */
         .hero {
-            padding: 160px 2rem 80px;
             text-align: center;
-            position: relative;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(138, 43, 226, 0.15);
-            border: 1px solid var(--border-glow);
-            border-radius: 50px;
-            color: var(--accent-glow);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(13,6,20,0.7), rgba(13,6,20,0.9)), url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=80') center/cover;
+            border-radius: 12px;
+            border: 1px solid var(--border-gold);
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(180deg, #ffffff 30%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(212,175,55,0.4);
         }
 
         .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.7;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+            color: #d1c7e0;
         }
 
-        .hero-cta {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .btn-royal {
+            background: linear-gradient(135deg, var(--accent), var(--gold-dark));
+            color: var(--dark);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        .btn-royal:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+            box-shadow: 0 6px 20px rgba(212,175,55,0.5);
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
+        /* SECTION TITLES */
+        .section-title {
             font-size: 2.2rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-        }
-
-        /* Sections & Cards */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 40px;
             position: relative;
-            overflow: hidden;
+            padding-bottom: 15px;
         }
 
-        .card::before {
+        .section-title::after {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        /* CARDS GRID */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .royal-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .royal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .royal-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-gold);
+        }
+
+        .royal-card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .royal-card-content h3 {
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .royal-card-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #d1c7e0;
+            margin-bottom: 15px;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--accent);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            align-self: flex-start;
+            border: 1px solid var(--border-gold);
+        }
+
+        /* FORMS & MODALS */
+        .modal-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-glow);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
-        }
-
-        .card:hover::before {
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            color: var(--text-main);
-            margin-bottom: 0.8rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* Roster / Students */
-        .filter-bar {
+            height: 100%;
+            background: rgba(13, 6, 20, 0.85);
+            backdrop-filter: blur(5px);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            background: var(--bg-glass);
-            padding: 1rem;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-glow);
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.85rem;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--accent-purple);
-            color: white;
-            border-color: var(--accent-glow);
-        }
-
-        .search-input {
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border-glow);
-            color: white;
-            width: 250px;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent-gold);
-        }
-
-        .roster-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .roster-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: var(--radius-md);
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            position: relative;
-        }
-
-        .roster-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .roster-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-        }
-
-        .roster-tag {
-            font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .tag-auradon { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
-        .tag-isle { background: rgba(239, 68, 68, 0.2); color: var(--accent-ruby); border: 1px solid var(--accent-ruby); }
-        .tag-faculty { background: rgba(229, 193, 88, 0.2); color: var(--accent-gold); border: 1px solid var(--accent-gold); }
-
-        .roster-details {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        /* Form / Sheet Creator */
-        .form-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group.full {
-            grid-column: span 2;
-        }
-
-        label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-        }
-
-        input, select, textarea {
-            padding: 0.75rem;
-            border-radius: 8px;
-            background: rgba(9, 6, 20, 0.8);
-            border: 1px solid var(--border-glow);
-            color: white;
-            font-size: 0.95rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
-        }
-
-        /* Timetable / Calendar */
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border-glow);
-        }
-
-        .schedule-table th, .schedule-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .schedule-table th {
-            background: rgba(138, 43, 226, 0.2);
-            color: var(--accent-gold);
-            font-family: 'Cinzel', serif;
-        }
-
-        .schedule-table tr:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-glow);
-            background: rgba(5, 3, 12, 0.95);
-            padding: 3rem 2rem;
-            margin-top: 5rem;
-            text-align: center;
-        }
-
-        .disclaimer-box {
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            padding: 1rem;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: var(--radius-md);
-            color: #fca5a5;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
             justify-content: center;
             align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
-        .modal-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            padding: 2rem;
-            border-radius: var(--radius-lg);
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: var(--primary);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 30px;
             width: 100%;
             max-width: 450px;
             position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
         }
 
-        .close-modal {
+        .modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1.5rem;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--accent);
             font-size: 1.5rem;
-            color: var(--text-muted);
             cursor: pointer;
         }
 
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(13, 6, 20, 0.6);
+            border: 1px solid var(--border-gold);
+            border-radius: 6px;
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(212,175,55,0.3);
+        }
+
+        /* CHARACTER CREATION FORM CONTAINER */
+        .creation-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .empty-roster {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 50px;
+            color: #8c7b9e;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* CALENDAR / HISTORY STYLES */
+        .content-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            padding: 30px;
+            border-radius: 10px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #d1c7e0;
+        }
+
+        .content-box h3 {
+            color: var(--accent);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
         @media (max-width: 768px) {
+            header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .nav-links { justify-content: center; }
             .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <a href="#" class="logo">
-            <div class="logo-icon">👑</div>
-            <span>END OF MAGIC</span>
-        </a>
+    <!-- HEADER & MENU -->
+    <header>
+        <div class="nav-brand">
+            <i class="fa-solid fa-crown"></i> Descendentes — End Of Magic
+        </div>
         <ul class="nav-links">
-            <li><a href="#inicio" class="active">Início</a></li>
-            <li><a href="#lore">História</a></li>
-            <li><a href="#alunos">Alunos & Fichas</a></li>
-            <li><a href="#criar-ficha">Criar Ficha</a></li>
-            <li><a href="#calendario">Calendário</a></li>
+            <li><button onclick="switchTab('home')">Início</button></li>
+            <li><button onclick="switchTab('history')">História</button></li>
+            <li><button onclick="switchTab('students')">Alunos</button></li>
+            <li><button onclick="switchTab('create')">Criar Ficha</button></li>
+            <li><button onclick="switchTab('faculty')">Docência</button></li>
+            <li><button onclick="switchTab('locations')">Locais de Auradon</button></li>
+            <li><button class="btn-login" onclick="openLoginModal()">Cadastrar</button></li>
         </ul>
-        <div class="nav-actions">
-            <button class="btn btn-outline" onclick="openModal('loginModal')">Entrar</button>
-            <button class="btn btn-gold" onclick="openModal('registerModal')">Cadastrar</button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="inicio" class="hero">
-        <span class="hero-badge">RPG de Interpretação Online</span>
-        <h1>Descendentes — Colégio de Auradon Descendentes</h1>
-        <p>Bem-vindo ao portal oficial do nosso universo. A barreira da Ilha dos Perdidos acabou de cair e os filhos dos vilões estão chegando em Auradon Prep para o novo ano letivo, como a chegada eles ira afetar a vida dos estudantes de auradon, sendo fundamental ajuda do grupo dos vks Mal, Carlos, Evie e Jay. Nos corredores da academia acompanharemos a vida dos filhos de vilões e Mocinhos que conhecemos, além de conhecer novos personagens. Veremos nesta nova etapa richas, alianças, segredos, descobretas e novos poderes esperam pela sua história.</a>
-            <a href="#criar-ficha" class="btn btn-gold">📜 Criar Sua Ficha</a>
-         </div>
-        </header>
-            <a href="#lore" class="btn btn-outline">📖 Explorar a Lore</a>
-        </div>
     </header>
 
-    <div class="container">
-
-        <!-- Section: Lore -->
-        <section id="lore" style="padding-top: 4rem;">
-            <div class="section-header">
-                <h2>O Reino de Auradon</h2>
-                <p>Descubra os acontecimentos que moldam o novo ano letivo em Auradon Prep.</p>
+    <main>
+        <!-- HOME TAB -->
+        <section id="home" class="section-view active">
+            <div class="hero">
+                <h1>Bem-vindo a Auradon Prep</h1>
+                <p>O portal oficial de interpretação de papéis (RPG) inspirado no universo de Descendentes da Disney. Forme sua história entre heróis, vilões, feitiços e novos destinos.</p>
+                <button class="btn-royal" onclick="switchTab('create')">Criar Sua Ficha Agora</button>
             </div>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">🏰</div>
-                    <h3>Auradon Prep</h3>
-                    <p>Sob administração da diretora fada madrinha desiguinada pelo governo de Auradon, a prestigiada instituição abre portas para mais filhos de vilões e heróis aprenderem a conviver em harmonia.</p>
+            <div class="grid-container">
+                <div class="royal-card" onclick="switchTab('locations')" style="cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Locais">
+                    <div class="royal-card-content">
+                        <h3>Explorar Auradon</h3>
+                        <p>Conheça a Academia, os Dormitórios Reais, o Lago dos Espelhos e muito mais[cite: 1, 2, 3, 4, 5, 6, 7, 8, 9].</p>
+                        <span class="card-badge">Explorar Territórios</span>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="card-icon">⚡</div>
- <div class="card">
-                    <div class="card-icon">🏴‍☠️</div>
-                    <h3>Tensão na Ilha</h3>
-                    <p>Embora as pontes permaneçam abertas, muitos conflitos rodeiam a escola, sendo necessário muitos cuidados para as coisas não sairem do comtrole.</p>
+                <div class="royal-card" onclick="switchTab('faculty')" style="cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" alt="Professores">
+                    <div class="royal-card-content">
+                        <h3>Corpo Docente</h3>
+                        <p>Descubra as matérias ensinadas pela Fada Madrinha, Capitão Phoebus e outros mestres[cite: 1, 2, 3, 4, 5, 6, 7, 8].</p>
+                        <span class="card-badge">Ver Professores</span>
+                    </div>
+                </div>
+                <div class="royal-card" onclick="switchTab('students')" style="cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Alunos">
+                    <div class="royal-card-content">
+                        <h3>Alunos Matriculados</h3>
+                        <p>Veja todas as fichas de personagens criadas pelos jogadores e prontas para interagir.</p>
+                        <span class="card-badge">Roster de Alunos</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section: Alunos / Roster -->
-        <section id="alunos" style="padding-top: 4rem;">
-            <div class="section-header">
-                <h2>Alunos e Docentes Registrados</h2>
-                <p>Consulte os membros ativos do RPG e suas respectivas filiações.</p>
+        <!-- HISTORY TAB -->
+        <section id="history" class="section-view">
+            <h2 class="section-title">A História de End Of Magic</h2>
+            <div class="content-box">
+                <p>O domínio <strong>descendantsrpg.github.io</strong> hospeda o site oficial de <em>Descendentes — End Of Magic</em>, um jogo de interpretação de papéis (RPG) online inspirado na franquia Descendentes da Disney. O projeto, criado de forma independente por fãs e sem vínculo oficial com a empresa, funciona como uma plataforma interativa para jogadores criarem fichas e acompanharem a história do universo.</p>
+                <h3>O Novo Capítulo</h3>
+                <p>Após a unificação de Auradon e a abertura das pontes para a Ilha dos Perdidos, um novo equilíbrio foi instaurado. No entanto, energias antigas começam a despertar nos arredores do Lago dos Espelhos e nas profundezas do Museu da História dos Reinos, desafiando a nova geração a provar o verdadeiro valor de suas escolhas.</p>
             </div>
+        </section>
 
-            <div class="filter-bar">
-                <div class="filter-buttons">
-                    <button class="filter-btn active" onclick="filterRoster('all')">Todos</button>
-                    <button class="filter-btn" onclick="filterRoster('auradon')">Auradon</button>
-                    <button class="filter-btn" onclick="filterRoster('isle')">Ilha dos Perdidos</button>
-                    <button class="filter-btn" onclick="filterRoster('faculty')">Docentes</button>
+        <!-- STUDENTS ROSTER TAB -->
+        <section id="students" class="section-view">
+            <h2 class="section-title">Alunos de Auradon Prep</h2>
+            <div id="students-grid" class="grid-container">
+                <div class="empty-roster">Nenhum aluno cadastrado ainda. Use a aba "Criar Ficha" para registrar o seu personagem!</div>
+            </div>
+        </section>
+
+        <!-- CREATE CHARACTER TAB -->
+        <section id="create" class="section-view">
+            <h2 class="section-title">Criar Ficha de Personagem</h2>
+            <div class="creation-container">
+                <form id="character-form" onsubmit="handleCharacterSubmit(event)">
+                    <div class="form-group">
+                        <label>Nome do Personagem (Aluno/Aluna em Auradon)</label>
+                        <input type="text" id="char-name" required placeholder="Ex: Ben Beast Jr.">
+                    </div>
+                    <div class="form-group">
+                        <label>Filiação (Nome do Pai / Mãe)</label>
+                        <input type="text" id="char-parent" required placeholder="Ex: Filho da Bela e da Fera">
+                    </div>
+                    <div class="form-group">
+                        <label>Idade ou Ano Escolar</label>
+                        <input type="text" id="char-age" required placeholder="Ex: 16 anos / 2º Ano">
+                    </div>
+                    <div class="form-group">
+                        <label>Aparência (Photoplayer / Nome do Artista ou Link da Foto)</label>
+                        <input type="text" id="char-photo" required placeholder="Cole o link da imagem ou nome do photoplayer">
+                    </div>
+                    <div class="form-group">
+                        <label>Poderes ou Habilidades</label>
+                        <textarea id="char-powers" rows="3" required placeholder="O que herdou ou sabe fazer..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Personalidade e História</label>
+                        <textarea id="char-history" rows="4" required placeholder="Breve trajetória antes de chegar à escola..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-royal" style="width: 100%;">Cadastrar Ficha nos Alunos</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FACULTY TAB -->
+        <section id="faculty" class="section-view">
+            <h2 class="section-title">Corpo Docente e Matérias</h2>
+            <div class="grid-container">
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Fada Madrinha">
+                    <div class="royal-card-content">
+                        <h3>Fada Madrinha</h3>
+                        <p><strong>Matéria:</strong> Bondade Corretiva 101[cite: 1]</p>
+                        <p>Diretora e mentora dedicada a ensinar empatia, ética e boas ações para toda a nova geração.</p>
+                        <span class="card-badge">Diretoria</span>
+                    </div>
                 </div>
-                <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome ou pai/mãe..." onkeyup="searchRoster()">
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Alistair Blackwood">
+                    <div class="royal-card-content">
+                        <h3>Alistair Blackwood</h3>
+                        <p><strong>Matérias:</strong> História da Magia, História de Auradon e Geografia dos Terrenos de Auradon[cite: 2]</p>
+                        <p>Especialista em cronologias mágicas e expansão dos reinos.</p>
+                        <span class="card-badge">Humanidades</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Fada Primavera">
+                    <div class="royal-card-content">
+                        <h3>Fada Primavera</h3>
+                        <p><strong>Matéria:</strong> Habilidades de Vida Sem Magia[cite: 3]</p>
+                        <p>Ensina os alunos a realizarem tarefas cotidianas contando com a própria engenhosidade.</p>
+                        <span class="card-badge">Práticas Diárias</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Sr. Deley">
+                    <div class="royal-card-content">
+                        <h3>Sr. Deley</h3>
+                        <p><strong>Matéria:</strong> Química / Ciências / Matemática[cite: 4]</p>
+                        <p>RigEsoroso com fórmulas exatas e reações controladas nos laboratórios modernos.</p>
+                        <span class="card-badge">Exatas</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Coach Jenkins">
+                    <div class="royal-card-content">
+                        <h3>Coach Jenkins</h3>
+                        <p><strong>Matéria:</strong> Educação Física / Técnico do time de Tourney[cite: 6]</p>
+                        <p>Comanda o rigoroso treinamento físico e tático para as competições da Auradon Prep.</p>
+                        <span class="card-badge">Esportes</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Fada Fauna">
+                    <div class="royal-card-content">
+                        <h3>Fada Fauna</h3>
+                        <p><strong>Matéria:</strong> Botânica, Mágica e Poções[cite: 5]</p>
+                        <p>Estudo avançado da flora encantada e manipulação segura de poções botânicas.</p>
+                        <span class="card-badge">Ciências Mágicas</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Celina Lira">
+                    <div class="royal-card-content">
+                        <h3>Celina Lira</h3>
+                        <p><strong>Matéria:</strong> Música e Expressão Teatral[cite: 7]</p>
+                        <p>Responsável por despertar o talento artístico, a voz e a presença de palco dos estudantes.</p>
+                        <span class="card-badge">Artes</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Capitão Phoebus">
+                    <div class="royal-card-content">
+                        <h3>Capitão Phoebus</h3>
+                        <p><strong>Matéria:</strong> Esgrima e Luta[cite: 8]</p>
+                        <p>Treinamento de postura, defesa pessoal e combate com lâminas com total segurança.</p>
+                        <span class="card-badge">Combate & Honra</span>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="roster-grid
+        <!-- LOCATIONS TAB -->
+        <section id="locations" class="section-view">
+            <h2 class="section-title">Locais de Auradon</h2>
+            <div class="grid-container">
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Auradon Academy">
+                    <div class="royal-card-content">
+                        <h3>Auradon Academy</h3>
+                        <p>A maior instituição de ensino do reino, responsável por formar a nova geração de príncipes, princesas, heróis, vilões e futuros líderes[cite: 6].</p>
+                        <span class="card-badge">Instituição Principal</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80" alt="Dormitórios Femininos">
+                    <div class="royal-card-content">
+                        <h3>Dormitórios Reais (Feminino)</h3>
+                        <p>Quartos duplos decorados com dosséis e tons clássicos, promovendo amizade entre filhas de heróis e vilões[cite: 7].</p>
+                        <span class="card-badge">Ala Residencial</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80" alt="Dormitórios Masculinos">
+                    <div class="royal-card-content">
+                        <h3>Dormitórios Reais (Masculino)</h3>
+                        <p>Quartos duplos com estilo nobre em tons de azul e verde com estandartes de Auradon Prep[cite: 8].</p>
+                        <span class="card-badge">Ala Residencial</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=600&q=80" alt="Jardim da Harmonia">
+                    <div class="royal-card-content">
+                        <h3>Jardim da Harmonia</h3>
+                        <p>Repleto de flores encantadas, árvores centenárias e uma fonte mágica central iluminada à noite[cite: 9].</p>
+                        <span class="card-badge">Área Verde</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80" alt="Ginásio Real">
+                    <div class="royal-card-content">
+                        <h3>Ginásio Real & Tourney</h3>
+                        <p>Centro esportivo completo para educação física, treinos de Tourney, esgrima e combate mágico supervisionado[cite: 8].</p>
+                        <span class="card-badge">Esportes</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Lago dos Espelhos">
+                    <div class="royal-card-content">
+                        <h3>Lago dos Espelhos</h3>
+                        <p>Lago cristalino a 2km com ponte de pedra, cujas águas refletem a aparência e o verdadeiro coração de quem observa[cite: 9].</p>
+                        <span class="card-badge">Marco Natural</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80" alt="Museu da História">
+                    <div class="royal-card-content">
+                        <h3>Museu da História dos Reinos</h3>
+                        <p>Abriga coroas antigas, armas lendárias, livros mágicos, pinturas e relíquias com áreas restritas[cite: 8].</p>
+                        <span class="card-badge">História & Relíquias</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Praça Central">
+                    <div class="royal-card-content">
+                        <h3>Praça Central de Auradon</h3>
+                        <p>O coração de Auradon, cercada por ruas de pedra branca, fontes, lojas e cafeterias, palco de festivais[cite: 2, 3, 4, 5, 6, 7, 8, 9].</p>
+                        <span class="card-badge">Centro Social</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Sala de Esgrima">
+                    <div class="royal-card-content">
+                        <h3>Sala de Esgrima e Luta</h3>
+                        <p>Espaço interno circular com marcações no chão onde o Capitão Phoebus ministra treinos práticos de duelo de espadas e autodefesa.</p>
+                        <span class="card-badge">Treinamento</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80" alt="Corredor de Armários">
+                    <div class="royal-card-content">
+                        <h3>Corredor de Armários</h3>
+                        <p>Filas de armários metálicos em tom azul vivo com o brasão de Auradon Prep, ponto de encontro diário entre as aulas.</p>
+                        <span class="card-badge">Convivência</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=600&q=80" alt="Escadarias Principais">
+                    <div class="royal-card-content">
+                        <h3>Escadarias Principais do Hall</h3>
+                        <p>Saguão grandioso em madeira nobre com lustres de cristal e imponente vitral ao fundo, conectando os andares da academia.</p>
+                        <span class="card-badge">Arquitetura</span>
+                    </div>
+                </div>
+                <div class="royal-card">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80" alt="Salas de Aula">
+                    <div class="royal-card-content">
+                        <h3>Salas de Aula Tradicionais</h3>
+                        <p>Salas amplas com vigas de madeira, bancadas duplas, quadros negros e estantes para as aulas teóricas dos mestres.</p>
+                        <span class="card-badge">Ensino</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- LOGIN / CADASTRO MODAL -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+            <h2 style="color: var(--accent); margin-bottom: 20px; text-align: center;">Cadastro de Conta</h2>
+            <form onsubmit="handleAuthSubmit(event)">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" required placeholder="Seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label>Nome de Usuário</label>
+                    <input type="text" required placeholder="Escolha um username">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" required placeholder="Sua senha secreta">
+                </div>
+                <div class="form-group">
+                    <label>Confirmação de Senha</label>
+                    <input type="password" required placeholder="Confirme sua senha">
+                </div>
+                <button type="submit" class="btn-royal" style="width: 100%;">Cadastrar Conta</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Array global para acumular as fichas dos alunos criadas
+        let studentsList = [];
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.section-view').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('open');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('open');
+        }
+
+        function handleAuthSubmit(e) {
+            e.preventDefault();
+            alert('Cadastro de conta realizado com sucesso!');
+            closeLoginModal();
+        }
+
+        function handleCharacterSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('char-name').value;
+            const parent = document.getElementById('char-parent').value;
+            const age = document.getElementById('char-age').value;
+            const photo = document.getElementById('char-photo').value;
+            const powers = document.getElementById('char-powers').value;
+            const history = document.getElementById('char-history').value;
+
+            // Cria o objeto do novo aluno
+            const newStudent = { name, parent, age, photo, powers, history };
+            studentsList.push(newStudent);
+
+            // Atualiza a renderização da aba Alunos
+            renderStudents();
+
+            // Limpa o formulário e redireciona para a aba de Alunos
+            document.getElementById('character-form').reset();
+            alert('Ficha de personagem criada e enviada com sucesso para a aba Alunos!');
+            switchTab('students');
+        }
+
+        function renderStudents() {
+            const container = document.getElementById('students-grid');
+            if (studentsList.length === 0) {
+                container.innerHTML = `<div class="empty-roster">Nenhum aluno cadastrado ainda. Use a aba "Criar Ficha" para registrar o seu personagem!</div>`;
+                return;
+            }
+
+            let html = '';
+            studentsList.forEach(student => {
+                // Verifica se a foto inserida é um link válido ou usa um padrão se falhar
+                let imgSrc = student.photo.startsWith('http') ? student.photo : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';
+                
+                html += `
+                    <div class="royal-card">
+                        <img src="${imgSrc}" alt="${student.name}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                        <div class="royal-card-content">
+                            <h3>${student.name}</h3>
+                            <p><strong>Filiação:</strong> ${student.parent}</p>
+                            <p><strong>Idade/Ano:</strong> ${student.age}</p>
+                            <p><strong>Poderes:</strong> ${student.powers}</p>
+                            <p><strong>História:</strong> ${student.history}</p>
+                            <span class="card-badge">Aluno(a) de Auradon</span>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
