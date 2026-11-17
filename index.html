@@ -322,7 +322,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Filter Bar */
+        /* Filter Bar & Control Panel */
         .filter-bar {
             display: flex;
             justify-content: space-between;
@@ -371,6 +371,16 @@
 
         .search-input:focus {
             border-color: var(--accent-gold);
+        }
+
+        .counter-badge-display {
+            background: rgba(229, 193, 88, 0.15);
+            border: 1px solid var(--border-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            font-weight: 600;
         }
 
         .roster-grid {
@@ -429,6 +439,7 @@
 
         .tag-auradon { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
         .tag-isle { background: rgba(239, 68, 68, 0.2); color: var(--accent-ruby); border: 1px solid var(--accent-ruby); }
+        .tag-other { background: rgba(138, 43, 226, 0.2); color: var(--accent-glow); border: 1px solid var(--accent-glow); }
         .tag-faculty { background: rgba(229, 193, 88, 0.2); color: var(--accent-gold); border: 1px solid var(--accent-gold); }
 
         .roster-details {
@@ -468,6 +479,12 @@
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--accent-gold);
+        }
+
+        .helper-text {
+            font-size: 0.78rem;
+            color: var(--accent-glow);
+            font-style: italic;
         }
 
         input, select, textarea {
@@ -670,12 +687,15 @@
                 <p>Consulte os membros ativos do RPG e suas respectivas fichas.</p>
             </div>
 
+            <!-- Painel de Filtro com os 3 botões solicitados e contador de quantidade -->
             <div class="filter-bar">
                 <div class="filter-buttons">
-                    <button class="filter-btn active" onclick="filterRoster('all')">Todos</button>
-                    <button class="filter-btn" onclick="filterRoster('auradon')">Auradon</button>
-                    <button class="filter-btn" onclick="filterRoster('isle')">Ilha dos Perdidos</button>
+                    <button class="filter-btn active" onclick="filterRoster('all', event)">Todos</button>
+                    <button class="filter-btn" onclick="filterRoster('hero', event)">🛡️ Heróis</button>
+                    <button class="filter-btn" onclick="filterRoster('villain', event)">😈 Vilões</button>
+                    <button class="filter-btn" onclick="filterRoster('disney', event)">✨ Contos Disney</button>
                 </div>
+                <div id="counter-display" class="counter-badge-display">Total de Filhos: 0 / 4 por ficha</div>
                 <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome ou filiação..." onkeyup="searchRoster()">
             </div>
 
@@ -702,13 +722,15 @@
                         </div>
                         <div class="form-group">
                             <label>Filiação (Pai ou Mãe)</label>
+                            <span class="helper-text">⚠️ Exclusivo para personagens Disney e contos de fadas (ex: Chapeuzinho Vermelho, Bela, Malévola...)</span>
                             <input type="text" id="char-parent" required placeholder="Ex: Filha de Madam Mim">
                         </div>
                         <div class="form-group">
-                            <label>Origem / Origem Social</label>
-                            <select id="char-origin" required>
-                                <option value="isle">Ilha dos Perdidos</option>
-                                <option value="auradon">Reino de Auradon</option>
+                            <label>Categoria da Linhagem</label>
+                            <select id="char-category" required>
+                                <option value="hero">Herói (Auradon)</option>
+                                <option value="villain">Vilão (Ilha dos Perdidos)</option>
+                                <option value="disney">Personagem de Contos / Disney</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -725,16 +747,17 @@
                         </div>
                         <div class="form-group full">
                             <label>Personalidade & História</label>
-                            <textarea id="char-history" rows="4" required placeholder="Descreva a personalidade e trajetória do personagem..."></textarea>
+                            <span class="helper-text">⚠️ Deve pertencer exclusivamente ao universo de histórias clássicas Disney ou contos tradicionais.</span>
+                            <textarea id="char-history" rows="4" required placeholder="Descreva a personalidade e trajetória baseada nas crônicas clássicas..."></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem;">📜 Finalizar e Registrar Ficha</button>
+                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem;">📜 Finalizar e Registrar Ficha (Máximo 4 por jogador)</button>
                 </form>
             </div>
         </div>
     </main>
 
-    <!-- 5. DOCÊNCIA (OS 8 PROFESSORES COM FOTOS) -->
+    <!-- 5. DOCÊNCIA -->
     <main id="view-docentes" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
@@ -743,7 +766,6 @@
             </div>
             
             <div class="grid-3">
-                <!-- Fada Madrinha -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/QvKsMvqK/fada-madrinha.jpg" alt="Fada Madrinha" onerror="this.src='https://i.ibb.co/QvKsMvqK/image.jpg'">
@@ -756,7 +778,6 @@
                     </div>
                 </div>
 
-                <!-- Alistair Blackwood -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/d0MXyp33/alistair-blackwood.jpg" alt="Alistair Blackwood" onerror="this.src='https://i.ibb.co/d0MXyp33/image.jpg'">
@@ -769,7 +790,6 @@
                     </div>
                 </div>
 
-                <!-- Fada Primavera -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/wrd9ntWM/fada-primavera.jpg" alt="Fada Primavera" onerror="this.src='https://i.ibb.co/wrd9ntWM/image.jpg'">
@@ -782,7 +802,6 @@
                     </div>
                 </div>
 
-                <!-- Sr. Deley -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/pHDhhxp/sr-deley.jpg" alt="Sr. Deley" onerror="this.src='https://i.ibb.co/pHDhhxp/image.jpg'">
@@ -795,7 +814,6 @@
                     </div>
                 </div>
 
-                <!-- Coach Jenkins -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/whPmMDr6/coach-jenkins.jpg" alt="Coach Jenkins" onerror="this.src='https://i.ibb.co/whPmMDr6/image.jpg'">
@@ -808,7 +826,6 @@
                     </div>
                 </div>
 
-                <!-- Fada Fauna -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/R4vqMQQw/fada-fauna.jpg" alt="Fada Fauna" onerror="this.src='https://i.ibb.co/R4vqMQQw/image.jpg'">
@@ -821,7 +838,6 @@
                     </div>
                 </div>
 
-                <!-- Celina Lira -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/R4vqMQQw/celina-lira.jpg" alt="Celina Lira" onerror="this.src='https://i.ibb.co/R4vqMQQw/image.jpg'">
@@ -834,7 +850,6 @@
                     </div>
                 </div>
 
-                <!-- Capitão Phoebus -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/k2twXNQ9/capitao-phoebus.jpg" alt="Capitão Phoebus" onerror="this.src='https://i.ibb.co/k2twXNQ9/image.jpg'">
@@ -850,7 +865,7 @@
         </div>
     </main>
 
-    <!-- 6. LOCAIS DE AURADON (12 AMBIENTES) -->
+    <!-- 6. LOCAIS DE AURADON -->
     <main id="view-locais" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
@@ -859,7 +874,6 @@
             </div>
             
             <div class="grid-3">
-                <!-- 1. Auradon Academy -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Auradon Academy" onerror="this.src='https://i.ibb.co/Z1Fbksxj/image.jpg'">
@@ -871,7 +885,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Dormitórios Feminino -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/jvzRW7Xq/dormitorios-feminino.jpg" alt="Dormitórios Reais (Feminino)" onerror="this.src='https://i.ibb.co/jvzRW7Xq/image.jpg'">
@@ -883,7 +896,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Dormitórios Masculino -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/v632qC5N/dormitorios-masculino.jpg" alt="Dormitórios Reais (Masculino)" onerror="this.src='https://i.ibb.co/v632qC5N/image.jpg'">
@@ -895,7 +907,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Jardim da Harmonia -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/PzJPz4HF/jardim-harmonia.jpg" alt="Jardim da Harmonia" onerror="this.src='https://i.ibb.co/PzJPz4HF/image.jpg'">
@@ -907,7 +918,6 @@
                     </div>
                 </div>
 
-                <!-- 5. Ginásio Real -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/Kx4RGvMm/ginasio-real.jpg" alt="Ginásio Real" onerror="this.src='https://i.ibb.co/Kx4RGvMm/image.jpg'">
@@ -919,7 +929,6 @@
                     </div>
                 </div>
 
-                <!-- 6. Lago dos Espelhos -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/LXxSjT2c/lago-espelhos.jpg" alt="Lago dos Espelhos" onerror="this.src='https://i.ibb.co/LXxSjT2c/image.jpg'">
@@ -931,7 +940,6 @@
                     </div>
                 </div>
 
-                <!-- 7. Museu da História dos Reinos -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/FLjbRqxt/museu-historia.jpg" alt="Museu da História" onerror="this.src='https://i.ibb.co/FLjbRqxt/image.jpg'">
@@ -943,7 +951,6 @@
                     </div>
                 </div>
 
-                <!-- 8. Praça Central -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/hFgJrNM7/praca-central.jpg" alt="Praça Central" onerror="this.src='https://i.ibb.co/hFgJrNM7/image.jpg'">
@@ -955,7 +962,6 @@
                     </div>
                 </div>
 
-                <!-- 9. Sala de Esgrima e Luta -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/Jwxnnxn4/sala-esgrima.jpg" alt="Sala de Esgrima" onerror="this.src='https://i.ibb.co/Jwxnnxn4/image.jpg'">
@@ -967,7 +973,6 @@
                     </div>
                 </div>
 
-                <!-- 10. Corredor de Armários -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/xS595hRS/corredor-armarios.jpg" alt="Corredor de Armários" onerror="this.src='https://i.ibb.co/xS595hRS/image.jpg'">
@@ -979,7 +984,6 @@
                     </div>
                 </div>
 
-                <!-- 11. Escadarias Principais -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/cX6fYdRW/escadarias-principais.jpg" alt="Escadarias Principais" onerror="this.src='https://i.ibb.co/cX6fYdRW/image.jpg'">
@@ -991,7 +995,6 @@
                     </div>
                 </div>
 
-                <!-- 12. Salas de Aula Tradicionais -->
                 <div class="card">
                     <div class="card-img-wrap">
                         <img src="https://i.ibb.co/CKcdSXc7/salas-aula.jpg" alt="Salas de Aula" onerror="this.src='https://i.ibb.co/CKcdSXc7/image.jpg'">
@@ -1062,6 +1065,7 @@
     <!-- JAVASCRIPT LOGIC -->
     <script>
         let studentRoster = [];
+        const MAX_CHILDREN_LIMIT = 4; // Limite rigoroso de 4 filhos por personagem/conta
 
         function switchNav(viewId) {
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -1096,22 +1100,34 @@
 
         function saveCharacter(e) {
             e.preventDefault();
+
+            // Validação do limite de 4 filhos
+            if (studentRoster.length >= MAX_CHILDREN_LIMIT) {
+                alert(`⚠️ Limite atingido! Cada jogador pode registrar no máximo ${MAX_CHILDREN_LIMIT} filhos por personagem.`);
+                return;
+            }
             
             const name = document.getElementById('char-name').value;
             const parent = document.getElementById('char-parent').value;
-            const origin = document.getElementById('char-origin').value;
+            const category = document.getElementById('char-category').value;
             const age = document.getElementById('char-age').value;
             const photo = document.getElementById('char-photo').value;
             const powers = document.getElementById('char-powers').value;
             const history = document.getElementById('char-history').value;
 
-            const newChar = { name, parent, origin, age, photo, powers, history };
+            const newChar = { name, parent, category, age, photo, powers, history };
             studentRoster.push(newChar);
 
+            updateCounterDisplay();
             renderRoster('all');
             document.getElementById('character-form').reset();
             alert('Ficha registrada com sucesso! Veja na aba Alunos & Fichas.');
             switchNav('alunos');
+        }
+
+        function updateCounterDisplay() {
+            const counterEl = document.getElementById('counter-display');
+            counterEl.innerText = `Total de Filhos: ${studentRoster.length} / ${MAX_CHILDREN_LIMIT} permitidos`;
         }
 
         function renderRoster(filter = 'all') {
@@ -1119,18 +1135,26 @@
             
             let filtered = studentRoster;
             if(filter !== 'all') {
-                filtered = studentRoster.filter(s => s.origin === filter);
+                filtered = studentRoster.filter(s => s.category === filter);
             }
 
             if (filtered.length === 0) {
-                grid.innerHTML = `<div class="empty-msg">Nenhuma ficha cadastrada nesta categoria.</div>`;
+                grid.innerHTML = `<div class="empty-msg">Nenhum filho cadastrado nesta categoria no momento.</div>`;
                 return;
             }
 
             let html = '';
             filtered.forEach(student => {
-                const tagClass = student.origin === 'auradon' ? 'tag-auradon' : 'tag-isle';
-                const tagLabel = student.origin === 'auradon' ? 'Auradon' : 'Ilha dos Perdidos';
+                let tagClass = 'tag-auradon';
+                let tagLabel = 'Herói';
+                
+                if(student.category === 'villain') {
+                    tagClass = 'tag-isle';
+                    tagLabel = 'Vilão';
+                } else if(student.category === 'disney') {
+                    tagClass = 'tag-other';
+                    tagLabel = 'Conto Disney';
+                }
 
                 html += `
                     <div class="roster-card">
@@ -1154,10 +1178,12 @@
             grid.innerHTML = html;
         }
 
-        function filterRoster(origin) {
+        function filterRoster(category, event) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            renderRoster(origin);
+            if(event && event.target) {
+                event.target.classList.add('active');
+            }
+            renderRoster(category);
         }
 
         function searchRoster() {
@@ -1173,6 +1199,9 @@
                 }
             });
         }
+
+        // Inicializa o contador ao carregar
+        updateCounterDisplay();
     </script>
 </body>
-</
+</html>
