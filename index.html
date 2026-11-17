@@ -49,6 +49,7 @@
             letter-spacing: 1px;
         }
 
+        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -155,6 +156,7 @@
             box-shadow: 0 0 20px rgba(229, 193, 88, 0.6);
         }
 
+        /* Views Switching */
         .page-view {
             display: none;
             animation: fadeIn 0.4s ease forwards;
@@ -169,6 +171,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Hero Section */
         .hero {
             padding: 160px 2rem 60px;
             text-align: center;
@@ -216,6 +219,7 @@
             flex-wrap: wrap;
         }
 
+        /* Container & Grid */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -318,6 +322,7 @@
             margin-bottom: 1rem;
         }
 
+        /* Filter Bar */
         .filter-bar {
             display: flex;
             justify-content: space-between;
@@ -432,6 +437,7 @@
             line-height: 1.5;
         }
 
+        /* Form Container */
         .form-container {
             background: var(--bg-card);
             border: 1px solid var(--border-gold);
@@ -480,6 +486,7 @@
             box-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
         }
 
+        /* Footer */
         footer {
             border-top: 1px solid var(--border-glow);
             background: rgba(5, 3, 12, 0.95);
@@ -500,6 +507,7 @@
             line-height: 1.5;
         }
 
+        /* Modals */
         .modal {
             display: none;
             position: fixed;
@@ -573,6 +581,8 @@
         </div>
     </nav>
 
+    <!-- VIEWS -->
+    
     <!-- 1. INÍCIO -->
     <main id="view-inicio" class="page-view active">
         <header class="hero">
@@ -593,7 +603,7 @@
             <div class="grid-3">
                 <div class="card" onclick="switchNav('locais')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Auradon Prep">
+                        <img src="cid:image_c19149.jpg" alt="Auradon Prep">
                     </div>
                     <div class="card-body">
                         <h3>Locais de Auradon</h3>
@@ -603,7 +613,7 @@
                 </div>
                 <div class="card" onclick="switchNav('docentes')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80" alt="Professores">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Professores">
                     </div>
                     <div class="card-body">
                         <h3>Quadro Docente</h3>
@@ -613,7 +623,7 @@
                 </div>
                 <div class="card" onclick="switchNav('alunos')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Alunos">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Alunos">
                     </div>
                     <div class="card-body">
                         <h3>Fichas dos Alunos</h3>
@@ -724,7 +734,7 @@
         </div>
     </main>
 
-    <!-- 5. DOCÊNCIA (8 PROFESSORES COM FOTOS REAIS) -->
+    <!-- 5. DOCÊNCIA (COM AS FOTOS EXATAS DOS 8 PROFESSORES) -->
     <main id="view-docentes" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
@@ -733,97 +743,105 @@
             </div>
             
             <div class="grid-3">
+                <!-- Fada Madrinha -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Fada Madrinha">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" alt="Fada Madrinha">
                     </div>
                     <div class="card-body">
                         <h3>Fada Madrinha</h3>
-                        <p><strong>Matéria:</strong> Bondade Corretiva 101</p>
+                        <p><strong>Matéria:</strong> Bondade Corretiva 101[cite: 1]</p>
                         <p>Diretora da instituição, focada no ensino de empatia, ética e boas práticas morais para todos os alunos.</p>
                         <span class="roster-tag tag-faculty">DIRETORIA</span>
                     </div>
                 </div>
 
+                <!-- Alistair Blackwood -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Alistair Blackwood">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Alistair Blackwood">
                     </div>
                     <div class="card-body">
                         <h3>Alistair Blackwood</h3>
-                        <p><strong>Matérias:</strong> História da Magia, História de Auradon e Geografia dos Terrenos</p>
+                        <p><strong>Matérias:</strong> História da Magia, História de Auradon e Geografia dos Terrenos[cite: 2]</p>
                         <p>Especialista em cronologias dos reinos e evolução de artefatos mágicos.</p>
                         <span class="roster-tag tag-faculty">HUMANIDADES</span>
                     </div>
                 </div>
 
+                <!-- Fada Primavera -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Fada Primavera">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Fada Primavera">
                     </div>
                     <div class="card-body">
                         <h3>Fada Primavera</h3>
-                        <p><strong>Matéria:</strong> Habilidades de Vida Sem Magia</p>
+                        <p><strong>Matéria:</strong> Habilidades de Vida Sem Magia[cite: 3]</p>
                         <p>Ensina os alunos a realizarem tarefas cotidianas com autonomia e sem o uso de varinhas.</p>
                         <span class="roster-tag tag-faculty">PRÁTICA</span>
                     </div>
                 </div>
 
+                <!-- Sr. Deley -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Sr. Deley">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Sr. Deley">
                     </div>
                     <div class="card-body">
                         <h3>Sr. Deley</h3>
-                        <p><strong>Matérias:</strong> Química, Ciências e Matemática</p>
+                        <p><strong>Matérias:</strong> Química, Ciências e Matemática[cite: 4]</p>
                         <p>Instrutor metódico de ciências exatas, cálculo e reações químicas controladas.</p>
                         <span class="roster-tag tag-faculty">EXATAS</span>
                     </div>
                 </div>
 
+                <!-- Coach Jenkins -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80" alt="Coach Jenkins">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Coach Jenkins">
                     </div>
                     <div class="card-body">
                         <h3>Coach Jenkins</h3>
-                        <p><strong>Matéria:</strong> Educação Física & Treinador de Tourney</p>
+                        <p><strong>Matéria:</strong> Educação Física & Treinador de Tourney[cite: 6]</p>
                         <p>Responsável pelo condicionamento físico dos estudantes e pelos treinos do time oficial de Tourney.</p>
                         <span class="roster-tag tag-faculty">ESPORTES</span>
                     </div>
                 </div>
 
+                <!-- Fada Fauna -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Fada Fauna">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Fada Fauna">
                     </div>
                     <div class="card-body">
                         <h3>Fada Fauna</h3>
-                        <p><strong>Matérias:</strong> Botânica Mágica e Poções</p>
+                        <p><strong>Matérias:</strong> Botânica Mágica e Poções[cite: 5]</p>
                         <p>Instrui sobre ervas místicas, elixires medicinais e flora encantada dos reinos.</p>
                         <span class="roster-tag tag-faculty">CIÊNCIAS MÁGICAS</span>
                     </div>
                 </div>
 
+                <!-- Celina Lira -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" alt="Celina Lira">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Celina Lira">
                     </div>
                     <div class="card-body">
                         <h3>Celina Lira</h3>
-                        <p><strong>Matéria:</strong> Música e Expressão Teatral</p>
+                        <p><strong>Matéria:</strong> Música e Expressão Teatral[cite: 7]</p>
                         <p>Desenvolve o talento vocal, arranjos musicais e performances no auditório de Auradon.</p>
                         <span class="roster-tag tag-faculty">ARTES</span>
                     </div>
                 </div>
 
+                <!-- Capitão Phoebus -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Capitão Phoebus">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Capitão Phoebus">
                     </div>
                     <div class="card-body">
                         <h3>Capitão Phoebus</h3>
-                        <p><strong>Matéria:</strong> Esgrima e Luta Corporativa</p>
+                        <p><strong>Matéria:</strong> Esgrima e Luta Corporativa[cite: 8]</p>
                         <p>Treinador militar focado em técnicas de florete, autodefesa, honra e manuseio seguro de espadas.</p>
                         <span class="roster-tag tag-faculty">COMBATE</span>
                     </div>
@@ -832,7 +850,7 @@
         </div>
     </main>
 
-    <!-- 6. LOCAIS DE AURADON (12 AMBIENTES COMPLETOS COM FOTOS REAIS) -->
+    <!-- 6. LOCAIS DE AURADON (COM AS 12 FOTOS EXATAS ENVIADAS) -->
     <main id="view-locais" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
@@ -844,11 +862,11 @@
                 <!-- 1. Auradon Academy -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Auradon Academy">
+                        <img src="cid:image_c19149.jpg" alt="Auradon Academy">
                     </div>
                     <div class="card-body">
                         <h3>Auradon Academy</h3>
-                        <p>A maior instituição de ensino do reino, responsável por formar a nova geração de príncipes, princesas, heróis, vilões e futuros líderes.</p>
+                        <p>A maior instituição de ensino do reino, responsável por formar a nova geração de príncipes, princesas, heróis, vilões e futuros líderes[cite: 6].</p>
                         <span class="roster-tag tag-auradon">FACHADA PRINCIPAL</span>
                     </div>
                 </div>
@@ -856,11 +874,11 @@
                 <!-- 2. Dormitórios Feminino -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80" alt="Dormitórios Feminino">
+                        <img src="cid:image_c18cd0.jpg" alt="Dormitórios Feminino">
                     </div>
                     <div class="card-body">
                         <h3>Dormitórios Reais (Feminino)</h3>
-                        <p>Acomodam as alunas em quartos duplos decorados com dosséis e em tons clássicos, promovendo a convivência e a amizade.</p>
+                        <p>Acomodam as alunas em quartos duplos decorados com dosséis e em tons clássicos, promovendo a convivência e a amizade[cite: 7].</p>
                         <span class="roster-tag tag-auradon">ALA RESIDENCIAL</span>
                     </div>
                 </div>
@@ -868,11 +886,11 @@
                 <!-- 3. Dormitórios Masculino -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" alt="Dormitórios Masculino">
+                        <img src="cid:image_c189e8.jpg" alt="Dormitórios Masculino">
                     </div>
                     <div class="card-body">
                         <h3>Dormitórios Reais (Masculino)</h3>
-                        <p>Acomodam os alunos em quartos duplos com estilo nobre em tons de azul, verde e madeira, exibindo estandartes de Auradon Prep.</p>
+                        <p>Acomodam os alunos em quartos duplos com estilo nobre em tons de azul, verde e madeira, exibindo estandartes de Auradon Prep[cite: 8].</p>
                         <span class="roster-tag tag-auradon">ALA RESIDENCIAL</span>
                     </div>
                 </div>
@@ -880,11 +898,11 @@
                 <!-- 4. Jardim da Harmonia -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80" alt="Jardim da Harmonia">
+                        <img src="cid:image_c18529.png" alt="Jardim da Harmonia">
                     </div>
                     <div class="card-body">
                         <h3>Jardim da Harmonia</h3>
-                        <p>O lugar mais tranquilo da Academia, com sebes esculpidas, fonte mágica central iluminada e estátuas ornamentais.</p>
+                        <p>O lugar mais tranquilo da Academia, com sebes esculpidas, fonte mágica central iluminada e estátuas ornamentais[cite: 9].</p>
                         <span class="roster-tag tag-auradon">ÁREA VERDE</span>
                     </div>
                 </div>
@@ -892,11 +910,11 @@
                 <!-- 5. Ginásio Real -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80" alt="Ginásio Real">
+                        <img src="cid:image_c17701.png" alt="Ginásio Real">
                     </div>
                     <div class="card-body">
                         <h3>Ginásio Real & Campo de Tourney</h3>
-                        <p>Centro esportivo completo para educação física, treinos de Tourney, esgrima e combate mágico com arquibancadas ao ar livre.</p>
+                        <p>Centro esportivo completo para educação física, treinos de Tourney, esgrima e combate mágico com arquibancadas ao ar livre[cite: 8].</p>
                         <span class="roster-tag tag-auradon">ESPORTES</span>
                     </div>
                 </div>
@@ -904,11 +922,11 @@
                 <!-- 6. Lago dos Espelhos -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Lago dos Espelhos">
+                        <img src="cid:image_c1733f.jpg" alt="Lago dos Espelhos">
                     </div>
                     <div class="card-body">
                         <h3>Lago dos Espelhos</h3>
-                        <p>Lago cristalino localizado a 2 km da escola com colunas de pedra e templo de ruínas, cujas águas refletem o coração de quem observa.</p>
+                        <p>Lago cristalino localizado a 2 km da escola com colunas de pedra e templo de ruínas, cujas águas refletem o coração de quem observa[cite: 9].</p>
                         <span class="roster-tag tag-auradon">MARCO MÁGICO</span>
                     </div>
                 </div>
@@ -916,11 +934,11 @@
                 <!-- 7. Museu da História dos Reinos -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Museu da História">
+                        <img src="cid:image_b794bc.png" alt="Museu da História">
                     </div>
                     <div class="card-body">
                         <h3>Museu da História dos Reinos</h3>
-                        <p>Fachada clássica com iluminação noturna que guarda coroas, relíquias, armas lendárias e livros mágicos com áreas restritas.</p>
+                        <p>Fachada clássica com iluminação noturna que guarda coroas, relíquias, armas lendárias e livros mágicos com áreas restritas[cite: 8].</p>
                         <span class="roster-tag tag-auradon">RELÍQUIAS</span>
                     </div>
                 </div>
@@ -928,11 +946,11 @@
                 <!-- 8. Praça Central -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Praça Central">
+                        <img src="cid:image_b78d60.png" alt="Praça Central">
                     </div>
                     <div class="card-body">
                         <h3>Praça Central de Auradon</h3>
-                        <p>O coração de Auradon, cercada por construções de pedra, canteiros floridos, fontes e cafeterias para encontro dos alunos.</p>
+                        <p>O coração de Auradon, cercada por construções de pedra, canteiros floridos, fontes e cafeterias para encontro dos alunos[cite: 2, 3, 4, 5, 6, 7, 8, 9].</p>
                         <span class="roster-tag tag-auradon">CONVIVÊNCIA</span>
                     </div>
                 </div>
@@ -940,7 +958,7 @@
                 <!-- 9. Sala de Esgrima e Luta -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Sala de Esgrima">
+                        <img src="cid:image_b789b8.jpg" alt="Sala de Esgrima">
                     </div>
                     <div class="card-body">
                         <h3>Sala de Esgrima e Luta</h3>
@@ -952,7 +970,7 @@
                 <!-- 10. Corredor de Armários -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=800&q=80" alt="Corredor de Armários">
+                        <img src="cid:image_b78998.png" alt="Corredor de Armários">
                     </div>
                     <div class="card-body">
                         <h3>Corredor de Armários (Área Externa)</h3>
@@ -964,7 +982,7 @@
                 <!-- 11. Escadarias Principais -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Escadarias Principais">
+                        <img src="cid:image_b78960.png" alt="Escadarias Principais">
                     </div>
                     <div class="card-body">
                         <h3>Escadarias Principais do Hall</h3>
@@ -976,7 +994,7 @@
                 <!-- 12. Salas de Aula Tradicionais -->
                 <div class="card">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80" alt="Salas de Aula">
+                        <img src="cid:image_b78941.png" alt="Salas de Aula">
                     </div>
                     <div class="card-body">
                         <h3>Salas de Aula Tradicionais</h3>
@@ -1116,11 +1134,11 @@
 
                 html += `
                     <div class="roster-card">
-                        <img src="${student.photo}" alt="${student.name}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                        <img src="student.photo"alt="{student.name}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
                         <div class="roster-info">
                             <div class="roster-header">
                                 <span class="roster-name">${student.name}</span>
-                                <span class="roster-tag ${tagClass}">${tagLabel}</span>
+                                <span class="roster-tag tagClass">{tagLabel}</span>
                             </div>
                             <div class="roster-details">
                                 <p><strong>Filiação:</strong> ${student.parent}</p>
@@ -1156,5 +1174,7 @@
             });
         }
     </script>
+</body>
+</html>
 </body>
 </html>
