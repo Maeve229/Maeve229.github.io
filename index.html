@@ -242,7 +242,7 @@
             color: var(--text-muted);
         }
 
-        /* Banners de Capa */
+        /* Capas / Banners */
         .roster-banner-container {
             width: 100%;
             height: 280px;
@@ -329,24 +329,6 @@
             justify-content: space-between;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
-            transition: var(--transition);
-            z-index: 2;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-glow);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
-        }
-
         .card h3 {
             font-size: 1.35rem;
             color: var(--accent-gold);
@@ -397,12 +379,6 @@
             align-items: center;
             gap: 8px;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
-            transition: var(--transition);
-        }
-
-        .progenitores-btn:hover {
-            background: linear-gradient(135deg, #7c3aed, #6b21a8);
-            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .progenitores-menu {
@@ -421,7 +397,6 @@
 
         .progenitores-menu.show {
             display: block;
-            animation: fadeIn 0.3s ease;
         }
 
         .prog-tabs-header {
@@ -443,10 +418,9 @@
             text-align: center;
             border-radius: 6px;
             cursor: pointer;
-            transition: var(--transition);
         }
 
-        .prog-tab-btn.active, .prog-tab-btn:hover {
+        .prog-tab-btn.active {
             background: var(--accent-purple);
             color: white;
             border-color: var(--accent-glow);
@@ -493,11 +467,10 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
             cursor: pointer;
-            transition: var(--transition);
             font-size: 0.85rem;
         }
 
-        .filter-btn.active, .filter-btn:hover {
+        .filter-btn.active {
             background: var(--accent-purple);
             color: white;
             border-color: var(--accent-glow);
@@ -523,10 +496,6 @@
             outline: none;
         }
 
-        .search-input:focus {
-            border-color: var(--accent-gold);
-        }
-
         .roster-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -540,12 +509,6 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
-        }
-
-        .roster-card:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 5px 20px rgba(229, 193, 88, 0.15);
         }
 
         .roster-card img {
@@ -609,7 +572,7 @@
 
         .canon-card img {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
         }
 
@@ -625,7 +588,7 @@
         .canon-status {
             font-size: 0.75rem;
             font-weight: 700;
-            padding: 4px 8px;
+            padding: 5px 8px;
             border-radius: 6px;
             text-align: center;
             text-transform: uppercase;
@@ -674,12 +637,10 @@
             color: white;
             font-size: 0.95rem;
             outline: none;
-            transition: var(--transition);
         }
 
         input:focus, select:focus, textarea:focus {
             border-color: var(--accent-gold);
-            box-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
         }
 
         .helper-text {
@@ -733,7 +694,6 @@
             width: 100%;
             max-width: 450px;
             position: relative;
-            box-shadow: 0 0 40px rgba(189, 0, 255, 0.3);
         }
 
         .close-modal {
@@ -758,7 +718,6 @@
             .nav-links { display: none; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full { grid-column: span 1; }
-            .roster-banner-container { height: 200px; }
         }
     </style>
 </head>
@@ -785,14 +744,12 @@
         </div>
     </nav>
 
-    <!-- VIEWS -->
-    
     <!-- 1. INÍCIO -->
     <main id="view-inicio" class="page-view active">
         <header class="hero">
             <span class="hero-badge">RPG de Interpretação Online</span>
             <h1>Descendentes — Colégio de Auradon</h1>
-            <p>Bem-vindo ao portal oficial do nosso universo. A barreira da Ilha dos Perdidos acabou de cair e os filhos dos vilões estão chegando em Auradon Prep para o novo ano letivo. Acompanharemos a convivência, rixas, alianças, segredos e novos poderes entre filhos de heróis e vilões com a ajuda de Mal, Evie, Carlos e Jay.</p>
+            <p>Bem-vindo ao portal oficial do nosso universo. A barreira da Ilha dos Perdidos acabou de cair e os filhos dos vilões estão chegando em Auradon Prep para o novo ano letivo.</p>
             <div class="hero-cta">
                 <a class="btn btn-gold" onclick="switchNav('criar-ficha')">📜 Criar Sua Ficha</a>
                 <a class="btn btn-outline" onclick="switchNav('canon')">⭐ Reivindicar Personagem Canon</a>
@@ -807,7 +764,7 @@
             <div class="grid-3">
                 <div class="card" onclick="switchNav('canon')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img src="https://ibb.co/M5B5RBpt" alt="Canon" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                        <img src="https://i.ibb.co/M5B5RBpt/M5B5RBpt.jpg" alt="Canon" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
                     </div>
                     <div class="card-body">
                         <h3>Elenco Canon (Franquia)</h3>
@@ -839,17 +796,21 @@
         </div>
     </main>
 
-    <!-- 2. ELENCO CANON (PERSONAGENS OFICIAIS DA FRANQUIA) -->
+    <!-- 2. ELENCO CANON -->
     <main id="view-canon" class="page-view">
         <div class="container" style="padding-top: 140px;">
             
-            <!-- CAPA DA SEÇÃO ELENCO CANON -->
             <div class="roster-banner-container">
-                <img src="https://ibb.co/M5B5RBpt" alt="Capa Elenco Canon" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
+                <img src="https://i.ibb.co/M5B5RBpt/M5B5RBpt.jpg" alt="Capa Elenco Canon" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
                 <div class="roster-banner-overlay">
                     <h2>Elenco Canon (Franquia)</h2>
-                    <p>Reivindique seu personagem oficial favorito. Se estiver vago, é só ocupar!</p>
+                    <p>Reivindique o seu personagem oficial favorito e participe do RPG</p>
                 </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Personagens Oficiais Disponíveis</h2>
+                <p>Verifique quem está <strong>Vago</strong> para jogar ou se já está <strong>Ocupado</strong> por algum membro.</p>
             </div>
 
             <div id="canon-grid" class="canon-grid">
@@ -863,7 +824,7 @@
         <div class="container" style="padding-top: 140px;">
             
             <div class="roster-banner-container">
-                <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Capa dos Personagens - Descendentes" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
+                <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Capa Alunos" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
                 <div class="roster-banner-overlay">
                     <h2>Alunos & Fichas de Auradon</h2>
                     <p>Explore o roster oficial de estudantes, herdeiros e heróis do nosso RPG</p>
@@ -894,15 +855,15 @@
                                     <li>Pocahontas e John Smith</li>
                                     <li>Mulan e Li Shang</li>
                                     <li>Tiana e Príncipe Naveen</li>
-                                    <li>Rapunzel e Flynn Rider (José Bezerra)</li>
+                                    <li>Rapunzel e Flynn Rider</li>
                                     <li>Merida, Moana, Raya</li>
-                                    <li>Anna e Kristoff, Elsa</li>
+                                    <li>Anna, Kristoff, Elsa</li>
                                     <li>Esmeralda e Phoebus</li>
                                     <li>Mégara e Hércules</li>
                                     <li>Jane Porter e Tarzan</li>
                                     <li>Kida e Milo Thatch</li>
                                     <li>Mirabel (Encanto)</li>
-                                    <li>Asha (Wish: O Poder dos Desejos)</li>
+                                    <li>Asha (Wish)</li>
                                 </ul>
                             </div>
 
@@ -910,64 +871,30 @@
                                 <ul class="progenitor-list">
                                     <li><span class="couple-highlight">🖤 Casal: Hades & Malévola</span></li>
                                     <li><span class="couple-highlight">👑 Casal: Rainha Má & Rei Magnífico</span></li>
-                                    <li>Lobo Mau (Chapeuzinho Vermelho)</li>
-                                    <li>Stromboli & Cocheiro (Pinóquio)</li>
-                                    <li>Chernabog (Fantasia)</li>
-                                    <li>Madrasta Lady Tremaine, Anastácia & Drizella (Cinderela)</li>
-                                    <li>Rainha de Copas (Alice no País das Maravilhas)</li>
-                                    <li>Capitão Gancho (Peter Pan)</li>
-                                    <li>Cruella de Vil, Jasper & Gaspar (101 Dálmatas)</li>
-                                    <li>Madame Mim (A Espada Era a Lei)</li>
-                                    <li>Úrsula (A Pequena Sereia)</li>
-                                    <li>Gaston (A Bela e a Fera)</li>
-                                    <li>Jafar (Aladdin)</li>
-                                    <li>Scar (O Rei Leão)</li>
-                                    <li>Governador Ratcliffe (Pocahontas)</li>
-                                    <li>Juiz Claude Frollo (O Corcunda de Notre Dame)</li>
-                                    <li>Agonia & Pânico (Hércules)</li>
-                                    <li>Shan Yu (Mulan)</li>
-                                    <li>Clayton (Tarzan)</li>
-                                    <li>Yzma (A Nova Onda do Imperador)</li>
-                                    <li>Dr. Facilier (A Princesa e o Sapo)</li>
-                                    <li>Mamãe Gothel (Enrolados)</li>
-                                    <li>Príncipe Hans (Frozen)</li>
-                                    <li>Tamatoa (Moana)</li>
-                                    <li>Rumpelstiltskin & Zelena / Bruxa Má do Oeste (OUAT / Disney)</li>
-                                    <li>Morgana (Rei Arthur)</li>
-                                    <li>O Caçador (Branca de Neve)</li>
-                                    <li>Edgar Balthazar (Aristogatas)</li>
-                                    <li>Príncipe João (Robin Hood)</li>
-                                    <li>Rei de Chifres (O Caldeirão Mágico)</li>
-                                    <li>Comandante Rourke & Helga Sinclair (Atlantis)</li>
+                                    <li>Lobo Mau, Capitão Gancho, Úrsula</li>
+                                    <li>Gaston, Jafar, Scar, Cruella de Vil</li>
+                                    <li>Madame Mim, Governador Ratcliffe</li>
+                                    <li>Juiz Claude Frollo, Agonia & Pânico</li>
+                                    <li>Shan Yu, Clayton, Yzma, Dr. Facilier</li>
+                                    <li>Mamãe Gothel, Príncipe Hans, Tamatoa</li>
+                                    <li>Rumpelstiltskin & Zelena</li>
+                                    <li>Morgana, O Caçador, Edgar Balthazar</li>
+                                    <li>Príncipe João, Rei de Chifres, Rourke & Helga</li>
                                 </ul>
                             </div>
 
                             <div id="tab-coad" class="prog-tab-content">
                                 <ul class="progenitor-list">
-                                    <li>Chapeleiro Maluco (Alice no País das Maravilhas)</li>
-                                    <li>Gato de Cheshire / Gato Risonho (Alice no País das Maravilhas)</li>
-                                    <li>Coelho Branco (Alice no País das Maravilhas)</li>
-                                    <li>Gênio da Lâmpada (Aladdin)</li>
-                                    <li>Lumière (A Bela e a Fera)</li>
-                                    <li>Horloge (A Bela e a Fera)</li>
-                                    <li>Madame Samovar (A Bela e a Fera)</li>
-                                    <li>Zip (A Bela e a Fera)</li>
-                                    <li>Guarda-Roupa / Madame de Garderobe (A Bela e a Fera)</li>
-                                    <li>Sininho / Tinker Bell (Peter Pan)</li>
-                                    <li>Fada Madrinha (Cinderela)</li>
-                                    <li>Flora, Fauna e Primavera (A Bela Adormecida)</li>
-                                    <li>Fada Azul (Pinóquio)</li>
-                                    <li>Luisa, Isabela, Bruno, Camilo e Pepa Madrigal (Encanto)</li>
-                                    <li>João Darling & Miguel Darling (Peter Pan)</li>
-                                    <li>Sr. Smee / Barrica (Peter Pan)</li>
-                                    <li>Chapeuzinho Vermelho (Contos)</li>
-                                    <li>Merlin (A Espada Era a Lei)</li>
-                                    <li>Evanora (Mágico de Oz)</li>
-                                    <li>Oscar Diggs / O Mágico de Oz (Mágico de Oz)</li>
-                                    <li>Glinda (Mágico de Oz)</li>
-                                    <li>Maui (Moana)</li>
-                                    <li>Zeus e Hera (Hércules)</li>
-                                    <li>Hermes (Hércules)</li>
+                                    <li>Chapeleiro Maluco, Gato de Cheshire</li>
+                                    <li>Coelho Branco, Gênio da Lâmpada</li>
+                                    <li>Lumière, Horloge, Madame Samovar, Zip</li>
+                                    <li>Guarda-Roupa, Sininho, Fada Madrinha</li>
+                                    <li>Flora, Fauna, Primavera, Fada Azul</li>
+                                    <li>Luisa, Isabela, Bruno, Camilo, Pepa</li>
+                                    <li>João Darling, Miguel Darling, Sr. Smee</li>
+                                    <li>Chapeuzinho Vermelho, Merlin</li>
+                                    <li>Evanora, Oscar Diggs, Glinda</li>
+                                    <li>Maui, Zeus, Hera, Hermes</li>
                                 </ul>
                             </div>
                         </div>
@@ -1046,7 +973,7 @@
         </div>
     </main>
 
-    <!-- 5. LORE / HISTÓRIA -->
+    <!-- 5. LORE -->
     <main id="view-lore" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
@@ -1062,12 +989,12 @@
                 <div class="card" style="padding: 2rem;">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">✨</div>
                     <h3>Fim da Magia?</h3>
-                    <p>Com a abertura da barreira muitos alunos estão recém conhecendo seus dons mágicos, mesmo Auradon insistindo em uma vida sem magia. Como os alunos lidarão com seus dons e seguir as regras de Auradon, lidando com filhos de mocinhos.</p>
+                    <p>Com a abertura da barreira muitos alunos estão recém conhecendo seus dons mágicos, mesmo Auradon insistindo em uma vida sem magia.</p>
                 </div>
                 <div class="card" style="padding: 2rem;">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏴‍☠️</div>
                     <h3>Tensão & Alianças</h3>
-                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola, exigindo consenso e auxílio de nossos VKs.</p>
+                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola.</p>
                 </div>
             </div>
         </div>
@@ -1090,29 +1017,11 @@
                         <span class="roster-tag tag-disney">DIRETORIA</span>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-img-wrap"><img src="https://i.ibb.co/d0MXyp33/alistair-blackwood.jpg" alt="Alistair" onerror="this.src='https://i.ibb.co/d0MXyp33/image.jpg'"></div>
-                    <div class="card-body">
-                        <h3>Alistair Blackwood</h3>
-                        <p><strong>Matérias:</strong> História da Magia e de Auradon</p>
-                        <p>Especialista em cronologias e artefatos mágicos.</p>
-                        <span class="roster-tag tag-disney">HUMANIDADES</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img-wrap"><img src="https://i.ibb.co/whPmMDr6/coach-jenkins.jpg" alt="Jenkins" onerror="this.src='https://i.ibb.co/whPmMDr6/image.jpg'"></div>
-                    <div class="card-body">
-                        <h3>Coach Jenkins</h3>
-                        <p><strong>Matéria:</strong> Educação Física & Tourney</p>
-                        <p>Responsável pelo condicionamento físico e time oficial.</p>
-                        <span class="roster-tag tag-disney">ESPORTES</span>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
 
-    <!-- 7. LOCAIS DE AURADON -->
+    <!-- 7. LOCAIS -->
     <main id="view-locais" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
@@ -1124,23 +1033,14 @@
                     <div class="card-img-wrap"><img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Academia"></div>
                     <div class="card-body">
                         <h3>Auradon Academy</h3>
-                        <p>A maior instituição de ensino do reino para príncipes, princesas e heróis.</p>
+                        <p>A maior instituição de ensino do reino.</p>
                         <span class="roster-tag tag-disney">FACHADA</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-img-wrap"><img src="https://i.ibb.co/PzJPz4HF/jardim-harmonia.jpg" alt="Jardim"></div>
-                    <div class="card-body">
-                        <h3>Jardim da Harmonia</h3>
-                        <p>O lugar mais tranquilo da Academia com fonte mágica e estátuas.</p>
-                        <span class="roster-tag tag-disney">ÁREA VERDE</span>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer>
         <div class="disclaimer-box">
             <strong>Aviso de Projeto Independente:</strong> O projeto Descendentes — End Of Magic é um jogo de interpretação (RPG) feito por fãs de forma independente e não possui vínculo oficial com a The Walt Disney Company.
@@ -1179,34 +1079,35 @@
         let studentRoster = [];
         let currentFilter = 'all';
         const DEFAULT_PHOTO = 'https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg';
+        const FALLBACK_IMG = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';
 
-        // Lista completa dos 25 personagens oficiais (Canon) com suas fotos e status
+        // Lista completa dos 25 personagens oficiais Canon com suas imagens e status
         let canonCharacters = [
-            { id: 1, name: "Mal", lineage: "Filha de Malévola e Hades", photo: "https://ibb.co/1pZTL1m", status: "vago", claimedBy: "" },
-            { id: 2, name: "Evie", lineage: "Filha da Rainha Má e Rei Magnífico", photo: "https://ibb.co/fGrNfbQz", status: "vago", claimedBy: "" },
-            { id: 3, name: "Jay", lineage: "Filho de Jafar", photo: "https://ibb.co/6Rycrm4Q", status: "vago", claimedBy: "" },
-            { id: 4, name: "Carlos De Vil", lineage: "Filho de Cruella de Vil", photo: "https://ibb.co/1Y4hpX4h", status: "vago", claimedBy: "" },
-            { id: 5, name: "Ben", lineage: "Filho de Bela e Fera", photo: "https://ibb.co/Jj9B02Pt", status: "vago", claimedBy: "" },
-            { id: 6, name: "Audrey", lineage: "Filha de Aurora e Príncipe Phillip", photo: "https://ibb.co/wFNPcfG5", status: "vago", claimedBy: "" },
-            { id: 7, name: "Jane", lineage: "Filha da Fada Madrinha", photo: "https://ibb.co/hrmQMvk", status: "vago", claimedBy: "" },
-            { id: 8, name: "Doug", lineage: "Filho do Dunga", photo: "https://ibb.co/pjskGtVW", status: "vago", claimedBy: "" },
-            { id: 9, name: "Lonnie", lineage: "Filha de Fa Mulan e Li Shang", photo: "https://ibb.co/nMHbBnm8", status: "vago", claimedBy: "" },
-            { id: 10, name: "Chad Encantado", lineage: "Filho de Cinderela e Rei Encantado", photo: "https://ibb.co/bj1bf8Mf", status: "vago", claimedBy: "" },
-            { id: 11, name: "Chloe Charming", lineage: "Cinderela e Príncipe Encantado", photo: "https://ibb.co/PZmk3jD2", status: "vago", claimedBy: "" },
-            { id: 12, name: "Red", lineage: "Rainha de Copas", photo: "https://ibb.co/gZB1mXzK", status: "vago", claimedBy: "" },
-            { id: 13, name: "Dizzy Tremaine", lineage: "Drizella Tremaine", photo: "https://ibb.co/0VDFzXZm", status: "vago", claimedBy: "" },
-            { id: 14, name: "Celia Facilier", lineage: "Dr. Facilier", photo: "https://ibb.co/d01vHrg2", status: "vago", claimedBy: "" },
-            { id: 15, name: "Squeaky Smee", lineage: "Sr. Smee", photo: "https://ibb.co/C35h9FWB", status: "vago", claimedBy: "" },
-            { id: 16, name: "Squirmy Smee", lineage: "Sr. Smee", photo: "https://ibb.co/ZpHzvrVL", status: "vago", claimedBy: "" },
-            { id: 17, name: "Princesa Pink", lineage: "Rainha de Copas", photo: "https://ibb.co/RkdLG2w4", status: "vago", claimedBy: "" },
-            { id: 18, name: "Max Hatter", lineage: "Maddox Hatter", photo: "https://ibb.co/JRwLcts7", status: "vago", claimedBy: "" },
-            { id: 19, name: "Luis Madrigal", lineage: "Luisa Madrigal", photo: "https://ibb.co/QRYk7mC", status: "vago", claimedBy: "" },
-            { id: 20, name: "Hazel Hook", lineage: "Capitão Gancho", photo: "https://ibb.co/kgJPzQ3k", status: "vago", claimedBy: "" },
-            { id: 21, name: "Felix Facilier", lineage: "Dr. Facilier", photo: "https://ibb.co/hkwP6MY", status: "vago", claimedBy: "" },
-            { id: 22, name: "Robbie Hood", lineage: "Robin Hood", photo: "https://ibb.co/0yX9Z8S4", status: "vago", claimedBy: "" },
-            { id: 23, name: "Uma", lineage: "Úrsula", photo: "https://ibb.co/0jhKLbjm", status: "vago", claimedBy: "" },
-            { id: 24, name: "Harry Hook", lineage: "Capitão Gancho", photo: "https://ibb.co/22MrhjM", status: "vago", claimedBy: "" },
-            { id: 25, name: "Gil", lineage: "Gaston", photo: "https://ibb.co/xSKdy1S0", status: "vago", claimedBy: "" }
+            { id: 1, name: "Mal (Filha de Malévola e Hades)", image: "https://ibb.co/1pZTL1m", status: "vago", claimedBy: "" },
+            { id: 2, name: "Evie (Filha da Rainha Má e Rei Magnifico)", image: "https://ibb.co/fGrNfbQz", status: "vago", claimedBy: "" },
+            { id: 3, name: "Jay (Filho de Jafar)", image: "https://ibb.co/6Rycrm4Q", status: "vago", claimedBy: "" },
+            { id: 4, name: "Carlos De Vil (Filho de Cruella de Vil)", image: "https://ibb.co/1Y4hpX4h", status: "vago", claimedBy: "" },
+            { id: 5, name: "Ben (Filho de Bela e Fera)", image: "https://ibb.co/Jj9B02Pt", status: "vago", claimedBy: "" },
+            { id: 6, name: "Audrey (Filha de Aurora e Príncipe Phillip)", image: "https://ibb.co/wFNPcfG5", status: "vago", claimedBy: "" },
+            { id: 7, name: "Jane (Filha da Fada Madrinha)", image: "https://ibb.co/hrmQMvk", status: "vago", claimedBy: "" },
+            { id: 8, name: "Doug (Filho do Dunga)", image: "https://ibb.co/pjskGtVW", status: "vago", claimedBy: "" },
+            { id: 9, name: "Lonnie (Filha de Fa Mulan e Li Shang)", image: "https://ibb.co/nMHbBnm8", status: "vago", claimedBy: "" },
+            { id: 10, name: "Chad Encantado (Filho de Cinderela e Rei Encantado)", image: "https://ibb.co/bj1bf8Mf", status: "vago", claimedBy: "" },
+            { id: 11, name: "Chloe Charming (Cinderela e Príncipe Encantado)", image: "https://ibb.co/PZmk3jD2", status: "vago", claimedBy: "" },
+            { id: 12, name: "Red (Rainha de Copas)", image: "https://ibb.co/gZB1mXzK", status: "vago", claimedBy: "" },
+            { id: 13, name: "Dizzy Tremaine (Drizella Tremaine)", image: "https://ibb.co/0VDFzXZm", status: "vago", claimedBy: "" },
+            { id: 14, name: "Celia Facilier (Dr. Facilier)", image: "https://ibb.co/d01vHrg2", status: "vago", claimedBy: "" },
+            { id: 15, name: "Squeaky Smee (Sr. Smee)", image: "https://ibb.co/C35h9FWB", status: "vago", claimedBy: "" },
+            { id: 16, name: "Squirmy Smee (Sr. Smee)", image: "https://ibb.co/ZpHzvrVL", status: "vago", claimedBy: "" },
+            { id: 17, name: "Princesa Pink (Rainha de Copas)", image: "https://ibb.co/RkdLG2w4", status: "vago", claimedBy: "" },
+            { id: 18, name: "Max Hatter (Maddox Hatter)", image: "https://ibb.co/JRwLcts7", status: "vago", claimedBy: "" },
+            { id: 19, name: "Luis Madrigal (Luisa Madrigal)", image: "https://ibb.co/QRYk7mC", status: "vago", claimedBy: "" },
+            { id: 20, name: "Hazel Hook (Capitão Gancho)", image: "https://ibb.co/kgJPzQ3k", status: "vago", claimedBy: "" },
+            { id: 21, name: "Felix Facilier (Dr. Facilier)", image: "https://ibb.co/hkwP6MY", status: "vago", claimedBy: "" },
+            { id: 22, name: "Robbie Hood (Robin Hood)", image: "https://ibb.co/0yX9Z8S4", status: "vago", claimedBy: "" },
+            { id: 23, name: "Uma (Úrsula)", image: "https://ibb.co/0jhKLbjm", status: "vago", claimedBy: "" },
+            { id: 24, name: "Harry Hook (Capitão Gancho)", image: "https://ibb.co/22MrhjM", status: "vago", claimedBy: "" },
+            { id: 25, name: "Gil (Gaston)", image: "https://ibb.co/xSKdy1S0", status: "vago", claimedBy: "" }
         ];
 
         function switchNav(viewId) {
@@ -1265,7 +1166,7 @@
             closeModal('registerModal');
         }
 
-        // Renderizar a lista de Elenco Canon com verificação Vago/Ocupado
+        // Renderizar a listagem de Personagens Canon com fotos e status Vago / Ocupado
         function renderCanon() {
             const grid = document.getElementById('canon-grid');
             let html = '';
@@ -1276,19 +1177,16 @@
                 
                 html += `
                     <div class="canon-card">
-                        <img src="${char.photo}" alt="${char.name}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                        <img src="${char.image}" alt="${char.name}" onerror="this.src='${FALLBACK_IMG}'">
                         <div class="canon-body">
-                            <div>
-                                <h3 style="color: var(--accent-gold); font-size: 1.15rem; margin-bottom: 0.3rem;">${char.name}</h3>
-                                <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Filiação:</strong> ${char.lineage}</p>
-                            </div>
+                            <h3 style="color: var(--accent-gold); font-size: 1.05rem;">${char.name}</h3>
                             <div class="canon-status ${statusClass}">${statusText}</div>
                 `;
 
                 if (char.status === 'vago') {
-                    html += `<button class="btn btn-gold" style="font-size: 0.8rem; padding: 0.4rem; width: 100%;" onclick="claimCanon(${char.id})">⭐ Reivindicar Personagem</button>`;
+                    html += `<button class="btn btn-gold" style="font-size: 0.8rem; padding: 0.4rem; width: 100%;" onclick="claimCanon(${char.id})">⭐ Reivindicar</button>`;
                 } else {
-                    html += `<button class="btn btn-outline" style="font-size: 0.8rem; padding: 0.4rem; width: 100%; opacity: 0.7;" onclick="releaseCanon(${char.id})">Liberar Personagem</button>`;
+                    html += `<button class="btn btn-outline" style="font-size: 0.8rem; padding: 0.4rem; width: 100%; opacity: 0.7;" onclick="releaseCanon(${char.id})">Liberar</button>`;
                 }
 
                 html += `</div></div>`;
@@ -1309,7 +1207,7 @@
                 char.status = 'ocupado';
                 char.claimedBy = playerName.trim();
                 renderCanon();
-                alert(`Parabéns! Você agora é o intérprete oficial de ${char.name} em Auradon.`);
+                alert(`Parabéns! Você agora interpreta oficialmente o personagem ${char.name}.`);
             }
         }
 
