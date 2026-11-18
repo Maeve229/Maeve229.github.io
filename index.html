@@ -423,10 +423,8 @@
             border-radius: var(--radius-md);
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             z-index: 100;
-            width: 380px;
+            width: 440px;
             padding: 1rem;
-            max-height: 400px;
-            overflow-y: auto;
         }
 
         .progenitores-menu.show {
@@ -434,14 +432,43 @@
             animation: fadeIn 0.3s ease;
         }
 
-        .progenitor-section-title {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            margin: 0.8rem 0 0.3rem;
+        /* Abas Internas dos Progenitores */
+        .prog-tabs-header {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(229,193,88,0.3);
+            padding-bottom: 8px;
+        }
+
+        .prog-tab-btn {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 6px 4px;
+            font-size: 0.75rem;
             font-weight: 700;
-            border-bottom: 1px solid rgba(229,193,88,0.2);
-            padding-bottom: 2px;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .prog-tab-btn.active, .prog-tab-btn:hover {
+            background: var(--accent-purple);
+            color: white;
+            border-color: var(--accent-glow);
+        }
+
+        .prog-tab-content {
+            display: none;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        .prog-tab-content.active {
+            display: block;
         }
 
         .progenitor-list {
@@ -449,12 +476,12 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             padding-left: 4px;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .progenitor-list li {
-            padding: 2px 0;
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
         .couple-highlight {
@@ -766,10 +793,10 @@
                 </div>
                 <div class="card" onclick="switchNav('alunos')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img src="[https://ibb.co/DPXMfRnD](https://ibb.co/DPXMfRnD) alt="Alunos">
+                        <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Alunos">
                     </div>
                     <div class="card-body">
-                        <h3>Fichas dos Alunos</h3> [https://ibb.co/DPXMfRnD](https://ibb.co/DPXMfRnD)
+                        <h3>Fichas dos Alunos</h3>
                         <p>Acompanhe as fichas dos novos estudantes cadastrados e prontos para o ano letivo.</p>
                         <span class="roster-tag tag-heroes">ROSTER ATIVO</span>
                     </div>
@@ -818,99 +845,112 @@
                 </div>
             </div>
 
-            <!-- Painel Superior com Botão Progenitores e Filtros -->
+            <!-- Painel Superior com Botão Progenitores em Abas e Filtros -->
             <div class="filter-bar">
                 <div class="filter-top-row">
-                    <!-- BOTÃO PROGENITORES COM OS TRÊS BOTÕES INTERNOS E LISTAGENS ATUALIZADAS -->
+                    <!-- BOTÃO PROGENITORES COM ABAS (HERÓIS, VILÕES, COADJUVANTES) -->
                     <div class="progenitores-dropdown-container">
                         <button class="progenitores-btn" onclick="toggleProgenitoresMenu()">
                             <i class="fa-solid fa-users"></i> Progenitores <i class="fa-solid fa-caret-down"></i>
                         </button>
                         <div id="progenitoresMenu" class="progenitores-menu">
-                            <div class="progenitor-section-title">Vilões (Casais em Destaque & Demais)</div>
-                            <ul class="progenitor-list">
-                                <li><span class="couple-highlight">🖤 Casal: Hades & Malévola</span></li>
-                                <li><span class="couple-highlight">👑 Casal: Rainha Má & Rei Magnífico</span></li>
-                                <li>Lobo Mau (Chapeuzinho Vermelho)</li>
-                                <li>Stromboli & Cocheiro (Pinóquio)</li>
-                                <li>Chernabog (Fantasia)</li>
-                                <li>Madrasta Lady Tremaine, Anastácia & Drizella (Cinderela)</li>
-                                <li>Rainha de Copas (Alice no País das Maravilhas)</li>
-                                <li>Capitão Gancho (Peter Pan)</li>
-                                <li>Cruella de Vil, Jasper & Gaspar (101 Dálmatas)</li>
-                                <li>Madame Mim (A Espada Era a Lei)</li>
-                                <li>Úrsula (A Pequena Sereia)</li>
-                                <li>Gaston (A Bela e a Fera)</li>
-                                <li>Jafar (Aladdin)</li>
-                                <li>Scar (O Rei Leão)</li>
-                                <li>Governador Ratcliffe (Pocahontas)</li>
-                                <li>Juiz Claude Frollo (O Corcunda de Notre Dame)</li>
-                                <li>Agonia & Pânico (Hércules)</li>
-                                <li>Shan Yu (Mulan)</li>
-                                <li>Clayton (Tarzan)</li>
-                                <li>Yzma (A Nova Onda do Imperador)</li>
-                                <li>Dr. Facilier (A Princesa e o Sapo)</li>
-                                <li>Mamãe Gothel (Enrolados)</li>
-                                <li>Príncipe Hans (Frozen)</li>
-                                <li>Tamatoa (Moana)</li>
-                                <li>Rumpelstiltskin & Zelena / Bruxa Má do Oeste (OUAT / Disney)</li>
-                                <li>Morgana (Rei Arthur)</li>
-                                <li>O Caçador (Branca de Neve)</li>
-                                <li>Edgar Balthazar (Aristogatas)</li>
-                                <li>Príncipe João (Robin Hood)</li>
-                                <li>Rei de Chifres (O Caldeirão Mágico)</li>
-                                <li>Comandante Rourke & Helga Sinclair (Atlantis)</li>
-                            </ul>
+                            <!-- Abas Superiores dentro do Menu -->
+                            <div class="prog-tabs-header">
+                                <button class="prog-tab-btn active" onclick="switchProgTab(event, 'tab-heroes')">Heróis</button>
+                                <button class="prog-tab-btn" onclick="switchProgTab(event, 'tab-villains')">Vilões</button>
+                                <button class="prog-tab-btn" onclick="switchProgTab(event, 'tab-coad')">Coadjuvantes</button>
+                            </div>
 
-                            <div class="progenitor-section-title">Heróis (Personagens Heróis)</div>
-                            <ul class="progenitor-list">
-                                <li>Branca de Neve e Príncipe Florian</li>
-                                <li>Cinderela e Príncipe Encantado</li>
-                                <li>Aurora e Príncipe Phillip</li>
-                                <li>Ariel e Príncipe Eric</li>
-                                <li>Bela e Fera (Príncipe Adam)</li>
-                                <li>Jasmine e Aladdin</li>
-                                <li>Pocahontas e John Smith</li>
-                                <li>Mulan e Li Shang</li>
-                                <li>Tiana e Príncipe Naveen</li>
-                                <li>Rapunzel e Flynn Rider (José Bezerra)</li>
-                                <li>Merida, Moana, Raya</li>
-                                <li>Anna e Kristoff, Elsa</li>
-                                <li>Esmeralda e Phoebus</li>
-                                <li>Mégara e Hércules</li>
-                                <li>Jane Porter e Tarzan</li>
-                                <li>Kida e Milo Thatch</li>
-                                <li>Mirabel (Encanto)</li>
-                                <li>Asha (Wish: O Poder dos Desejos)</li>
-                            </ul>
+                            <!-- Conteúdo da Aba: Heróis -->
+                            <div id="tab-heroes" class="prog-tab-content active">
+                                <ul class="progenitor-list">
+                                    <li>Branca de Neve e Príncipe Florian</li>
+                                    <li>Cinderela e Príncipe Encantado</li>
+                                    <li>Aurora e Príncipe Phillip</li>
+                                    <li>Ariel e Príncipe Eric</li>
+                                    <li>Bela e Fera (Príncipe Adam)</li>
+                                    <li>Jasmine e Aladdin</li>
+                                    <li>Pocahontas e John Smith</li>
+                                    <li>Mulan e Li Shang</li>
+                                    <li>Tiana e Príncipe Naveen</li>
+                                    <li>Rapunzel e Flynn Rider (José Bezerra)</li>
+                                    <li>Merida, Moana, Raya</li>
+                                    <li>Anna e Kristoff, Elsa</li>
+                                    <li>Esmeralda e Phoebus</li>
+                                    <li>Mégara e Hércules</li>
+                                    <li>Jane Porter e Tarzan</li>
+                                    <li>Kida e Milo Thatch</li>
+                                    <li>Mirabel (Encanto)</li>
+                                    <li>Asha (Wish: O Poder dos Desejos)</li>
+                                </ul>
+                            </div>
 
-                            <div class="progenitor-section-title">Personagens (Comuns Disney / Contos)</div>
-                            <ul class="progenitor-list">
-                                <li>Chapeleiro Maluco (Alice no País das Maravilhas)</li>
-                                <li>Gato de Cheshire / Gato Risonho (Alice no País das Maravilhas)</li>
-                                <li>Coelho Branco (Alice no País das Maravilhas)</li>
-                                <li>Gênio da Lâmpada (Aladdin)</li>
-                                <li>Lumière (A Bela e a Fera)</li>
-                                <li>Horloge (A Bela e a Fera)</li>
-                                <li>Madame Samovar (A Bela e a Fera)</li>
-                                <li>Zip (A Bela e a Fera)</li>
-                                <li>Guarda-Roupa / Madame de Garderobe (A Bela e a Fera)</li>
-                                <li>Sininho / Tinker Bell (Peter Pan)</li>
-                                <li>Fada Madrinha (Cinderela)</li>
-                                <li>Flora, Fauna e Primavera (A Bela Adormecida)</li>
-                                <li>Fada Azul (Pinóquio)</li>
-                                <li>Luisa, Isabela, Bruno, Camilo e Pepa Madrigal (Encanto)</li>
-                                <li>João Darling & Miguel Darling (Peter Pan)</li>
-                                <li>Sr. Smee / Barrica (Peter Pan)</li>
-                                <li>Chapeuzinho Vermelho (Contos)</li>
-                                <li>Merlin (A Espada Era a Lei)</li>
-                                <li>Evanora (Mágico de Oz)</li>
-                                <li>Oscar Diggs / O Mágico de Oz (Mágico de Oz)</li>
-                                <li>Glinda (Mágico de Oz)</li>
-                                <li>Maui (Moana)</li>
-                                <li>Zeus e Hera (Hércules)</li>
-                                <li>Hermes (Hércules)</li>
-                            </ul>
+                            <!-- Conteúdo da Aba: Vilões -->
+                            <div id="tab-villains" class="prog-tab-content">
+                                <ul class="progenitor-list">
+                                    <li><span class="couple-highlight">🖤 Casal: Hades & Malévola</span></li>
+                                    <li><span class="couple-highlight">👑 Casal: Rainha Má & Rei Magnífico</span></li>
+                                    <li>Lobo Mau (Chapeuzinho Vermelho)</li>
+                                    <li>Stromboli & Cocheiro (Pinóquio)</li>
+                                    <li>Chernabog (Fantasia)</li>
+                                    <li>Madrasta Lady Tremaine, Anastácia & Drizella (Cinderela)</li>
+                                    <li>Rainha de Copas (Alice no País das Maravilhas)</li>
+                                    <li>Capitão Gancho (Peter Pan)</li>
+                                    <li>Cruella de Vil, Jasper & Gaspar (101 Dálmatas)</li>
+                                    <li>Madame Mim (A Espada Era a Lei)</li>
+                                    <li>Úrsula (A Pequena Sereia)</li>
+                                    <li>Gaston (A Bela e a Fera)</li>
+                                    <li>Jafar (Aladdin)</li>
+                                    <li>Scar (O Rei Leão)</li>
+                                    <li>Governador Ratcliffe (Pocahontas)</li>
+                                    <li>Juiz Claude Frollo (O Corcunda de Notre Dame)</li>
+                                    <li>Agonia & Pânico (Hércules)</li>
+                                    <li>Shan Yu (Mulan)</li>
+                                    <li>Clayton (Tarzan)</li>
+                                    <li>Yzma (A Nova Onda do Imperador)</li>
+                                    <li>Dr. Facilier (A Princesa e o Sapo)</li>
+                                    <li>Mamãe Gothel (Enrolados)</li>
+                                    <li>Príncipe Hans (Frozen)</li>
+                                    <li>Tamatoa (Moana)</li>
+                                    <li>Rumpelstiltskin & Zelena / Bruxa Má do Oeste (OUAT / Disney)</li>
+                                    <li>Morgana (Rei Arthur)</li>
+                                    <li>O Caçador (Branca de Neve)</li>
+                                    <li>Edgar Balthazar (Aristogatas)</li>
+                                    <li>Príncipe João (Robin Hood)</li>
+                                    <li>Rei de Chifres (O Caldeirão Mágico)</li>
+                                    <li>Comandante Rourke & Helga Sinclair (Atlantis)</li>
+                                </ul>
+                            </div>
+
+                            <!-- Conteúdo da Aba: Coadjuvantes -->
+                            <div id="tab-coad" class="prog-tab-content">
+                                <ul class="progenitor-list">
+                                    <li>Chapeleiro Maluco (Alice no País das Maravilhas)</li>
+                                    <li>Gato de Cheshire / Gato Risonho (Alice no País das Maravilhas)</li>
+                                    <li>Coelho Branco (Alice no País das Maravilhas)</li>
+                                    <li>Gênio da Lâmpada (Aladdin)</li>
+                                    <li>Lumière (A Bela e a Fera)</li>
+                                    <li>Horloge (A Bela e a Fera)</li>
+                                    <li>Madame Samovar (A Bela e a Fera)</li>
+                                    <li>Zip (A Bela e a Fera)</li>
+                                    <li>Guarda-Roupa / Madame de Garderobe (A Bela e a Fera)</li>
+                                    <li>Sininho / Tinker Bell (Peter Pan)</li>
+                                    <li>Fada Madrinha (Cinderela)</li>
+                                    <li>Flora, Fauna e Primavera (A Bela Adormecida)</li>
+                                    <li>Fada Azul (Pinóquio)</li>
+                                    <li>Luisa, Isabela, Bruno, Camilo e Pepa Madrigal (Encanto)</li>
+                                    <li>João Darling & Miguel Darling (Peter Pan)</li>
+                                    <li>Sr. Smee / Barrica (Peter Pan)</li>
+                                    <li>Chapeuzinho Vermelho (Contos)</li>
+                                    <li>Merlin (A Espada Era a Lei)</li>
+                                    <li>Evanora (Mágico de Oz)</li>
+                                    <li>Oscar Diggs / O Mágico de Oz (Mágico de Oz)</li>
+                                    <li>Glinda (Mágico de Oz)</li>
+                                    <li>Maui (Moana)</li>
+                                    <li>Zeus e Hera (Hércules)</li>
+                                    <li>Hermes (Hércules)</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -954,7 +994,7 @@
                             <input type="text" id="char-name" required placeholder="Ex: Maeve Mim">
                         </div>
                         <div class="form-group">
-                            <label>Filiação (Pai ou Mãe Disney / Contos)</label>
+                            <label>Filiação (Progenitor)</label>
                             <input type="text" id="char-parent" required placeholder="Ex: Chapeleiro Maluco ou Maui">
                             <span class="helper-text">Cada progenitor pode ter no máximo 4 filhos registrados.</span>
                         </div>
@@ -972,7 +1012,8 @@
                         </div>
                         <div class="form-group full">
                             <label>Aparência (Photoplayer - Link da Imagem)</label>
-                            <input type="text" id="char-photo" required placeholder="Cole a URL da foto do seu personagem">
+                            <input type="text" id="char-photo" required value="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" placeholder="Cole a URL da foto do seu personagem">
+                            <span class="helper-text">Sua imagem de capa padrão já está inserida automaticamente na ficha!</span>
                         </div>
                         <div class="form-group full">
                             <label>Poderes & Habilidades</label>
@@ -1299,6 +1340,7 @@
     <script>
         let studentRoster = [];
         let currentFilter = 'all';
+        const DEFAULT_PHOTO = 'https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg';
 
         function switchNav(viewId) {
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
@@ -1324,9 +1366,21 @@
             menu.classList.toggle('show');
         }
 
+        // Função para alternar as abas internas (Heróis, Vilões, Coadjuvantes)
+        function switchProgTab(event, tabId) {
+            event.stopPropagation(); // Evita fechar o menu ao clicar nas abas
+            
+            document.querySelectorAll('.prog-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.prog-tab-content').forEach(content => content.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
         window.addEventListener('click', function(e) {
             if (!e.target.closest('.progenitores-dropdown-container')) {
-                document.getElementById('progenitoresMenu').classList.remove('show');
+                const menu = document.getElementById('progenitoresMenu');
+                if(menu) menu.classList.remove('show');
             }
         });
 
@@ -1355,9 +1409,13 @@
             const parentInput = document.getElementById('char-parent').value.trim();
             const category = document.getElementById('char-category').value;
             const age = document.getElementById('char-age').value;
-            const photo = document.getElementById('char-photo').value;
+            let photo = document.getElementById('char-photo').value.trim();
             const powers = document.getElementById('char-powers').value;
             const history = document.getElementById('char-history').value;
+
+            if (!photo) {
+                photo = DEFAULT_PHOTO;
+            }
 
             const parentNormalized = parentInput.toLowerCase();
 
@@ -1374,6 +1432,8 @@
             updateCounterDisplay();
             renderRoster(currentFilter);
             document.getElementById('character-form').reset();
+            document.getElementById('char-photo').value = DEFAULT_PHOTO;
+            
             alert('Ficha registrada com sucesso! Veja na aba Alunos & Fichas.');
             switchNav('alunos');
         }
@@ -1411,11 +1471,11 @@
 
                 html += `
                     <div class="roster-card">
-                        <img src="student.photo"alt="{student.name}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                        <img src="${student.photo}" alt="${student.name}" onerror="this.src='${DEFAULT_PHOTO}'">
                         <div class="roster-info">
                             <div class="roster-header">
                                 <span class="roster-name">${student.name}</span>
-                                <span class="roster-tag tagClass">{tagLabel}</span>
+                                <span class="roster-tag ${tagClass}">${tagLabel}</span>
                             </div>
                             <div class="roster-details">
                                 <p><strong>Filiação:</strong> ${student.parent}</p>
