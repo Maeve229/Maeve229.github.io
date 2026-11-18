@@ -256,6 +256,11 @@
             border-bottom: 1px solid rgba(255,255,255,0.03);
         }
 
+        .couple-highlight {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
         .roster-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -309,12 +314,22 @@
             grid-column: span 2;
         }
 
+        label {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
         input, select, textarea {
             padding: 0.75rem;
             border-radius: 8px;
             background: rgba(9, 6, 20, 0.8);
             border: 1px solid var(--border-glow);
             color: white;
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-gold);
         }
     </style>
 </head>
@@ -332,15 +347,15 @@
         </ul>
     </nav>
 
-    <!-- VISÃO: INÍCIO -->
+    <!-- INÍCIO -->
     <main id="view-inicio" class="page-view active" style="padding-top: 140px;">
         <div class="container" style="text-align: center;">
-            <h1>Descendentes — Colégio de Auradon</h1>
-            <p style="margin-top: 1rem; color: var(--text-muted);">Crie seus personagens e acompanhe o roster dos alunos registrados.</p>
+            <h1 style="color: var(--accent-gold); font-size: 3rem; margin-bottom: 1rem;">Descendentes — Colégio de Auradon</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Explore as abas de progenitores, verifique as regras de limite de filhos e crie suas fichas de RPG com a imagem de capa padrão integrada!</p>
         </div>
     </main>
 
-    <!-- VISÃO: ALUNOS & FICHAS -->
+    <!-- ALUNOS & FICHAS -->
     <main id="view-alunos" class="page-view" style="padding-top: 140px;">
         <div class="container">
             <div class="filter-bar">
@@ -356,62 +371,105 @@
                                 <button class="prog-tab-btn" onclick="switchProgTab(event, 'tab-coad')">Coadjuvantes</button>
                             </div>
 
+                            <!-- ABA HERÓIS -->
                             <div id="tab-heroes" class="prog-tab-content active">
                                 <ul class="progenitor-list">
-                                    <li>Branca de Neve & Príncipe Florian</li>
-                                    <li>Cinderela & Príncipe Encantado</li>
-                                    <li>Aurora & Príncipe Phillip</li>
-                                    <li>Ariel & Príncipe Eric</li>
-                                    <li>Bela & Príncipe Adam (Fera)</li>
-                                    <li>Jasmine & Aladdin</li>
-                                    <li>Pocahontas & John Smith</li>
-                                    <li>Mulan & Li Shang</li>
-                                    <li>Tiana & Príncipe Naveen</li>
-                                    <li>Rapunzel & Flynn Rider</li>
+                                    <li>Branca de Neve e Príncipe Florian</li>
+                                    <li>Cinderela e Príncipe Encantado</li>
+                                    <li>Aurora e Príncipe Phillip</li>
+                                    <li>Ariel e Príncipe Eric</li>
+                                    <li>Bela e Fera (Príncipe Adam)</li>
+                                    <li>Jasmine e Aladdin</li>
+                                    <li>Pocahontas e John Smith</li>
+                                    <li>Mulan e Li Shang</li>
+                                    <li>Tiana e Príncipe Naveen</li>
+                                    <li>Rapunzel e Flynn Rider</li>
                                     <li>Merida, Moana, Raya</li>
-                                    <li>Anna, Kristoff, Elsa</li>
+                                    <li>Anna e Kristoff, Elsa</li>
+                                    <li>Esmeralda e Phoebus</li>
+                                    <li>Mégara e Hércules</li>
+                                    <li>Jane Porter e Tarzan</li>
+                                    <li>Kida e Milo Thatch</li>
                                     <li>Mirabel (Encanto)</li>
-                                    <li>Asha (Wish)</li>
+                                    <li>Asha (Wish: O Poder dos Desejos)</li>
                                 </ul>
                             </div>
 
+                            <!-- ABA VILÕES -->
                             <div id="tab-villains" class="prog-tab-content">
                                 <ul class="progenitor-list">
-                                    <li><strong style="color:var(--accent-gold);">🖤 Hades & Malévola</strong></li>
-                                    <li><strong style="color:var(--accent-gold);">👑 Rainha Má & Rei Magnífico</strong></li>
-                                    <li>Lobo Mau, Capitão Gancho</li>
-                                    <li>Úrsula, Gaston, Jafar</li>
-                                    <li>Cruella de Vil, Dr. Facilier</li>
-                                    <li>Mamãe Gothel, Príncipe Hans</li>
+                                    <li><span class="couple-highlight">🖤 Casal: Hades & Malévola</span></li>
+                                    <li><span class="couple-highlight">👑 Casal: Rainha Má & Rei Magnífico</span></li>
+                                    <li>Lobo Mau (Chapeuzinho Vermelho)</li>
+                                    <li>Stromboli & Cocheiro (Pinóquio)</li>
+                                    <li>Chernabog (Fantasia)</li>
+                                    <li>Madrasta Lady Tremaine, Anastácia & Drizella</li>
+                                    <li>Rainha de Copas (Alice no País das Maravilhas)</li>
+                                    <li>Capitão Gancho (Peter Pan)</li>
+                                    <li>Cruella de Vil, Jasper & Gaspar</li>
+                                    <li>Madame Mim (A Espada Era a Lei)</li>
+                                    <li>Úrsula (A Pequena Sereia)</li>
+                                    <li>Gaston (A Bela e a Fera)</li>
+                                    <li>Jafar (Aladdin), Scar (O Rei Leão)</li>
+                                    <li>Governador Ratcliffe (Pocahontas)</li>
+                                    <li>Juiz Claude Frollo (O Corcunda de Notre Dame)</li>
+                                    <li>Agonia & Pânico (Hércules)</li>
+                                    <li>Shan Yu (Mulan), Clayton (Tarzan)</li>
+                                    <li>Yzma (A Nova Onda do Imperador)</li>
+                                    <li>Dr. Facilier (A Princesa e o Sapo)</li>
+                                    <li>Mamãe Gothel (Enrolados)</li>
+                                    <li>Príncipe Hans (Frozen), Tamatoa (Moana)</li>
+                                    <li>Rumpelstiltskin & Zelena (Bruxa Má do Oeste)</li>
+                                    <li>Morgana (Rei Arthur), O Caçador</li>
+                                    <li>Edgar Balthazar, Príncipe João</li>
+                                    <li>Rei de Chifres, Rourke & Helga Sinclair</li>
                                 </ul>
                             </div>
 
+                            <!-- ABA COADJUVANTES -->
                             <div id="tab-coad" class="prog-tab-content">
                                 <ul class="progenitor-list">
-                                    <li>Chapeleiro Maluco, Gato de Cheshire</li>
-                                    <li>Gênio da Lâmpada, Lumière</li>
-                                    <li>Sininho (Tinker Bell), Fada Madrinha</li>
-                                    <li>Luisa, Isabela, Bruno, Camilo (Madrigal)</li>
-                                    <li>Maui, Zeus, Hera, Hermes</li>
+                                    <li>Chapeleiro Maluco (Alice no País das Maravilhas)</li>
+                                    <li>Gato de Cheshire / Gato Risonho</li>
+                                    <li>Coelho Branco (Alice no País das Maravilhas)</li>
+                                    <li>Gênio da Lâmpada (Aladdin)</li>
+                                    <li>Lumière & Horloge (A Bela e a Fera)</li>
+                                    <li>Madame Samovar & Zip (A Bela e a Fera)</li>
+                                    <li>Guarda-Roupa / Madame de Garderobe</li>
+                                    <li>Sininho / Tinker Bell (Peter Pan)</li>
+                                    <li>Fada Madrinha (Cinderela)</li>
+                                    <li>Flora, Fauna e Primavera (A Bela Adormecida)</li>
+                                    <li>Fada Azul (Pinóquio)</li>
+                                    <li>Luisa, Isabela, Bruno, Camilo e Pepa Madrigal</li>
+                                    <li>João Darling & Miguel Darling</li>
+                                    <li>Sr. Smee / Barrica (Peter Pan)</li>
+                                    <li>Chapeuzinho Vermelho</li>
+                                    <li>Merlin (A Espada Era a Lei)</li>
+                                    <li>Evanora, Oscar Diggs & Glinda (Mágico de Oz)</li>
+                                    <li>Maui (Moana)</li>
+                                    <li>Zeus, Hera & Hermes (Hércules)</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div id="counter-display" style="color: var(--accent-gold); font-weight: 600;">
+                    <div id="counter-display" style="color: var(--accent-gold); font-weight: 600; background: rgba(229,193,88,0.1); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--border-gold);">
                         Filhos Registrados: 0 / 4
                     </div>
                 </div>
             </div>
 
-            <div id="roster-grid" class="roster-grid"></div>
+            <div id="roster-grid" class="roster-grid">
+                <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 3rem;">Nenhuma ficha cadastrada ainda.</div>
+            </div>
         </div>
     </main>
 
-    <!-- VISÃO: CRIAR FICHA -->
+    <!-- CRIAR FICHA -->
     <main id="view-criar-ficha" class="page-view" style="padding-top: 140px;">
         <div class="container">
             <div class="form-container">
+                <h2 style="color: var(--accent-gold); margin-bottom: 1.5rem; text-align: center;">Criar Nova Ficha</h2>
                 <form id="character-form" onsubmit="saveCharacter(event)">
                     <div class="form-grid">
                         <div class="form-group">
@@ -422,16 +480,39 @@
                             <label>Filiação (Progenitor)</label>
                             <input type="text" id="char-parent" required placeholder="Ex: Hades e Malévola">
                         </div>
+                        <div class="form-group">
+                            <label>Idade / Ano Escolar</label>
+                            <input type="text" id="char-age" required placeholder="Ex: 16 anos / 2º Ano">
+                        </div>
+                        <div class="form-group">
+                            <label>Categoria</label>
+                            <select id="char-category" required>
+                                <option value="heroes">Herói</option>
+                                <option value="villains">Vilão</option>
+                                <option value="disney">Personagem / Coadjuvante</option>
+                            </select>
+                        </div>
                         <div class="form-group full">
-                            <label>Aparência (Photoplayer)</label>
+                            <label>Aparência (Photoplayer - URL da Imagem de Capa)</label>
                             <input type="text" id="char-photo" value="https://i.ibb.co/DPXMfRnD/image.jpg" required>
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Esta imagem já vem configurada como padrão para a capa da ficha.</span>
+                        </div>
+                        <div class="form-group full">
+                            <label>Poderes & Habilidades</label>
+                            <textarea id="char-powers" rows="3" required placeholder="Descreva os poderes..."></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>História</label>
+                            <textarea id="char-history" rows="3" required placeholder="Descreva a história..."></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem;">📜 Cadastrar Ficha</button>
                 </form>
             </div>
-        </div>  
-        <script>
+        </div>
+    </main>
+
+    <script>
         let studentRoster = [];
         const DEFAULT_PHOTO = 'https://i.ibb.co/DPXMfRnD/image.jpg';
 
@@ -442,6 +523,7 @@
 
             document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
             document.getElementById(`view-${viewId}`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function toggleProgenitoresMenu(e) {
@@ -476,6 +558,10 @@
             
             const name = document.getElementById('char-name').value;
             const parentInput = document.getElementById('char-parent').value.trim();
+            const age = document.getElementById('char-age').value;
+            const category = document.getElementById('char-category').value;
+            const powers = document.getElementById('char-powers').value;
+            const history = document.getElementById('char-history').value;
             let photo = document.getElementById('char-photo').value.trim();
 
             if (!photo) {
@@ -490,7 +576,7 @@
                 return;
             }
 
-            studentRoster.push({ name, parent: parentInput, photo });
+            studentRoster.push({ name, parent: parentInput, age, category, powers, history, photo });
             updateCounterDisplay();
             renderRoster();
             
@@ -508,18 +594,31 @@
         function renderRoster() {
             const grid = document.getElementById('roster-grid');
             if (studentRoster.length === 0) {
-                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Nenhuma ficha cadastrada ainda.</div>`;
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 3rem;">Nenhuma ficha cadastrada ainda.</div>`;
                 return;
             }
 
             let html = '';
             studentRoster.forEach(student => {
+                let tagClass = 'tag-disney';
+                let tagLabel = 'Personagem / Conto';
+                if(student.category === 'villains') {
+                    tagClass = 'tag-villains';
+                    tagLabel = 'Vilões';
+                } else if(student.category === 'heroes') {
+                    tagClass = 'tag-heroes';
+                    tagLabel = 'Heróis';
+                }
+
                 html += `
                     <div class="roster-card">
                         <img src="${student.photo}" alt="${student.name}" onerror="this.src='${DEFAULT_PHOTO}'">
                         <div class="roster-info">
-                            <h3>${student.name}</h3>
-                            <p><strong>Filiação:</strong> ${student.parent}</p>
+                            <h3 style="color: var(--accent-gold); font-size: 1.15rem;">${student.name}</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Filiação:</strong> ${student.parent}</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Idade:</strong> ${student.age}</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>Poderes:</strong> ${student.powers}</p>
+                            <p style="font-size: 0.85rem; color: var(--text-muted);"><strong>História:</strong> ${student.history}</p>
                         </div>
                     </div>
                 `;
@@ -533,4 +632,3 @@
     </script>
 </body>
 </html>
-    </main>
