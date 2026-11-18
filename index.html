@@ -764,7 +764,7 @@
             <div class="grid-3">
                 <div class="card" onclick="switchNav('canon')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img src="https://i.ibb.co/M5B5RBpt/M5B5RBpt.jpg" alt="Canon" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                        <img src="https://i.ibb.co/M5B5RBpt/image.jpg" alt="Canon" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
                     </div>
                     <div class="card-body">
                         <h3>Elenco Canon (Franquia)</h3>
@@ -801,7 +801,7 @@
         <div class="container" style="padding-top: 140px;">
             
             <div class="roster-banner-container">
-                <img src="https://i.ibb.co/M5B5RBpt/M5B5RBpt.jpg" alt="Capa Elenco Canon" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
+                <img src="https://i.ibb.co/M5B5RBpt/image.jpg" alt="Capa Elenco Canon" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
                 <div class="roster-banner-overlay">
                     <h2>Elenco Canon (Franquia)</h2>
                     <p>Reivindique o seu personagem oficial favorito e participe do RPG</p>
@@ -1081,33 +1081,44 @@
         const DEFAULT_PHOTO = 'https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg';
         const FALLBACK_IMG = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';
 
-        // Lista completa dos 25 personagens oficiais Canon com links diretos e seguros
+        // Função para converter links de página do Imgbb (ibb.co/xyz) para o CDN direto de imagem (i.ibb.co/xyz/image.jpg)
+        function formatImageUrl(url) {
+            if (!url) return FALLBACK_IMG;
+            if (url.includes('ibb.co/') && !url.includes('i.ibb.co/')) {
+                const parts = url.split('ibb.co/');
+                const id = parts[1].replace('/', '');
+                return `https://i.ibb.co/${id}/image.jpg`;
+            }
+            return url;
+        }
+
+        // Lista completa dos 25 personagens com os links enviados
         let canonCharacters = [
-            { id: 1, name: "Mal (Filha de Malévola e Hades)", image: "https://i.ibb.co/1pZTL1m/1pZTL1m.jpg", status: "vago", claimedBy: "" },
-            { id: 2, name: "Evie (Filha da Rainha Má e Rei Magnifico)", image: "https://i.ibb.co/fGrNfbQz/fGrNfbQz.jpg", status: "vago", claimedBy: "" },
-            { id: 3, name: "Jay (Filho de Jafar)", image: "https://i.ibb.co/6Rycrm4Q/6Rycrm4Q.jpg", status: "vago", claimedBy: "" },
-            { id: 4, name: "Carlos De Vil (Filho de Cruella de Vil)", image: "https://i.ibb.co/1Y4hpX4h/1Y4hpX4h.jpg", status: "vago", claimedBy: "" },
-            { id: 5, name: "Ben (Filho de Bela e Fera)", image: "https://i.ibb.co/Jj9B02Pt/Jj9B02Pt.jpg", status: "vago", claimedBy: "" },
-            { id: 6, name: "Audrey (Filha de Aurora e Príncipe Phillip)", image: "https://i.ibb.co/wFNPcfG5/wFNPcfG5.jpg", status: "vago", claimedBy: "" },
-            { id: 7, name: "Jane (Filha da Fada Madrinha)", image: "https://i.ibb.co/hrmQMvk/hrmQMvk.jpg", status: "vago", claimedBy: "" },
-            { id: 8, name: "Doug (Filho do Dunga)", image: "https://i.ibb.co/pjskGtVW/pjskGtVW.jpg", status: "vago", claimedBy: "" },
-            { id: 9, name: "Lonnie (Filha de Fa Mulan e Li Shang)", image: "https://i.ibb.co/nMHbBnm8/nMHbBnm8.jpg", status: "vago", claimedBy: "" },
-            { id: 10, name: "Chad Encantado (Filho de Cinderela e Rei Encantado)", image: "https://i.ibb.co/bj1bf8Mf/bj1bf8Mf.jpg", status: "vago", claimedBy: "" },
-            { id: 11, name: "Chloe Charming (Cinderela e Príncipe Encantado)", image: "https://i.ibb.co/PZmk3jD2/PZmk3jD2.jpg", status: "vago", claimedBy: "" },
-            { id: 12, name: "Red (Rainha de Copas)", image: "https://i.ibb.co/gZB1mXzK/gZB1mXzK.jpg", status: "vago", claimedBy: "" },
-            { id: 13, name: "Dizzy Tremaine (Drizella Tremaine)", image: "https://i.ibb.co/0VDFzXZm/0VDFzXZm.jpg", status: "vago", claimedBy: "" },
-            { id: 14, name: "Celia Facilier (Dr. Facilier)", image: "https://i.ibb.co/d01vHrg2/d01vHrg2.jpg", status: "vago", claimedBy: "" },
-            { id: 15, name: "Squeaky Smee (Sr. Smee)", image: "https://i.ibb.co/C35h9FWB/C35h9FWB.jpg", status: "vago", claimedBy: "" },
-            { id: 16, name: "Squirmy Smee (Sr. Smee)", image: "https://i.ibb.co/ZpHzvrVL/ZpHzvrVL.jpg", status: "vago", claimedBy: "" },
-            { id: 17, name: "Princesa Pink (Rainha de Copas)", image: "https://i.ibb.co/RkdLG2w4/RkdLG2w4.jpg", status: "vago", claimedBy: "" },
-            { id: 18, name: "Max Hatter (Maddox Hatter)", image: "https://i.ibb.co/JRwLcts7/JRwLcts7.jpg", status: "vago", claimedBy: "" },
-            { id: 19, name: "Luis Madrigal (Luisa Madrigal)", image: "https://i.ibb.co/QRYk7mC/QRYk7mC.jpg", status: "vago", claimedBy: "" },
-            { id: 20, name: "Hazel Hook (Capitão Gancho)", image: "https://i.ibb.co/kgJPzQ3k/kgJPzQ3k.jpg", status: "vago", claimedBy: "" },
-            { id: 21, name: "Felix Facilier (Dr. Facilier)", image: "https://i.ibb.co/hkwP6MY/hkwP6MY.jpg", status: "vago", claimedBy: "" },
-            { id: 22, name: "Robbie Hood (Robin Hood)", image: "https://i.ibb.co/0yX9Z8S4/0yX9Z8S4.jpg", status: "vago", claimedBy: "" },
-            { id: 23, name: "Uma (Úrsula)", image: "https://i.ibb.co/0jhKLbjm/0jhKLbjm.jpg", status: "vago", claimedBy: "" },
-            { id: 24, name: "Harry Hook (Capitão Gancho)", image: "https://i.ibb.co/22MrhjM/22MrhjM.jpg", status: "vago", claimedBy: "" },
-            { id: 25, name: "Gil (Gaston)", image: "https://i.ibb.co/xSKdy1S0/xSKdy1S0.jpg", status: "vago", claimedBy: "" }
+            { id: 1, name: "Mal (Filha de Malévola e Hades)", image: "https://ibb.co/1pZTL1m", status: "vago", claimedBy: "" },
+            { id: 2, name: "Evie (Filha da Rainha Má e Rei Magnifico)", image: "https://ibb.co/fGrNfbQz", status: "vago", claimedBy: "" },
+            { id: 3, name: "Jay (Filho de Jafar)", image: "https://ibb.co/6Rycrm4Q", status: "vago", claimedBy: "" },
+            { id: 4, name: "Carlos De Vil (Filho de Cruella de Vil)", image: "https://ibb.co/1Y4hpX4h", status: "vago", claimedBy: "" },
+            { id: 5, name: "Ben (Filho de Bela e Fera)", image: "https://ibb.co/Jj9B02Pt", status: "vago", claimedBy: "" },
+            { id: 6, name: "Audrey (Filha de Aurora e Príncipe Phillip)", image: "https://ibb.co/wFNPcfG5", status: "vago", claimedBy: "" },
+            { id: 7, name: "Jane (Filha da Fada Madrinha)", image: "https://ibb.co/hrmQMvk", status: "vago", claimedBy: "" },
+            { id: 8, name: "Doug (Filho do Dunga)", image: "https://ibb.co/pjskGtVW", status: "vago", claimedBy: "" },
+            { id: 9, name: "Lonnie (Filha de Fa Mulan e Li Shang)", image: "https://ibb.co/nMHbBnm8", status: "vago", claimedBy: "" },
+            { id: 10, name: "Chad Encantado (Filho de Cinderela e Rei Encantado)", image: "https://ibb.co/bj1bf8Mf", status: "vago", claimedBy: "" },
+            { id: 11, name: "Chloe Charming (Cinderela e Príncipe Encantado)", image: "https://ibb.co/PZmk3jD2", status: "vago", claimedBy: "" },
+            { id: 12, name: "Red (Rainha de Copas)", image: "https://ibb.co/gZB1mXzK", status: "vago", claimedBy: "" },
+            { id: 13, name: "Dizzy Tremaine (Drizella Tremaine)", image: "https://ibb.co/0VDFzXZm", status: "vago", claimedBy: "" },
+            { id: 14, name: "Celia Facilier (Dr. Facilier)", image: "https://ibb.co/d01vHrg2", status: "vago", claimedBy: "" },
+            { id: 15, name: "Squeaky Smee (Sr. Smee)", image: "https://ibb.co/C35h9FWB", status: "vago", claimedBy: "" },
+            { id: 16, name: "Squirmy Smee (Sr. Smee)", image: "https://ibb.co/ZpHzvrVL", status: "vago", claimedBy: "" },
+            { id: 17, name: "Princesa Pink (Rainha de Copas)", image: "https://ibb.co/RkdLG2w4", status: "vago", claimedBy: "" },
+            { id: 18, name: "Max Hatter (Maddox Hatter)", image: "https://ibb.co/JRwLcts7", status: "vago", claimedBy: "" },
+            { id: 19, name: "Luis Madrigal (Luisa Madrigal)", image: "https://ibb.co/QRYk7mC", status: "vago", claimedBy: "" },
+            { id: 20, name: "Hazel Hook (Capitão Gancho)", image: "https://ibb.co/kgJPzQ3k", status: "vago", claimedBy: "" },
+            { id: 21, name: "Felix Facilier (Dr. Facilier)", image: "https://ibb.co/hkwP6MY", status: "vago", claimedBy: "" },
+            { id: 22, name: "Robbie Hood (Robin Hood)", image: "https://ibb.co/0yX9Z8S4", status: "vago", claimedBy: "" },
+            { id: 23, name: "Uma (Úrsula)", image: "https://ibb.co/0jhKLbjm", status: "vago", claimedBy: "" },
+            { id: 24, name: "Harry Hook (Capitão Gancho)", image: "https://ibb.co/22MrhjM", status: "vago", claimedBy: "" },
+            { id: 25, name: "Gil (Gaston)", image: "https://ibb.co/xSKdy1S0", status: "vago", claimedBy: "" }
         ];
 
         function switchNav(viewId) {
@@ -1166,7 +1177,7 @@
             closeModal('registerModal');
         }
 
-        // Renderizar a listagem de Personagens Canon com fotos e status Vago / Ocupado
+        // Renderizar a listagem do Canon formatando os links das imagens no voo
         function renderCanon() {
             const grid = document.getElementById('canon-grid');
             let html = '';
@@ -1174,10 +1185,11 @@
             canonCharacters.forEach(char => {
                 let statusClass = char.status === 'vago' ? 'status-vago' : 'status-ocupado';
                 let statusText = char.status === 'vago' ? 'Vago (Disponível)' : `Ocupado por: ${char.claimedBy}`;
-                
+                let directImgUrl = formatImageUrl(char.image);
+
                 html += `
                     <div class="canon-card">
-                        <img src="${char.image}" alt="${char.name}" onerror="this.src='${FALLBACK_IMG}'">
+                        <img src="${directImgUrl}" alt="${char.name}" onerror="this.onerror=null; this.src='${FALLBACK_IMG}';">
                         <div class="canon-body">
                             <h3 style="color: var(--accent-gold); font-size: 1.05rem;">${char.name}</h3>
                             <div class="canon-status ${statusClass}">${statusText}</div>
@@ -1292,9 +1304,11 @@
                     tagLabel = 'Heróis';
                 }
 
+                let imgUrl = formatImageUrl(student.photo);
+
                 html += `
                     <div class="roster-card">
-                        <img src="${student.photo}" alt="${student.name}" onerror="this.src='${DEFAULT_PHOTO}'">
+                        <img src="${imgUrl}" alt="${student.name}" onerror="this.onerror=null; this.src='${DEFAULT_PHOTO}';">
                         <div class="roster-info">
                             <div class="roster-header">
                                 <span class="roster-name">${student.name}</span>
