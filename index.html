@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Descendentes — Bem vindos ao colegio de Auradon | RPG Online</title>
+    <title>Descendentes — Bem-vindos ao Colégio de Auradon | RPG Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -44,12 +44,11 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .brand-text {
+        h1, h2, h3, h4 {
             font-family: 'Cinzel', serif;
             letter-spacing: 1px;
         }
 
-        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -111,11 +110,6 @@
             text-shadow: 0 0 8px rgba(229, 193, 88, 0.5);
         }
 
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
         .btn {
             padding: 0.6rem 1.4rem;
             border-radius: var(--radius-md);
@@ -135,28 +129,14 @@
             background: transparent;
             border: 1px solid var(--accent-purple);
             color: var(--text-main);
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--accent-glow);
-            background: rgba(138, 43, 226, 0.2);
-            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .btn-gold {
             background: linear-gradient(135deg, #e5c158, #b8860b);
             color: #090614;
             font-weight: 700;
-            box-shadow: 0 0 15px rgba(229, 193, 88, 0.3);
         }
 
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(229, 193, 88, 0.6);
-        }
-
-        /* Views Switching */
         .page-view {
             display: none;
             animation: fadeIn 0.4s ease forwards;
@@ -171,158 +151,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 160px 2rem 60px;
-            text-align: center;
-            position: relative;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            background: rgba(138, 43, 226, 0.15);
-            border: 1px solid var(--border-glow);
-            border-radius: 50px;
-            color: var(--accent-glow);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 3.2rem;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(180deg, #ffffff 30%, var(--accent-gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Container & Grid */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: var(--radius-lg);
-            padding: 0;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-img-wrap {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border-glow);
-        }
-
-        .card-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .card:hover .card-img-wrap img {
-            transform: scale(1.05);
-        }
-
-        .card-body {
-            padding: 1.8rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
-            transition: var(--transition);
-            z-index: 2;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-glow);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
-        }
-
-        .card:hover::before {
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-        }
-
-        .card h3 {
-            font-size: 1.35rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.8rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Painel de Progenitores com Abas (Heróis, Vilões, Coadjuvantes) */
         .filter-bar {
             background: var(--bg-glass);
             padding: 1.2rem;
@@ -355,19 +189,8 @@
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
-            transition: var(--transition);
         }
 
-        .progenitores-btn:hover {
-            background: linear-gradient(135deg, #7c3aed, #6b21a8);
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        /* Menu Dropdown de Progenitores */
         .progenitores-menu {
             display: none;
             position: absolute;
@@ -376,7 +199,6 @@
             background: #120b1f;
             border: 1px solid var(--border-gold);
             border-radius: var(--radius-md);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             z-index: 100;
             width: 440px;
             padding: 1rem;
@@ -384,10 +206,8 @@
 
         .progenitores-menu.show {
             display: block;
-            animation: fadeIn 0.3s ease;
         }
 
-        /* Abas Internas dos Progenitores (Heróis, Vilões, Coadjuvantes) */
         .prog-tabs-header {
             display: flex;
             gap: 5px;
@@ -407,10 +227,9 @@
             text-align: center;
             border-radius: 6px;
             cursor: pointer;
-            transition: var(--transition);
         }
 
-        .prog-tab-btn.active, .prog-tab-btn:hover {
+        .prog-tab-btn.active {
             background: var(--accent-purple);
             color: white;
             border-color: var(--accent-glow);
@@ -430,65 +249,11 @@
             list-style: none;
             font-size: 0.8rem;
             color: var(--text-muted);
-            padding-left: 4px;
-            line-height: 1.5;
         }
 
         .progenitor-list li {
             padding: 3px 0;
             border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-
-        .couple-highlight {
-            color: var(--accent-gold);
-            font-weight: bold;
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.85rem;
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--accent-purple);
-            color: white;
-            border-color: var(--accent-glow);
-        }
-
-        .counter-badge-display {
-            background: rgba(229, 193, 88, 0.15);
-            border: 1px solid var(--border-gold);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--accent-gold);
-            font-weight: 600;
-        }
-
-        .search-input {
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border-glow);
-            color: white;
-            width: 220px;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent-gold);
         }
 
         .roster-grid {
@@ -504,12 +269,6 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
-        }
-
-        .roster-card:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 5px 20px rgba(229, 193, 88, 0.15);
         }
 
         .roster-card img {
@@ -525,37 +284,6 @@
             gap: 0.6rem;
         }
 
-        .roster-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .roster-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-        }
-
-        .roster-tag {
-            font-size: 0.75rem;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .tag-villains { background: rgba(239, 68, 68, 0.2); color: var(--accent-ruby); border: 1px solid var(--accent-ruby); }
-        .tag-heroes { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
-        .tag-disney { background: rgba(138, 43, 226, 0.2); color: var(--accent-glow); border: 1px solid var(--accent-purple); }
-
-        .roster-details {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* Form Container */
         .form-container {
             background: var(--bg-card);
             border: 1px solid var(--border-gold);
@@ -563,7 +291,6 @@
             padding: 2.5rem;
             max-width: 800px;
             margin: 2rem auto;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
 
         .form-grid {
@@ -582,260 +309,228 @@
             grid-column: span 2;
         }
 
-        label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-        }
-
         input, select, textarea {
             padding: 0.75rem;
             border-radius: 8px;
             background: rgba(9, 6, 20, 0.8);
             border: 1px solid var(--border-glow);
             color: white;
-            font-size: 0.95rem;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
-        }
-
-        .helper-text {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-glow);
-            background: rgba(5, 3, 12, 0.95);
-            padding: 3rem 2rem;
-            margin-top: 5rem;
-            text-align: center;
-        }
-
-        .disclaimer-box {
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-            padding: 1rem;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: var(--radius-md);
-            color: #fca5a5;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        /* Modals */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.open {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--bg-card);
-            border: 1px solid var(--border-gold);
-            padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 450px;
-            position: relative;
-            box-shadow: 0 0 40px rgba(189, 0, 255, 0.3);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            cursor: pointer;
-        }
-
-        .empty-msg {
-            grid-column: 1 / -1;
-            text-align: center;
-            color: var(--text-muted);
-            padding: 3rem;
-            font-style: italic;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .nav-links { display: none; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <a href="#" class="logo" onclick="switchNav('inicio')">
             <div class="logo-icon">👑</div>
-            <span> Bem vindos a Auradon</span>
+            <span>Bem-vindos a Auradon</span>
         </a>
         <ul class="nav-links">
             <li><a id="link-inicio" class="active" onclick="switchNav('inicio')">Início</a></li>
-            <li><a id="link-lore" onclick="switchNav('lore')">História</a></li>
             <li><a id="link-alunos" onclick="switchNav('alunos')">Alunos & Fichas</a></li>
             <li><a id="link-criar-ficha" onclick="switchNav('criar-ficha')">Criar Ficha</a></li>
-            <li><a id="link-docentes" onclick="switchNav('docentes')">Docência</a></li>
-            <li><a id="link-locais" onclick="switchNav('locais')">Locais de Auradon</a></li>
         </ul>
-        <div class="nav-actions">
-            <button class="btn btn-outline" onclick="openModal('loginModal')">Entrar</button>
-            <button class="btn btn-gold" onclick="openModal('registerModal')">Cadastrar</button>
-        </div>
     </nav>
 
-    <!-- VIEWS -->
-    
-    <!-- 1. INÍCIO -->
-    <main id="view-inicio" class="page-view active">
-        <header class="hero">
-            <span class="hero-badge">RPG de Interpretação Online</span>
+    <!-- VISÃO: INÍCIO -->
+    <main id="view-inicio" class="page-view active" style="padding-top: 140px;">
+        <div class="container" style="text-align: center;">
             <h1>Descendentes — Colégio de Auradon</h1>
-            <p>Bem-vindo ao portal oficial do nosso universo. A barreira da Ilha dos Perdidos acabou de cair e os filhos dos vilões estão chegando em Auradon Prep para o novo ano letivo. Acompanharemos a convivência, rixas, alianças, segredos e novos poderes entre filhos de heróis e vilões com a ajuda de Mal, Evie, Carlos e Jay.</p>
-            <div class="hero-cta">
-                <a class="btn btn-gold" onclick="switchNav('criar-ficha')">📜 Criar Sua Ficha</a>
-                <a class="btn btn-outline" onclick="switchNav('lore')">📖 Explorar a Lore</a>
-            </div>
-        </header>
+            <p style="margin-top: 1rem; color: var(--text-muted);">Crie seus personagens e acompanhe o roster dos alunos registrados.</p>
+        </div>
+    </main>
 
+    <!-- VISÃO: ALUNOS & FICHAS -->
+    <main id="view-alunos" class="page-view" style="padding-top: 140px;">
         <div class="container">
-            <div class="section-header">
-                <h2>Explorar o Portal</h2>
-                <p>Navegue pelas seções principais da academia.</p>
-            </div>
-            <div class="grid-3">
-                <div class="card" onclick="switchNav('locais')" style="cursor: pointer;">
-                    <div class="card-img-wrap">
-                        <img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Auradon Prep" onerror="this.src='https://i.ibb.co/Z1Fbksxj/image.jpg'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Locais de Auradon</h3>
-                        <p>Visite a fachada do castelo, o Jardim da Harmonia, o Lago dos Espelhos, a Sala de Esgrima e todas as instalações da academia.</p>
-                        <span class="roster-tag tag-disney">12 AMBIENTES</span>
-                    </div>
-                </div>
-                <div class="card" onclick="switchNav('docentes')" style="cursor: pointer;">
-                    <div class="card-img-wrap">
-                        <img src="https://i.ibb.co/QvKsMvqK/fada-madrinha.jpg" alt="Professores" onerror="this.src='https://i.ibb.co/QvKsMvqK/image.jpg'">
-                    </div>
-                    <div class="card-body">
-                        <h3>Quadro Docente</h3>
-                        <p>Conheça os 8 professores responsáveis pelas matérias teóricas e práticas, da Fada Madrinha ao Capitão Phoebus.</p>
-                        <span class="roster-tag tag-disney">8 PROFESSORES</span>
-                    </div>
-                </div>
-                <div class="card" onclick="switchNav('alunos')" style="cursor: pointer;">
-                    <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Alunos">
-                    </div>
-                    <div class="card-body">
-                        <h3>Fichas dos Alunos</h3>
-                        <p>Acompanhe as fichas dos novos estudantes cadastrados e prontos para o ano letivo.</p>
-                        <span class="roster-tag tag-heroes">ROSTER ATIVO</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- 2. LORE / HISTÓRIA -->
-    <main id="view-lore" class="page-view">
-        <div class="container" style="padding-top: 140px;">
-            <div class="section-header">
-                <h2>O Reino de Auradon</h2>
-                <p>Descubra os acontecimentos que moldam o novo ano letivo em Auradon Prep.</p>
-            </div>
-            <div class="grid-3">
-                <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏰</div>
-                    <h3>Auradon Prep</h3>
-                    <p>Sob a administração da Fada Madrinha e designada pelo governo real de Auradon, a prestigiada instituição abre portas para mais filhos de vilões e heróis aprenderem a conviver em harmonia.</p>
-                </div>
-                <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">✨</div>
-                    <h3>Fim da Magia?</h3>
-                    <p>Com a abertura da barreira muitos alunos estão recém conhecendo seus dons mágicos, mesmo Auradon insistindo em uma vida sem magia. Como os alunos lidarão com seus dons e seguir as regras de Auradon, lidando com filhos de mocinhos.</p>
-                </div>
-                <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏴‍☠️</div>
-                    <h3>Tensão & Alianças</h3>
-                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola, exigindo consenso e auxílio de nossos VKs.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- 3. ALUNOS & FICHAS -->
-    <main id="view-alunos" class="page-view">
-        <div class="container" style="padding-top: 140px;">
-            <div class="section-header">
-                <h2>Alunos Registrados</h2>
-                <p>Consulte os membros ativos do RPG e suas respectivas fichas.</p>
-            </div>
-
-            <!-- Painel Superior com Botão Progenitores em Abas e Filtros -->
             <div class="filter-bar">
                 <div class="filter-top-row">
-                    <!-- BOTÃO PROGENITORES COM ABAS (HERÓIS, VILÕES, COADJUVANTES) -->
                     <div class="progenitores-dropdown-container">
-                        <button class="progenitores-btn" onclick="toggleProgenitoresMenu()">
+                        <button class="progenitores-btn" onclick="toggleProgenitoresMenu(event)">
                             <i class="fa-solid fa-users"></i> Progenitores <i class="fa-solid fa-caret-down"></i>
                         </button>
                         <div id="progenitoresMenu" class="progenitores-menu">
-                            <!-- Abas Superiores dentro do Menu -->
                             <div class="prog-tabs-header">
                                 <button class="prog-tab-btn active" onclick="switchProgTab(event, 'tab-heroes')">Heróis</button>
                                 <button class="prog-tab-btn" onclick="switchProgTab(event, 'tab-villains')">Vilões</button>
                                 <button class="prog-tab-btn" onclick="switchProgTab(event, 'tab-coad')">Coadjuvantes</button>
                             </div>
 
-                            <!-- Conteúdo da Aba: Heróis -->
                             <div id="tab-heroes" class="prog-tab-content active">
                                 <ul class="progenitor-list">
-                                    <li>Branca de Neve e Príncipe Florian</li>
-                                    <li>Cinderela e Príncipe Encantado</li>
-                                    <li>Aurora e Príncipe Phillip</li>
-                                    <li>Ariel e Príncipe Eric</li>
-                                    <li>Bela e Fera (Príncipe Adam)</li>
-                                    <li>Jasmine e Aladdin</li>
-                                    <li>Pocahontas e John Smith</li>
-                                    <li>Mulan e Li Shang</li>
-                                    <li>Tiana e Príncipe Naveen</li>
-                                    <li>Rapunzel e Flynn Rider (José Bezerra)</li>
+                                    <li>Branca de Neve & Príncipe Florian</li>
+                                    <li>Cinderela & Príncipe Encantado</li>
+                                    <li>Aurora & Príncipe Phillip</li>
+                                    <li>Ariel & Príncipe Eric</li>
+                                    <li>Bela & Príncipe Adam (Fera)</li>
+                                    <li>Jasmine & Aladdin</li>
+                                    <li>Pocahontas & John Smith</li>
+                                    <li>Mulan & Li Shang</li>
+                                    <li>Tiana & Príncipe Naveen</li>
+                                    <li>Rapunzel & Flynn Rider</li>
                                     <li>Merida, Moana, Raya</li>
-                                    <li>Anna e Kristoff, Elsa</li>
-                                    <li>Esmeralda e Phoebus</li>
-                                    <li>Mégara e Hércules</li>
-                                    <li>Jane Porter e Tarzan</li>
-                                    <li>Kida e Milo Thatch</li>
+                                    <li>Anna, Kristoff, Elsa</li>
                                     <li>Mirabel (Encanto)</li>
-                                    <li>Asha (Wish: O Poder dos Desejos)</li>
+                                    <li>Asha (Wish)</li>
                                 </ul>
                             </div>
 
-                            <!-- Conteúdo da Aba: Vilões -->
                             <div id="tab-villains" class="prog-tab-content">
                                 <ul class="progenitor-list">
-                                    <li><span class="couple-highlight">🖤 Casal:
+                                    <li><strong style="color:var(--accent-gold);">🖤 Hades & Malévola</strong></li>
+                                    <li><strong style="color:var(--accent-gold);">👑 Rainha Má & Rei Magnífico</strong></li>
+                                    <li>Lobo Mau, Capitão Gancho</li>
+                                    <li>Úrsula, Gaston, Jafar</li>
+                                    <li>Cruella de Vil, Dr. Facilier</li>
+                                    <li>Mamãe Gothel, Príncipe Hans</li>
+                                </ul>
+                            </div>
+
+                            <div id="tab-coad" class="prog-tab-content">
+                                <ul class="progenitor-list">
+                                    <li>Chapeleiro Maluco, Gato de Cheshire</li>
+                                    <li>Gênio da Lâmpada, Lumière</li>
+                                    <li>Sininho (Tinker Bell), Fada Madrinha</li>
+                                    <li>Luisa, Isabela, Bruno, Camilo (Madrigal)</li>
+                                    <li>Maui, Zeus, Hera, Hermes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="counter-display" style="color: var(--accent-gold); font-weight: 600;">
+                        Filhos Registrados: 0 / 4
+                    </div>
+                </div>
+            </div>
+
+            <div id="roster-grid" class="roster-grid"></div>
+        </div>
+    </main>
+
+    <!-- VISÃO: CRIAR FICHA -->
+    <main id="view-criar-ficha" class="page-view" style="padding-top: 140px;">
+        <div class="container">
+            <div class="form-container">
+                <form id="character-form" onsubmit="saveCharacter(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nome do Personagem</label>
+                            <input type="text" id="char-name" required placeholder="Ex: Maeve Mim">
+                        </div>
+                        <div class="form-group">
+                            <label>Filiação (Progenitor)</label>
+                            <input type="text" id="char-parent" required placeholder="Ex: Hades e Malévola">
+                        </div>
+                        <div class="form-group full">
+                            <label>Aparência (Photoplayer)</label>
+                            <input type="text" id="char-photo" value="https://i.ibb.co/DPXMfRnD/image.jpg" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem;">📜 Cadastrar Ficha</button>
+                </form>
+            </div>
+        </div>
+
+    <script>
+        let studentRoster = [];
+        const DEFAULT_PHOTO = 'https://i.ibb.co/DPXMfRnD/image.jpg';
+
+        function switchNav(viewId) {
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const activeLink = document.getElementById(`link-${viewId}`);
+            if(activeLink) activeLink.classList.add('active');
+
+            document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
+            document.getElementById(`view-${viewId}`).classList.add('active');
+        }
+
+        function toggleProgenitoresMenu(e) {
+            e.stopPropagation();
+            const menu = document.getElementById('progenitoresMenu');
+            menu.classList.toggle('show');
+        }
+
+        function switchProgTab(event, tabId) {
+            event.stopPropagation();
+            document.querySelectorAll('.prog-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.prog-tab-content').forEach(content => content.classList.remove('active'));
+
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        window.addEventListener('click', function(e) {
+            if (!e.target.closest('.progenitores-dropdown-container')) {
+                const menu = document.getElementById('progenitoresMenu');
+                if(menu) menu.classList.remove('show');
+            }
+        });
+
+        function saveCharacter(e) {
+            e.preventDefault();
+
+            if (studentRoster.length >= 4) {
+                alert('⚠️ Limite atingido! Cada jogador pode registrar no máximo 4 filhos no total.');
+                return;
+            }
+            
+            const name = document.getElementById('char-name').value;
+            const parentInput = document.getElementById('char-parent').value.trim();
+            let photo = document.getElementById('char-photo').value.trim();
+
+            if (!photo) {
+                photo = DEFAULT_PHOTO;
+            }
+
+            const parentNormalized = parentInput.toLowerCase();
+            const existingSiblingsCount = studentRoster.filter(s => s.parent.toLowerCase() === parentNormalized).length;
+
+            if (existingSiblingsCount >= 4) {
+                alert(`⚠️ Limite excedido para o progenitor "${parentInput}"! Cada progenitor pode ter no máximo 4 filhos cadastrados.`);
+                return;
+            }
+
+            studentRoster.push({ name, parent: parentInput, photo });
+            updateCounterDisplay();
+            renderRoster();
+            
+            document.getElementById('character-form').reset();
+            document.getElementById('char-photo').value = DEFAULT_PHOTO;
+            
+            alert('Ficha registrada com sucesso!');
+            switchNav('alunos');
+        }
+
+        function updateCounterDisplay() {
+            document.getElementById('counter-display').innerText = `Filhos Registrados: ${studentRoster.length} / 4`;
+        }
+
+        function renderRoster() {
+            const grid = document.getElementById('roster-grid');
+            if (studentRoster.length === 0) {
+                grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Nenhuma ficha cadastrada ainda.</div>`;
+                return;
+            }
+
+            let html = '';
+            studentRoster.forEach(student => {
+                html += `
+                    <div class="roster-card">
+                        <img src="${student.photo}" alt="${student.name}" onerror="this.src='${DEFAULT_PHOTO}'">
+                        <div class="roster-info">
+                            <h3>${student.name}</h3>
+                            <p><strong>Filiação:</strong> ${student.parent}</p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        updateCounterDisplay();
+        renderRoster();
+    </script>
+</body>
 </html>
