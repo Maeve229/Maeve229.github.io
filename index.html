@@ -242,7 +242,7 @@
             color: var(--text-muted);
         }
 
-        /* Banners */
+        /* Capas / Banners */
         .roster-banner-container {
             width: 100%;
             height: 280px;
@@ -259,6 +259,11 @@
             height: 100%;
             object-fit: cover;
             filter: brightness(0.85) contrast(1.1);
+            transition: transform 0.6s ease;
+        }
+
+        .roster-banner-container:hover img {
+            transform: scale(1.03);
         }
 
         .roster-banner-overlay {
@@ -329,6 +334,28 @@
             justify-content: space-between;
         }
 
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-glow);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .card:hover::before {
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
         .card h3 {
             font-size: 1.35rem;
             color: var(--accent-gold);
@@ -379,6 +406,12 @@
             align-items: center;
             gap: 8px;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+            transition: var(--transition);
+        }
+
+        .progenitores-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #6b21a8);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .progenitores-menu {
@@ -399,6 +432,7 @@
 
         .progenitores-menu.show {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
 
         .progenitor-section-title {
@@ -442,10 +476,11 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
             cursor: pointer;
+            transition: var(--transition);
             font-size: 0.85rem;
         }
 
-        .filter-btn.active {
+        .filter-btn.active, .filter-btn:hover {
             background: var(--accent-purple);
             color: white;
             border-color: var(--accent-glow);
@@ -471,6 +506,10 @@
             outline: none;
         }
 
+        .search-input:focus {
+            border-color: var(--accent-gold);
+        }
+
         .roster-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -484,6 +523,12 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .roster-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(229, 193, 88, 0.15);
         }
 
         .roster-card img {
@@ -543,6 +588,12 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .canon-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(229, 193, 88, 0.15);
         }
 
         .canon-card img {
@@ -612,10 +663,12 @@
             color: white;
             font-size: 0.95rem;
             outline: none;
+            transition: var(--transition);
         }
 
         input:focus, select:focus, textarea:focus {
             border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
         }
 
         .helper-text {
@@ -669,6 +722,7 @@
             width: 100%;
             max-width: 450px;
             position: relative;
+            box-shadow: 0 0 40px rgba(189, 0, 255, 0.3);
         }
 
         .close-modal {
@@ -693,6 +747,7 @@
             .nav-links { display: none; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full { grid-column: span 1; }
+            .roster-banner-container { height: 200px; }
         }
     </style>
 </head>
@@ -761,7 +816,7 @@
                 </div>
                 <div class="card" onclick="switchNav('alunos')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Alunos">
+                        <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Alunos" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80'">
                     </div>
                     <div class="card-body">
                         <h3>Fichas dos Alunos</h3>
@@ -777,7 +832,7 @@
     <main id="view-canon" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="roster-banner-container">
-                <img src="https://i.ibb.co/M5B5RBpt/image.jpg" alt="Capa Elenco Canon" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
+                <img src="https://i.ibb.co/M5B5RBpt/M5B5RBpt.jpg" alt="Capa Elenco Canon" onerror="this.onerror=null; this.src='https://i.ibb.co/M5B5RBpt/image.jpg';">
                 <div class="roster-banner-overlay">
                     <h2>Elenco Canon (Franquia)</h2>
                     <p>Reivindique o seu personagem oficial favorito e participe do RPG</p>
@@ -822,11 +877,11 @@
         </div>
     </main>
 
-    <!-- 4. ALUNOS & FICHAS -->
+    <!-- 4. ALUNOS & FICHAS (CAPA DOS PERSONAGENS CRIADOS PELOS USUÁRIOS) -->
     <main id="view-alunos" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="roster-banner-container">
-                <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Capa dos Personagens - Descendentes" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
+                <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Capa dos Personagens Criados pelos Usuários - Descendentes" onerror="this.onerror=null; this.src='https://i.ibb.co/DPXMfRnD/image.jpg';">
                 <div class="roster-banner-overlay">
                     <h2>Alunos & Fichas de Auradon</h2>
                     <p>Explore o roster oficial de estudantes, herdeiros e heróis do nosso RPG</p>
@@ -1030,7 +1085,7 @@
             </div>
             <div class="grid-3">
                 <div class="card">
-                    <div class="card-img-wrap"><img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Academia"></div>
+                    <div class="card-img-wrap"><img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Academia" onerror="this.src='https://i.ibb.co/Z1Fbksxj/image.jpg'"></div>
                     <div class="card-body">
                         <h3>Auradon Academy</h3>
                         <p>A maior instituição de ensino do reino para príncipes, princesas e heróis.</p>
