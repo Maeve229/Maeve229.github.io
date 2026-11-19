@@ -381,7 +381,19 @@
             margin-bottom: 0.8rem;
         }
 
-        /* Dropdown Progenitores e Filtros */
+        .card-list {
+            margin: 0.6rem 0;
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .card-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Painel de Progenitores e Filtros */
         .filter-bar {
             background: var(--bg-glass);
             padding: 1.2rem;
@@ -813,7 +825,7 @@
         <header class="hero">
             <span class="hero-badge">RPG de Interpretação Online</span>
             <h1>Bem vindo a Descendentes</h1>
-            <p>A barreira da Ilha dos Perdidos caiu e a nova geração está chegando em Auradon Prep! Acompanharemos a convivência, alianças, segredos e novos poderes entre filhos de heróis e vilões com Mal, Evie, Carlos e Jay.</p>
+            <p>Bem-vindo ao portal oficial do nosso universo. A barreira da Ilha dos Perdidos acabou de cair e os filhos dos vilões estão chegando em Auradon Prep para o novo ano letivo. Acompanharemos a convivência, rixas, alianças, segredos e novos poderes entre filhos de heróis e vilões com a ajuda de Mal, Evie, Carlos e Jay.</p>
             <div class="hero-cta">
                 <a class="btn btn-gold" onclick="switchNav('criar-ficha')">📜 Criar Sua Ficha</a>
                 <a class="btn btn-outline" onclick="switchNav('canon')">👑 Elenco Canon</a>
@@ -833,7 +845,7 @@
                     </div>
                     <div class="card-body">
                         <h3>Elenco Canon (Franquia)</h3>
-                        <p>Escolha entre os 25 personagens originais da franquia que estiverem vagos. Os ocupados ficam bloqueados.</p>
+                        <p>Escolha entre os 25 personagens originais da franquia que estiverem vagos. Ocupados por alguém não podem ser usados.</p>
                         <span class="roster-tag tag-heroes">25 PERSONAGENS</span>
                     </div>
                 </div>
@@ -843,7 +855,7 @@
                     </div>
                     <div class="card-body">
                         <h3>Locais de Auradon</h3>
-                        <p>Visite todos os 13 ambientes mapeados: Fachada, Hall, Armários, Lago, Museu, Dormitórios e Praça Central.</p>
+                        <p>Visite todos os 13 ambientes da academia: fachada, hall, armários, jardim, lago, arena de esgrima, biblioteca e dormitórios.</p>
                         <span class="roster-tag tag-disney">13 AMBIENTES</span>
                     </div>
                 </div>
@@ -853,7 +865,7 @@
                     </div>
                     <div class="card-body">
                         <h3>Quadro Docente</h3>
-                        <p>Conheça os 8 professores da academia e as matérias teóricas e práticas que lecionam.</p>
+                        <p>Conheça os 8 professores de Auradon Prep e as disciplinas teóricas e práticas que comandam.</p>
                         <span class="roster-tag tag-heroes">8 PROFESSORES</span>
                     </div>
                 </div>
@@ -861,48 +873,48 @@
         </div>
     </main>
 
-    <!-- 2. ELENCO CANON (25 PERSONAGENS) -->
+    <!-- 2. ELENCO CANON (FRANQUIA) -->
     <main id="view-canon" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="roster-banner-container">
-                <img class="smart-img" data-raw-src="https://ibb.co/M5B5RBpt" alt="Capa Elenco Canon">
+                <img class="smart-img" data-raw-src="https://ibb.co/M5B5RBpt" alt="Capa Elenco Canon (Franquia)">
                 <div class="roster-banner-overlay">
                     <h2>Elenco Canon (Franquia)</h2>
-                    <p>Escolha entre os personagens originais. Ocupados por alguém não podem ser usados.</p>
+                    <p>Personagens vagos podem ser escolhidos. O que já está ocupado por alguém não pode ser usado.</p>
                 </div>
             </div>
 
             <div class="section-header">
                 <h2>Disponibilidade do Elenco Canon</h2>
-                <p id="canon-summary">Carregando catálogo...</p>
+                <p id="canon-summary">Carregando personagens...</p>
             </div>
 
             <div id="canon-grid" class="canon-grid"></div>
         </div>
     </main>
 
-    <!-- 3. HISTÓRIA / LORE -->
+    <!-- 3. LORE / HISTÓRIA -->
     <main id="view-lore" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
                 <h2>O Reino de Auradon</h2>
-                <p>Os acontecimentos e estruturas que regem a Auradon Academy.</p>
+                <p>Descubra os acontecimentos que moldam o novo ano letivo em Auradon Prep.</p>
             </div>
             <div class="grid-3">
                 <div class="card" style="padding: 2rem;">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏰</div>
-                    <h3>Auradon Academy</h3>
-                    <p>A maior instituição do reino formada para unir novos líderes. Abriga 7 clubes (Artes, Música, Teatro, Jardinagem, Culinária, Jornalismo e Duelos) e 8 matérias principais de formação.</p>
+                    <h3>Auradon Prep</h3>
+                    <p>Sob a administração da Fada Madrinha e designada pelo governo real de Auradon, a prestigiada instituição abre portas para mais filhos de vilões e heróis aprenderem a conviver em harmonia.</p>
                 </div>
                 <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛏️</div>
-                    <h3>Dormitórios Reais</h3>
-                    <p>Localizados ao lado da academia para promover a convivência direta. Heróis e filhos de vilões dividem o mesmo espaço (2 por quarto), aprendendo a construir laços diários.</p>
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">✨</div>
+                    <h3>Fim da Magia?</h3>
+                    <p>Com a abertura da barreira muitos alunos estão recém conhecendo seus dons mágicos, mesmo Auradon insistindo em uma vida sem magia. Como os alunos lidarão com seus dons e seguir as regras de Auradon, lidando com filhos de mocinhos.</p>
                 </div>
                 <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏛️</div>
-                    <h3>História & Relíquias</h3>
-                    <p>O Museu da História dos Reinos preserva coroas, armas e artefatos lendários. Boatos dizem que certas relíquias escondem segredos que jamais deveriam ser despertados.</p>
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏴‍☠️</div>
+                    <h3>Tensão & Alianças</h3>
+                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola, exigindo consenso e auxílio de nossos VKs.</p>
                 </div>
             </div>
         </div>
@@ -912,10 +924,10 @@
     <main id="view-alunos" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="roster-banner-container">
-                <img class="smart-img" data-raw-src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Alunos & Fichas">
+                <img class="smart-img" data-raw-src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Capa dos Personagens - Descendentes">
                 <div class="roster-banner-overlay">
                     <h2>Alunos & Fichas de Auradon</h2>
-                    <p>Explore o roster de estudantes e herdeiros registrados no RPG</p>
+                    <p>Explore o roster oficial de estudantes, herdeiros e heróis do nosso RPG</p>
                 </div>
             </div>
 
@@ -926,34 +938,89 @@
                             <i class="fa-solid fa-users"></i> Progenitores <i class="fa-solid fa-caret-down"></i>
                         </button>
                         <div id="progenitoresMenu" class="progenitores-menu">
-                            <div class="progenitor-section-title">Vilões (Casais & Vilões Clássicos)</div>
+                            <div class="progenitor-section-title">Vilões (Casais em Destaque & Demais)</div>
                             <ul class="progenitor-list">
                                 <li><span class="couple-highlight">🖤 Casal: Hades & Malévola</span></li>
                                 <li><span class="couple-highlight">👑 Casal: Rainha Má & Rei Magnífico</span></li>
-                                <li>Lobo Mau, Stromboli, Cocheiro, Chernabog</li>
-                                <li>Madrasta Lady Tremaine, Anastácia, Drizella</li>
-                                <li>Rainha de Copas, Capitão Gancho, Cruella de Vil</li>
-                                <li>Madame Mim, Úrsula, Gaston, Jafar, Scar</li>
-                                <li>Ratcliffe, Claude Frollo, Agonia & Pânico, Shan Yu</li>
-                                <li>Clayton, Yzma, Dr. Facilier, Gothel, Hans, Tamatoa</li>
-                                <li>Rumpelstiltskin, Zelena, Morgana, O Caçador</li>
+                                <li>Lobo Mau (Chapeuzinho Vermelho)</li>
+                                <li>Stromboli & Cocheiro (Pinóquio)</li>
+                                <li>Chernabog (Fantasia)</li>
+                                <li>Madrasta Lady Tremaine, Anastácia & Drizella (Cinderela)</li>
+                                <li>Rainha de Copas (Alice no País das Maravilhas)</li>
+                                <li>Capitão Gancho (Peter Pan)</li>
+                                <li>Cruella de Vil, Jasper & Gaspar (101 Dálmatas)</li>
+                                <li>Madame Mim (A Espada Era a Lei)</li>
+                                <li>Úrsula (A Pequena Sereia)</li>
+                                <li>Gaston (A Bela e a Fera)</li>
+                                <li>Jafar (Aladdin)</li>
+                                <li>Scar (O Rei Leão)</li>
+                                <li>Governador Ratcliffe (Pocahontas)</li>
+                                <li>Juiz Claude Frollo (O Corcunda de Notre Dame)</li>
+                                <li>Agonia & Pânico (Hércules)</li>
+                                <li>Shan Yu (Mulan)</li>
+                                <li>Clayton (Tarzan)</li>
+                                <li>Yzma (A Nova Onda do Imperador)</li>
+                                <li>Dr. Facilier (A Princesa e o Sapo)</li>
+                                <li>Mamãe Gothel (Enrolados)</li>
+                                <li>Príncipe Hans (Frozen)</li>
+                                <li>Tamatoa (Moana)</li>
+                                <li>Rumpelstiltskin & Zelena / Bruxa Má do Oeste (OUAT / Disney)</li>
+                                <li>Morgana (Rei Arthur)</li>
+                                <li>O Caçador (Branca de Neve)</li>
+                                <li>Edgar Balthazar (Aristogatas)</li>
+                                <li>Príncipe João (Robin Hood)</li>
+                                <li>Rei de Chifres (O Caldeirão Mágico)</li>
+                                <li>Comandante Rourke & Helga Sinclair (Atlantis)</li>
                             </ul>
 
-                            <div class="progenitor-section-title">Heróis</div>
+                            <div class="progenitor-section-title">Heróis (Personagens Heróis)</div>
                             <ul class="progenitor-list">
-                                <li>Branca de Neve & Florian | Cinderela & Encantado</li>
-                                <li>Aurora & Phillip | Ariel & Eric | Bela & Fera</li>
-                                <li>Jasmine & Aladdin | Pocahontas | Mulan & Li Shang</li>
-                                <li>Tiana & Naveen | Rapunzel & Flynn | Merida | Moana</li>
-                                <li>Anna, Kristoff, Elsa, Esmeralda, Hércules, Kida, Mirabel, Asha</li>
+                                <li>Branca de Neve e Príncipe Florian</li>
+                                <li>Cinderela e Príncipe Encantado</li>
+                                <li>Aurora e Príncipe Phillip</li>
+                                <li>Ariel e Príncipe Eric</li>
+                                <li>Bela e Fera (Príncipe Adam)</li>
+                                <li>Jasmine e Aladdin</li>
+                                <li>Pocahontas e John Smith</li>
+                                <li>Mulan e Li Shang</li>
+                                <li>Tiana e Príncipe Naveen</li>
+                                <li>Rapunzel e Flynn Rider (José Bezerra)</li>
+                                <li>Merida, Moana, Raya</li>
+                                <li>Anna e Kristoff, Elsa</li>
+                                <li>Esmeralda e Phoebus</li>
+                                <li>Mégara e Hércules</li>
+                                <li>Jane Porter e Tarzan</li>
+                                <li>Kida e Milo Thatch</li>
+                                <li>Mirabel (Encanto)</li>
+                                <li>Asha (Wish: O Poder dos Desejos)</li>
                             </ul>
 
-                            <div class="progenitor-section-title">Personagens Disney / Contos</div>
+                            <div class="progenitor-section-title">Personagens (Comuns Disney / Contos)</div>
                             <ul class="progenitor-list">
-                                <li>Chapeleiro Maluco, Gato de Cheshire, Coelho Branco</li>
-                                <li>Gênio, Lumière, Horloge, Madame Samovar, Zip</li>
-                                <li>Sininho, Fada Madrinha, Flora, Fauna, Primavera, Fada Azul</li>
-                                <li>Madrigal (Luisa, Isabela, Bruno, Camilo, Pepa), Merlin, Maui</li>
+                                <li>Chapeleiro Maluco (Alice no País das Maravilhas)</li>
+                                <li>Gato de Cheshire / Gato Risonho (Alice no País das Maravilhas)</li>
+                                <li>Coelho Branco (Alice no País das Maravilhas)</li>
+                                <li>Gênio da Lâmpada (Aladdin)</li>
+                                <li>Lumière (A Bela e a Fera)</li>
+                                <li>Horloge (A Bela e a Fera)</li>
+                                <li>Madame Samovar (A Bela e a Fera)</li>
+                                <li>Zip (A Bela e a Fera)</li>
+                                <li>Guarda-Roupa / Madame de Garderobe (A Bela e a Fera)</li>
+                                <li>Sininho / Tinker Bell (Peter Pan)</li>
+                                <li>Fada Madrinha (Cinderela)</li>
+                                <li>Flora, Fauna e Primavera (A Bela Adormecida)</li>
+                                <li>Fada Azul (Pinóquio)</li>
+                                <li>Luisa, Isabela, Bruno, Camilo e Pepa Madrigal (Encanto)</li>
+                                <li>João Darling & Miguel Darling (Peter Pan)</li>
+                                <li>Sr. Smee / Barrica (Peter Pan)</li>
+                                <li>Chapeuzinho Vermelho (Contos)</li>
+                                <li>Merlin (A Espada Era a Lei)</li>
+                                <li>Evanora (Mágico de Oz)</li>
+                                <li>Oscar Diggs / O Mágico de Oz (Mágico de Oz)</li>
+                                <li>Glinda (Mágico de Oz)</li>
+                                <li>Maui (Moana)</li>
+                                <li>Zeus e Hera (Hércules)</li>
+                                <li>Hermes (Hércules)</li>
                             </ul>
                         </div>
                     </div>
@@ -984,7 +1051,7 @@
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
                 <h2>Formulário de Personagem</h2>
-                <p>Preencha os dados do seu herdeiro. (Limite máximo de 4 fichas no total e até 4 por progenitor).</p>
+                <p>Preencha os dados do seu herdeiro para ingressar em Auradon Prep. (Máximo de 4 filhos no total e limite de 4 filhos por progenitor).</p>
             </div>
             
             <div class="form-container">
@@ -997,7 +1064,7 @@
                         <div class="form-group">
                             <label>Filiação (Progenitor)</label>
                             <input type="text" id="char-parent" required placeholder="Ex: Chapeleiro Maluco ou Maui">
-                            <span class="helper-text">Cada progenitor tem limite máximo de 4 filhos.</span>
+                            <span class="helper-text">Cada progenitor pode ter no máximo 4 filhos registrados.</span>
                         </div>
                         <div class="form-group">
                             <label>Categoria de Origem</label>
@@ -1012,17 +1079,17 @@
                             <input type="text" id="char-age" required placeholder="Ex: 16 anos / 2º Ano">
                         </div>
                         <div class="form-group full">
-                            <label>Aparência (Link da Imagem)</label>
-                            <input type="text" id="char-photo" required value="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" placeholder="URL da foto">
-                            <span class="helper-text">Sua imagem de capa padrão já está carregada automaticamente!</span>
+                            <label>Aparência (Photoplayer - Link da Imagem)</label>
+                            <input type="text" id="char-photo" required value="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" placeholder="Cole a URL da foto do seu personagem">
+                            <span class="helper-text">Sua imagem de capa padrão já está inserida automaticamente na ficha!</span>
                         </div>
                         <div class="form-group full">
                             <label>Poderes & Habilidades</label>
-                            <textarea id="char-powers" rows="3" required placeholder="Descreva feitiços ou habilidades mágicas..."></textarea>
+                            <textarea id="char-powers" rows="3" required placeholder="Descreva os feitiços, talentos físicos ou magia herdada..."></textarea>
                         </div>
                         <div class="form-group full">
-                            <label>Personalidade & História</label>
-                            <textarea id="char-history" rows="4" required placeholder="Descreva a trajetória do herdeiro..."></textarea>
+                            <label>Personalidade & História (Tema Disney / Contos)</label>
+                            <textarea id="char-history" rows="4" required placeholder="Descreva a trajetória com base em reinos e contos clássicos..."></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem;">📜 Finalizar e Registrar Ficha</button>
@@ -1031,23 +1098,23 @@
         </div>
     </main>
 
-    <!-- 6. DOCÊNCIA (8 PROFESSORES) -->
+    <!-- 6. DOCÊNCIA (8 PROFESSORES COM LINKS IMGBB) -->
     <main id="view-docentes" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
                 <h2>Corpo Docente de Auradon Prep</h2>
-                <p>Os 8 professores e suas respectivas matérias.</p>
+                <p>Os 8 professores das matérias teóricas e práticas da academia.</p>
             </div>
             <div id="docentes-grid" class="grid-3"></div>
         </div>
     </main>
 
-    <!-- 7. LOCAIS DE AURADON (13 AMBIENTES) -->
+    <!-- 7. LOCAIS DE AURADON (13 AMBIENTES COM LINKS IMGBB E DESCRIÇÕES EXATAS) -->
     <main id="view-locais" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
                 <h2>Locais de Auradon</h2>
-                <p>Os 13 locais oficiais da academia para encenações e aulas.</p>
+                <p>Os 13 ambientes oficiais da academia para encontros, aulas e cenas de RPG.</p>
             </div>
             <div id="locais-grid" class="grid-3"></div>
         </div>
@@ -1056,12 +1123,12 @@
     <!-- FOOTER -->
     <footer>
         <div class="disclaimer-box">
-            <strong>Aviso de Projeto Independente:</strong> O projeto "Bem vindo a Descendentes" é um jogo de interpretação (RPG) feito por fãs de forma independente e não possui vínculo oficial com a The Walt Disney Company.
+            <strong>Aviso de Projeto Independente:</strong> O projeto Bem vindo a Descendentes é um jogo de interpretação (RPG) feito por fãs de forma independente e não possui vínculo oficial com a The Walt Disney Company.
         </div>
         <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Bem vindo a Descendentes. Todos os direitos reservados aos criadores do RPG.</p>
     </footer>
 
-    <!-- MODAIS -->
+    <!-- MODALS -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
@@ -1087,7 +1154,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE LOGICA -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         let studentRoster = [];
         let currentFilter = 'all';
@@ -1153,39 +1220,291 @@
             });
         }
 
-        // 8 Docentes Memorizados
+        // 8 Professores com seus links ImgBB
         const docentesList = [
-            { name: "Fada Madrinha", subject: "Bondade Corretiva 101", desc: "Diretora da instituição e mentora da conduta ética.", badge: "DIRETORIA", tagClass: "tag-disney", image: "https://ibb.co/C5mh3tTh" },
-            { name: "Alistair Blackwood", subject: "História da Magia, História de Auradon e Geografia dos Terrenos", desc: "Especialista em cronologias reais e artefatos mágicos.", badge: "HUMANIDADES", tagClass: "tag-disney", image: "https://ibb.co/FbcvMm2v" },
-            { name: "Fada Primavera", subject: "Habilidades de Vida Sem Magia", desc: "Ensina autonomia prática no dia a dia sem usar varinhas.", badge: "PRÁTICA", tagClass: "tag-disney", image: "https://ibb.co/gZg3PnXc" },
-            { name: "Sr. Deley", subject: "Química, Ciências e Matemática", desc: "Instrutor metódico de cálculo e química experimental.", badge: "EXATAS", tagClass: "tag-disney", image: "https://ibb.co/0pt8pwP3" },
-            { name: "Coach Jenkins", subject: "Educação Física & Treinador de Tourney", desc: "Comanda o preparo físico e o time de Tourney.", badge: "ESPORTES", tagClass: "tag-heroes", image: "https://ibb.co/b5k3rjF8" },
-            { name: "Fada Fauna", subject: "Botânica Mágica e Poções", desc: "Ensina sobre flora encantada e elixires místicos.", badge: "BOTÂNICA", tagClass: "tag-disney", image: "https://ibb.co/Sw3Vcqtn" },
-            { name: "Celina Lira", subject: "Música e Expressão Teatral", desc: "Desenvolve a arte vocal, instrumental e cênica.", badge: "ARTES", tagClass: "tag-disney", image: "https://ibb.co/8nLQb9xy" },
-            { name: "Capitão Phoebus", subject: "Esgrima e Luta Corporativa", desc: "Instrutor de combate, florete e defesa pessoal.", badge: "COMBATE", tagClass: "tag-heroes", image: "https://ibb.co/6Jt5rHTC" }
+            {
+                name: "Fada Madrinha",
+                subject: "Bondade Corretiva 101",
+                desc: "Diretora da instituição e mentora da conduta ética entre os estudantes.",
+                badge: "DIRETORIA",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/C5mh3tTh"
+            },
+            {
+                name: "Alistair Blackwood",
+                subject: "História da Magia, História de Auradon e Geografia dos Terrenos",
+                desc: "Especialista em cronologias reais, tratados e artefatos antigos.",
+                badge: "HUMANIDADES",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/FbcvMm2v"
+            },
+            {
+                name: "Fada Primavera",
+                subject: "Habilidades de Vida Sem Magia",
+                desc: "Ensina os alunos a realizarem tarefas cotidianas com autonomia e sem o uso de varinhas.",
+                badge: "PRÁTICA",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/gZg3PnXc"
+            },
+            {
+                name: "Sr. Deley",
+                subject: "Química, Ciências e Matemática",
+                desc: "Instrutor metódico de ciências exatas, cálculo e reações químicas controladas.",
+                badge: "EXATAS",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/0pt8pwP3"
+            },
+            {
+                name: "Coach Jenkins",
+                subject: "Educação Física & Treinador de Tourney",
+                desc: "Responsável pelo condicionamento físico dos estudantes e pelos treinos do time oficial de Tourney.",
+                badge: "ESPORTES",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/b5k3rjF8"
+            },
+            {
+                name: "Fada Fauna",
+                subject: "Botânica Mágica e Poções",
+                desc: "Instrui sobre ervas místicas, elixires medicinais e flora encantada dos reinos.",
+                badge: "BOTÂNICA",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/Sw3Vcqtn"
+            },
+            {
+                name: "Celina Lira",
+                subject: "Música e Expressão Teatral",
+                desc: "Desenvolve o talento vocal, arranjos musicais e performances no auditório de Auradon.",
+                badge: "ARTES",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/8nLQb9xy"
+            },
+            {
+                name: "Capitão Phoebus",
+                subject: "Esgrima e Luta Corporativa",
+                desc: "Treinador militar focado em técnicas de florete, autodefesa, honra e manuseio seguro de espadas.",
+                badge: "COMBATE",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/6Jt5rHTC"
+            }
         ];
 
-        // 13 Locais Memorizados
+        // 13 Locais de Auradon com descrições fiéis e links ImgBB
         const locaisList = [
-            { name: "1. Fachada de Auradon Prep / Auradon Academy", desc: "Entrada principal da maior instituição de ensino do reino.", badge: "ENTRADA", tagClass: "tag-disney", image: "https://ibb.co/7NkDmx09" },
-            { name: "2. Hall da Entrada com as Escadas", desc: "Salão imponente com escadarias duplas conectando as alas.", badge: "HALL", tagClass: "tag-disney", image: "https://ibb.co/8gdkxL4T" },
-            { name: "3. Corredor dos Armários", desc: "Passagem de fluxo constante de alunos entre os horários de aula.", badge: "CORREDOR", tagClass: "tag-disney", image: "https://ibb.co/SGkpVbN" },
-            { name: "4. Jardim da Harmonia", desc: "Área arborizada com fonte mágica central e iluminação noturna.", badge: "ÁREA VERDE", tagClass: "tag-heroes", image: "https://ibb.co/svTh0gM5" },
-            { name: "5. Sala de aula", desc: "Salas equipadas com recursos mágicos e teóricos.", badge: "AULAS", tagClass: "tag-disney", image: "https://ibb.co/TBJKLwgN" },
-            { name: "6. Lago dos Espelhos", desc: "Lago cristalino a 2km de distância com ponte de pedra.", badge: "EXTERIOR", tagClass: "tag-disney", image: "https://ibb.co/xtFsgQzf" },
-            { name: "7. Biblioteca Real", desc: "Acervo de grimórios, crônicas e mapas dos reinos.", badge: "ESTUDO", tagClass: "tag-heroes", image: "https://ibb.co/WvQZhzwS" },
-            { name: "8. Arena de Esgrima & Treino", desc: "Pista oficial para combates supervisionados e agilidade.", badge: "TREINAMENTO", tagClass: "tag-heroes", image: "https://ibb.co/JjCq7Xrd" },
-            { name: "9. Ginasio - Campo de Tourney", desc: "Complexo esportivo com campo oficial e arquibancadas.", badge: "ESPORTES", tagClass: "tag-heroes", image: "https://ibb.co/tMwYRk0X" },
-            { name: "10. Museu da História dos Reinos", desc: "Preserva coroas, relíquias mágicas e artefatos em áreas restritas.", badge: "MUSEU", tagClass: "tag-disney", image: "https://ibb.co/VWdYGQ9f" },
-            { name: "11. Alas dos Dormitório das Meninas", desc: "Quartos confortáveis e áreas de convivência feminina.", badge: "DORMITÓRIO", tagClass: "tag-disney", image: "https://ibb.co/hRDKY479" },
-            { name: "12. Alas do Dormitório dos Meninos", desc: "Acomodações compartilhadas masculinas da academia.", badge: "DORMITÓRIO", tagClass: "tag-disney", image: "https://ibb.co/v6GCf965" },
-            { name: "13. Praça Central de Auradon", desc: "Ponto de encontro cercado de cafeterias, lojas e festivais.", badge: "PRAÇA", tagClass: "tag-heroes", image: "https://ibb.co/YVf2zzs" }
+            {
+                name: "1. Fachada de Auradon Prep / Auradon Academy",
+                desc: "A Academia é a maior instituição de ensino do reino, responsável por formar a nova geração de príncipes, princesas, heróis, vilões e futuros líderes. Seus corredores são amplos, as salas de aula possuem recursos mágicos e tecnológicos, e cada disciplina prepara os alunos para os desafios dentro e fora dos reinos.",
+                clubes: ["Clube de Artes", "Clube de Música", "Clube de Teatro", "Clube de Jardinagem", "Clube de Culinária", "Clube de Jornalismo", "Clube de Duelos"],
+                materias: ["Magia e Encantamentos", "Poções e Alquimia", "História dos Reinos", "Etiqueta Real", "Combate e Defesa", "Criaturas Mágicas", "Herbologia", "Geografia dos Reinos"],
+                badge: "ACADEMIA",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/7NkDmx09"
+            },
+            {
+                name: "2. Hall da Entrada com as Escadas",
+                desc: "A recepção principal no interior da Academia, marcada por uma grande escadaria central, vitrais iluminados e detalhes dourados que conectam os pisos superiores. É um ponto de passagem constante entre o início das aulas, avisos da direção e encontros rápidos nos intervalos.",
+                badge: "ENTRADA",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/8gdkxL4T"
+            },
+            {
+                name: "3. Corredor dos Armários",
+                desc: "Uma das áreas mais movimentadas entre as trocas de aula, alinhada com fileiras de armários individuais, murais de recados da escola e espaços para guardar livros, cadernos e itens do dia a dia estudantil.",
+                badge: "CORREDOR",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/SGkpVbN"
+            },
+            {
+                name: "4. Jardim da Harmonia",
+                desc: "O lugar mais tranquilo de toda a Academia. Repleto de flores encantadas, árvores centenárias e bancos de mármore, o jardim é conhecido por sua enorme fonte mágica localizada no centro. Durante o dia, estudantes costumam descansar, estudar ou conversar sob a sombra das árvores. À noite, pequenas luzes mágicas iluminam todo o jardim.",
+                badge: "JARDIM",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/svTh0gM5"
+            },
+            {
+                name: "5. Sala de aula",
+                desc: "Espaço de aprendizado equipado com mesas organizadas, quadros e recursos didáticos mágicos e tecnológicos para acompanhar tanto as explicações teóricas quanto as atividades práticas das disciplinas.",
+                badge: "AULAS",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/TBJKLwgN"
+            },
+            {
+                name: "6. Lago dos Espelhos",
+                desc: "Um lago cristalino localizado a 2KM de distância. Diz a lenda que suas águas refletem não apenas a aparência de quem as observa, mas também seu verdadeiro coração. Os estudantes costumam passear por suas margens, fazer piqueniques, estudar ou simplesmente apreciar o pôr do sol sobre a água.",
+                badge: "LAGO",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/xtFsgQzf"
+            },
+            {
+                name: "7. Biblioteca Real",
+                desc: "Ambiente silencioso e amplo dedicado à pesquisa e leitura, reunindo estantes altas, mesas de estudo, crônicas antigas, enciclopédias dos reinos e registros históricos para trabalhos e consultas dos alunos.",
+                badge: "ESTUDO",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/WvQZhzwS"
+            },
+            {
+                name: "8. Arena de Esgrima & Treino",
+                desc: "Espaço preparado para a prática de esgrima e defesa corporal sob supervisão, com piso adequado, equipamentos de treino, áreas de movimentação e postos de instrução para aperfeiçoar reflexos, postura e técnica.",
+                badge: "TREINAMENTO",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/JjCq7Xrd"
+            },
+            {
+                name: "9. Ginasio - Campo de Tourney",
+                desc: "O centro esportivo da Academia. É utilizado para aulas de educação física, treinamentos, torneios e grandes competições entre as equipes estudantis. Além da quadra principal, o complexo possui arquibancadas, salas de treinamento, pista de corrida, área para esgrima, arco e flecha e combate mágico supervisionado.",
+                badge: "ESPORTES",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/tMwYRk0X"
+            },
+            {
+                name: "10. Museu de História Cultural de Auradon / Museu da História dos Reinos",
+                desc: "Responsável por preservar toda a história de Auradon. O museu abriga coroas antigas, armas lendárias, livros mágicos, pinturas, artefatos encantados e relíquias pertencentes aos maiores heróis e vilões da história. Visitas escolares são frequentes, e algumas áreas permanecem restritas por conterem objetos extremamente poderosos.",
+                badge: "HISTÓRIA",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/VWdYGQ9f"
+            },
+            {
+                name: "11. Alas dos Dormitório das Meninas",
+                desc: "Localizados ao lado da Academia, os dormitórios foram construídos para incentivar a convivência entre todos os alunos. Heróis e descendentes de vilões dividem o mesmo espaço. Cada quarto acomoda duas estudantes, com áreas comuns, sala de estudos e jardim interno na ala feminina.",
+                badge: "DORMITÓRIO FEM",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/hRDKY479"
+            },
+            {
+                name: "12. Alas do Dormitório dos Meninos",
+                desc: "Ala residencial voltada aos estudantes masculinos. Quarto duplo compartilhado sob gestão da escola, integrando convivência entre herdeiros de vilões e heróis, áreas de estudo e espaços de descanso.",
+                badge: "DORMITÓRIO MASC",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/v6GCf965"
+            },
+            {
+                name: "13. Praça Central de Auradon",
+                desc: "O coração de Auradon é o principal ponto de encontro de estudantes, moradores e visitantes. Cercada por ruas de pedra branca, jardins impecáveis e uma grande fonte central, possui cafeterias, feiras culturais, apresentações musicais e celebrações promovidas pela Auradon Academy.",
+                badge: "CENTRO REAL",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/YVf2zzs"
+            }
         ];
 
-        // 25 Personagens Canon Memorizados
+        function renderDocentes() {
+            const grid = document.getElementById('docentes-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            docentesList.forEach(doc => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const wrap = document.createElement('div');
+                wrap.className = 'card-img-wrap';
+                const img = document.createElement('img');
+                img.alt = doc.name;
+                attachSmartImage(img, doc.image, doc.name);
+                wrap.appendChild(img);
+
+                const body = document.createElement('div');
+                body.className = 'card-body';
+
+                const title = document.createElement('h3');
+                title.textContent = doc.name;
+
+                const subj = document.createElement('p');
+                subj.innerHTML = `<strong>Matéria:</strong> ${doc.subject}`;
+
+                const desc = document.createElement('p');
+                desc.textContent = doc.desc;
+
+                const tag = document.createElement('span');
+                tag.className = `roster-tag ${doc.tagClass}`;
+                tag.textContent = doc.badge;
+
+                body.appendChild(title);
+                body.appendChild(subj);
+                body.appendChild(desc);
+                body.appendChild(tag);
+
+                card.appendChild(wrap);
+                card.appendChild(body);
+                grid.appendChild(card);
+            });
+        }
+
+        function renderLocais() {
+            const grid = document.getElementById('locais-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            locaisList.forEach(loc => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                const wrap = document.createElement('div');
+                wrap.className = 'card-img-wrap';
+                const img = document.createElement('img');
+                img.alt = loc.name;
+                attachSmartImage(img, loc.image, loc.name);
+                wrap.appendChild(img);
+
+                const body = document.createElement('div');
+                body.className = 'card-body';
+
+                const title = document.createElement('h3');
+                title.textContent = loc.name;
+
+                const desc = document.createElement('p');
+                desc.textContent = loc.desc;
+
+                body.appendChild(title);
+                body.appendChild(desc);
+
+                if (loc.clubes && loc.clubes.length > 0) {
+                    const clubesTitle = document.createElement('strong');
+                    clubesTitle.style.color = 'var(--accent-gold)';
+                    clubesTitle.style.fontSize = '0.88rem';
+                    clubesTitle.textContent = '● Principais Clubes:';
+                    body.appendChild(clubesTitle);
+
+                    const clubesList = document.createElement('ul');
+                    clubesList.className = 'card-list';
+                    loc.clubes.forEach(c => {
+                        const li = document.createElement('li');
+                        li.textContent = `➤ ${c}`;
+                        clubesList.appendChild(li);
+                    });
+                    body.appendChild(clubesList);
+                }
+
+                if (loc.materias && loc.materias.length > 0) {
+                    const materiasTitle = document.createElement('strong');
+                    materiasTitle.style.color = 'var(--accent-gold)';
+                    materiasTitle.style.fontSize = '0.88rem';
+                    materiasTitle.textContent = '● Principais Matérias:';
+                    body.appendChild(materiasTitle);
+
+                    const materiasList = document.createElement('ul');
+                    materiasList.className = 'card-list';
+                    loc.materias.forEach(m => {
+                        const li = document.createElement('li');
+                        li.textContent = `➤ ${m}`;
+                        materiasList.appendChild(li);
+                    });
+                    body.appendChild(materiasList);
+                }
+
+                const tag = document.createElement('span');
+                tag.className = `roster-tag ${loc.tagClass}`;
+                tag.textContent = loc.badge;
+                body.appendChild(tag);
+
+                card.appendChild(wrap);
+                card.appendChild(body);
+                grid.appendChild(card);
+            });
+        }
+
+        // 25 Personagens Canon
         let canonCharacters = [
             { id: 1, name: "Mal", parent: "Filha de Malévola e Hades", image: "https://ibb.co/1pZTL1m", status: "vago", claimedBy: "" },
-            { id: 2, name: "Evie", parent: "Filha da Rainha Má e Rei Magnífico", image: "https://ibb.co/fGrNfbQz", status: "vago", claimedBy: "" },
+            { id: 2, name: "Evie", parent: "Filha da Rainha Má e Rei Magnifico", image: "https://ibb.co/fGrNfbQz", status: "vago", claimedBy: "" },
             { id: 3, name: "Jay", parent: "Filho de Jafar", image: "https://ibb.co/6Rycrm4Q", status: "vago", claimedBy: "" },
             { id: 4, name: "Carlos De Vil", parent: "Filho de Cruella de Vil", image: "https://ibb.co/1Y4hpX4h", status: "vago", claimedBy: "" },
             { id: 5, name: "Ben", parent: "Filho de Bela e Fera", image: "https://ibb.co/Jj9B02Pt", status: "vago", claimedBy: "" },
@@ -1211,63 +1530,6 @@
             { id: 25, name: "Gil", parent: "Gaston", image: "https://ibb.co/xSKdy1S0", status: "vago", claimedBy: "" }
         ];
 
-        function renderDocentes() {
-            const grid = document.getElementById('docentes-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            docentesList.forEach(doc => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                const wrap = document.createElement('div');
-                wrap.className = 'card-img-wrap';
-                const img = document.createElement('img');
-                img.alt = doc.name;
-                attachSmartImage(img, doc.image, doc.name);
-                wrap.appendChild(img);
-
-                const body = document.createElement('div');
-                body.className = 'card-body';
-                body.innerHTML = `
-                    <h3>${doc.name}</h3>
-                    <p><strong>Matéria:</strong> ${doc.subject}</p>
-                    <p>${doc.desc}</p>
-                    <span class="roster-tag ${doc.tagClass}">${doc.badge}</span>
-                `;
-
-                card.appendChild(wrap);
-                card.appendChild(body);
-                grid.appendChild(card);
-            });
-        }
-
-        function renderLocais() {
-            const grid = document.getElementById('locais-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            locaisList.forEach(loc => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                const wrap = document.createElement('div');
-                wrap.className = 'card-img-wrap';
-                const img = document.createElement('img');
-                img.alt = loc.name;
-                attachSmartImage(img, loc.image, loc.name);
-                wrap.appendChild(img);
-
-                const body = document.createElement('div');
-                body.className = 'card-body';
-                body.innerHTML = `
-                    <h3>${loc.name}</h3>
-                    <p>${loc.desc}</p>
-                    <span class="roster-tag ${loc.tagClass}">${loc.badge}</span>
-                `;
-
-                card.appendChild(wrap);
-                card.appendChild(body);
-                grid.appendChild(card);
-            });
-        }
-
         function switchNav(viewId) {
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const activeLink = document.getElementById(`link-${viewId}`);
@@ -1283,9 +1545,18 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openModal(id) { document.getElementById(id).classList.add('open'); }
-        function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-        function toggleProgenitoresMenu() { document.getElementById('progenitoresMenu').classList.toggle('show'); }
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
+
+        function toggleProgenitoresMenu() {
+            const menu = document.getElementById('progenitoresMenu');
+            menu.classList.toggle('show');
+        }
 
         window.addEventListener('click', function(e) {
             if (!e.target.closest('.progenitores-dropdown-container')) {
@@ -1294,8 +1565,17 @@
             }
         });
 
-        function handleLogin(e) { e.preventDefault(); alert('Login efetuado com sucesso!'); closeModal('loginModal'); }
-        function handleRegister(e) { e.preventDefault(); alert('Conta criada com sucesso!'); closeModal('registerModal'); }
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('Login efetuado com sucesso!');
+            closeModal('loginModal');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            alert('Conta de jogador criada com sucesso!');
+            closeModal('registerModal');
+        }
 
         function updateCanonSummary() {
             const total = canonCharacters.length;
@@ -1323,13 +1603,19 @@
 
                 const body = document.createElement('div');
                 body.className = 'canon-body';
-                body.innerHTML = `
-                    <h3 style="color:var(--accent-gold); font-size:1.1rem;">${char.name}</h3>
-                    <p class="canon-parent">${char.parent}</p>
-                    <div class="canon-status ${isVago ? 'status-vago' : 'status-ocupado'}">
-                        ${isVago ? 'Vago — Pode Usar' : `Ocupado por ${char.claimedBy} — Indisponível`}
-                    </div>
-                `;
+
+                const title = document.createElement('h3');
+                title.style.color = 'var(--accent-gold)';
+                title.style.fontSize = '1.1rem';
+                title.textContent = char.name;
+
+                const parent = document.createElement('p');
+                parent.className = 'canon-parent';
+                parent.textContent = char.parent;
+
+                const statusBadge = document.createElement('div');
+                statusBadge.className = `canon-status ${isVago ? 'status-vago' : 'status-ocupado'}`;
+                statusBadge.textContent = isVago ? 'Vago — Pode Usar' : `Ocupado por ${char.claimedBy} — Indisponível`;
 
                 const actionBtn = document.createElement('button');
                 if (isVago) {
@@ -1346,7 +1632,11 @@
                     actionBtn.textContent = '🔒 Ocupado (Não Pode Usar)';
                 }
 
+                body.appendChild(title);
+                body.appendChild(parent);
+                body.appendChild(statusBadge);
                 body.appendChild(actionBtn);
+
                 card.appendChild(img);
                 card.appendChild(body);
                 grid.appendChild(card);
@@ -1360,16 +1650,16 @@
             if (!char) return;
 
             if (char.status !== 'vago') {
-                alert(`❌ ${char.name} já está ocupado por ${char.claimedBy}.`);
+                alert(`❌ ${char.name} já está ocupado por ${char.claimedBy} e não pode ser usado.`);
                 return;
             }
 
-            const playerName = prompt(`"${char.name}" está vago! Digite seu nome de jogador:`);
+            const playerName = prompt(`"${char.name}" está vago! Digite seu nome para ocupar este personagem:`);
             if (playerName && playerName.trim() !== '') {
                 char.status = 'ocupado';
                 char.claimedBy = playerName.trim();
                 renderCanon();
-                alert(`✅ Você agora ocupa ${char.name}! Ele ficará marcado como ocupado para os outros.`);
+                alert(`✅ Você agora ocupa ${char.name}! Ele ficará marcado como ocupado para os outros jogadores.`);
             }
         }
 
@@ -1404,12 +1694,13 @@
             document.getElementById('character-form').reset();
             document.getElementById('char-photo').value = DEFAULT_PHOTO;
 
-            alert('Ficha registrada com sucesso!');
+            alert('Ficha registrada com sucesso! Veja na aba Alunos & Fichas.');
             switchNav('alunos');
         }
 
         function updateCounterDisplay() {
-            document.getElementById('counter-display').innerText = `Filhos Registrados: ${studentRoster.length} / 4`;
+            const count = studentRoster.length;
+            document.getElementById('counter-display').innerText = `Filhos Registrados: ${count} / 4`;
         }
 
         function renderRoster(filter = 'all') {
@@ -1440,6 +1731,7 @@
 
                 const card = document.createElement('div');
                 card.className = 'roster-card';
+
                 const img = document.createElement('img');
                 img.alt = student.name;
                 attachSmartImage(img, student.photo || DEFAULT_PHOTO, student.name);
