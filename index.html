@@ -9,8 +9,8 @@
     <style>
         :root {
             --bg-dark: #090614;
-            --bg-card: rgba(23, 15, 38, 0.88);
-            --bg-glass: rgba(18, 11, 31, 0.78);
+            --bg-card: rgba(23, 15, 38, 0.85);
+            --bg-glass: rgba(18, 11, 31, 0.7);
             --accent-purple: #8a2be2;
             --accent-glow: #bd00ff;
             --accent-gold: #e5c158;
@@ -56,14 +56,13 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(9, 6, 20, 0.9);
+            background: rgba(9, 6, 20, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-glow);
-            padding: 0.9rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
         }
 
         .logo {
@@ -71,12 +70,10 @@
             align-items: center;
             gap: 12px;
             font-weight: 700;
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             color: var(--accent-gold);
             text-shadow: 0 0 10px rgba(229, 193, 88, 0.4);
             text-decoration: none;
-            white-space: nowrap;
-            cursor: pointer;
         }
 
         .logo-icon {
@@ -89,48 +86,44 @@
             justify-content: center;
             box-shadow: 0 0 15px var(--accent-glow);
             font-size: 1.2rem;
-            color: #090614;
         }
 
         .nav-links {
             display: flex;
-            gap: 0.7rem;
+            gap: 1.5rem;
             list-style: none;
-            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             transition: var(--transition);
-            padding: 0.4rem 0.65rem;
+            padding: 0.5rem 0.75rem;
             border-radius: 8px;
             cursor: pointer;
-            white-space: nowrap;
         }
 
         .nav-links a:hover, .nav-links a.active {
             color: var(--accent-gold);
-            background: rgba(229, 193, 88, 0.12);
+            background: rgba(229, 193, 88, 0.1);
             text-shadow: 0 0 8px rgba(229, 193, 88, 0.5);
         }
 
         .nav-actions {
             display: flex;
-            gap: 0.7rem;
-            white-space: nowrap;
+            gap: 1rem;
         }
 
         .btn {
-            padding: 0.58rem 1.15rem;
+            padding: 0.6rem 1.4rem;
             border-radius: var(--radius-md);
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
             border: none;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -163,17 +156,10 @@
             box-shadow: 0 0 20px rgba(229, 193, 88, 0.6);
         }
 
-        .btn-locked {
-            background: rgba(239, 68, 68, 0.15);
-            border: 1px solid rgba(239, 68, 68, 0.45);
-            color: #fca5a5;
-            cursor: not-allowed;
-        }
-
         /* Views Switching */
         .page-view {
             display: none;
-            animation: fadeIn 0.35s ease forwards;
+            animation: fadeIn 0.4s ease forwards;
         }
 
         .page-view.active {
@@ -181,14 +167,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Hero Section */
         .hero {
-            padding: 150px 2rem 60px;
+            padding: 160px 2rem 60px;
             text-align: center;
+            position: relative;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -208,12 +195,13 @@
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             line-height: 1.15;
             margin-bottom: 1.5rem;
             background: linear-gradient(180deg, #ffffff 30%, var(--accent-gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
         }
 
         .hero p {
@@ -240,7 +228,7 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .section-header h2 {
@@ -253,10 +241,10 @@
             color: var(--text-muted);
         }
 
-        /* Capa / Banner */
+        /* Capa / Banner Exclusivo da Seção de Alunos */
         .roster-banner-container {
             width: 100%;
-            height: 270px;
+            height: 280px;
             border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--border-gold);
@@ -269,7 +257,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.82) contrast(1.08);
+            filter: brightness(0.85) contrast(1.1);
+            transition: transform 0.6s ease;
+        }
+
+        .roster-banner-container:hover img {
+            transform: scale(1.03);
         }
 
         .roster-banner-overlay {
@@ -277,15 +270,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 1.8rem 2rem;
-            background: linear-gradient(to top, rgba(9, 6, 20, 0.96), rgba(9, 6, 20, 0.45), transparent);
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(9, 6, 20, 0.95), transparent);
             text-align: center;
         }
 
         .roster-banner-overlay h2 {
             color: var(--accent-gold);
-            font-size: 2.05rem;
-            text-shadow: 0 0 15px rgba(229, 193, 88, 0.45);
+            font-size: 2.2rem;
+            text-shadow: 0 0 15px rgba(229, 193, 88, 0.5);
             margin-bottom: 0.3rem;
         }
 
@@ -296,7 +289,7 @@
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -305,6 +298,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
             border-radius: var(--radius-lg);
+            padding: 0;
             transition: var(--transition);
             backdrop-filter: blur(10px);
             position: relative;
@@ -362,7 +356,7 @@
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             color: var(--accent-gold);
             margin-bottom: 0.8rem;
         }
@@ -414,6 +408,1487 @@
             transition: var(--transition);
         }
 
+        .progenitores-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #6b21a8);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .progenitores-menu {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 0;
+            background: #120b1f;
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            z-index: 100;
+            width: 380px;
+            padding: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .progenitores-menu.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .progenitor-section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin: 0.8rem 0 0.3rem;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(229,193,88,0.2);
+            padding-bottom: 2px;
+        }
+
+        .progenitor-list {
+            list-style: none;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding-left: 4px;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .progenitor-list li {
+            padding: 2px 0;
+        }
+
+        .couple-highlight {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent-purple);
+            color: white;
+            border-color: var(--accent-glow);
+        }
+
+        .counter-badge-display {
+            background: rgba(229, 193, 88, 0.15);
+            border: 1px solid var(--border-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .search-input {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-glow);
+            color: white;
+            width: 220px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .roster-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .roster-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(229, 193, 88, 0.15);
+        }
+
+        .roster-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .roster-info {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .roster-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .roster-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .roster-tag {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tag-villains { background: rgba(239, 68, 68, 0.2); color: var(--accent-ruby); border: 1px solid var(--accent-ruby); }
+        .tag-heroes { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
+        .tag-disney { background: rgba(138, 43, 226, 0.2); color: var(--accent-glow); border: 1px solid var(--accent-purple); }
+
+        .roster-details {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        input, select, textarea {
+            padding: 0.75rem;
+            border-radius: 8px;
+            background: rgba(9, 6, 20, 0.8);
+            border: 1px solid var(--border-glow);
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
+        }
+
+        .helper-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-glow);
+            background: rgba(5, 3, 12, 0.95);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .disclaimer-box {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            padding: 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-md);
+            color: #fca5a5;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 0 40px rgba(189, 0, 255, 0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .empty-msg {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: var(--text-muted);
+            padding: 3rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+            .roster-banner-container { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo" onclick="switchNav('inicio')">
+            <div class="logo-icon">👑</div>
+            <span> Bem vindos a Auradon</span>
+        </a>
+        <ul class="nav-links">
+            <li><a id="link-inicio" class="active" onclick="switchNav('inicio')">Início</a></li>
+            <li><a id="link-lore" onclick="switchNav('lore')">História</a></li>
+            <li><a id="link-alunos" onclick="switchNav('alunos')">Alunos & Fichas</a></li>
+            <li><a id="link-criar-ficha" onclick="switchNav('criar-ficha')">Criar Ficha</a></li>
+            <li><a id="link-docentes" onclick="switchNav('docentes')">Docência</a></li>
+            <li><a id="link-locais" onclick="switchNav('locais')">Locais de Auradon</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn btn-outline" onclick="openModal('loginModal')">Entrar</button>
+            <button class="btn btn-gold" onclick="openModal('registerModal')">Cadastrar</button>
+        </div>
+    </nav>
+
+    <!-- VIEWS -->
+    
+    <!-- 1. INÍCIO -->
+    <main id="view-inicio" class="page-view active">
+        <header class="hero">
+            <span class="hero-badge">RPG de Interpretação Online</span>
+            <h1>Descendentes — Colégio de Auradon</h1>
+            <p>Bem-vindo ao portal oficial do nosso universo. A barreira da Ilha dos Perdidos acabou de cair e os filhos dos vilões estão chegando em Auradon Prep para o novo ano letivo. Acompanharemos a convivência, rixas, alianças, segredos e novos poderes entre filhos de heróis e vilões com a ajuda de Mal, Evie, Carlos e Jay.</p>
+            <div class="hero-cta">
+                <a class="btn btn-gold" onclick="switchNav('criar-ficha')">📜 Criar Sua Ficha</a>
+                <a class="btn btn-outline" onclick="switchNav('lore')">📖 Explorar a Lore</a>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="section-header">
+                <h2>Explorar o Portal</h2>
+                <p>Navegue pelas seções principais da academia.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card" onclick="switchNav('locais')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Auradon Prep" onerror="this.src='https://i.ibb.co/Z1Fbksxj/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Locais de Auradon</h3>
+                        <p>Visite a fachada do castelo, o Jardim da Harmonia, o Lago dos Espelhos, a Sala de Esgrima e todas as instalações da academia.</p>
+                        <span class="roster-tag tag-disney">12 AMBIENTES</span>
+                    </div>
+                </div>
+                <div class="card" onclick="switchNav('docentes')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/QvKsMvqK/fada-madrinha.jpg" alt="Professores" onerror="this.src='https://i.ibb.co/QvKsMvqK/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Quadro Docente</h3>
+                        <p>Conheça os 8 professores responsáveis pelas matérias teóricas e práticas, da Fada Madrinha ao Capitão Phoebus.</p>
+                        <span class="roster-tag tag-disney">8 PROFESSORES</span>
+                    </div>
+                </div>
+                <div class="card" onclick="switchNav('alunos')" style="cursor: pointer;">
+                    <div class="card-img-wrap">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Alunos">
+                    </div>
+                    <div class="card-body">
+                        <h3>Fichas dos Alunos</h3>
+                        <p>Acompanhe as fichas dos novos estudantes cadastrados e prontos para o ano letivo.</p>
+                        <span class="roster-tag tag-heroes">ROSTER ATIVO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 2. LORE / HISTÓRIA -->
+    <main id="view-lore" class="page-view">
+        <div class="container" style="padding-top: 140px;">
+            <div class="section-header">
+                <h2>O Reino de Auradon</h2>
+                <p>Descubra os acontecimentos que moldam o novo ano letivo em Auradon Prep.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card" style="padding: 2rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏰</div>
+                    <h3>Auradon Prep</h3>
+                    <p>Sob a administração da Fada Madrinha e designada pelo governo real de Auradon, a prestigiada instituição abre portas para mais filhos de vilões e heróis aprenderem a conviver em harmonia.</p>
+                </div>
+                <div class="card" style="padding: 2rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">✨</div>
+                    <h3>Fim da Magia?</h3>
+                    <p>Com a abertura da barreira muitos alunos estão recém conhecendo seus dons mágicos, mesmo Auradon insistindo em uma vida sem magia. Como os alunos lidarão com seus dons e seguir as regras de Auradon, lidando com filhos de mocinhos.</p>
+                </div>
+                <div class="card" style="padding: 2rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏴‍☠️</div>
+                    <h3>Tensão & Alianças</h3>
+                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola, exigindo consenso e auxílio de nossos VKs.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 3. ALUNOS & FICHAS -->
+    <main id="view-alunos" class="page-view">
+        <div class="container" style="padding-top: 140px;">
+            
+            <!-- CAPA DA SEÇÃO DE PERSONAGENS / ALUNOS -->
+            <div class="roster-banner-container">
+                <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Capa dos Personagens - Descendentes" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
+                <div class="roster-banner-overlay">
+                    <h2>Alunos & Fichas de Auradon</h2>
+                    <p>Explore o roster oficial de estudantes, herdeiros e heróis do nosso RPG</p>
+                </div>
+            </div>
+
+            <!-- Painel Superior com Botão Progenitores e Filtros -->
+            <div class="filter-bar">
+                <div class="filter-top-row">
+                    <!-- BOTÃO PROGENITORES COM OS TRÊS BOTÕES INTERNOS E LISTAGENS ATUALIZADAS -->
+                    <div class="progenitores-dropdown-container">
+                        <button class="progenitores-btn" onclick="toggleProgenitoresMenu()">
+                            <i class="fa-solid fa-users"></i> Progenitores <i class="fa-solid fa-caret-down"></i>
+                        </button>
+                        <div id="progenitoresMenu" class="progenitores-menu">
+                            <div class="progenitor-section-title">Vilões (Casais em Destaque & Demais)</div>
+                            <ul class="progenitor-list">
+                                <li><span class="couple-highlight">🖤 Casal: Hades & Malévola</span></li>
+                                <li><span class="couple-highlight">👑 Casal: Rainha Má & Rei Magnífico</span></li>
+                                <li>Lobo Mau (Chapeuzinho Vermelho)</li>
+                                <li>Stromboli & Cocheiro (Pinóquio)</li>
+                                <li>Chernabog (Fantasia)</li>
+                                <li>Madrasta Lady Tremaine, Anastácia & Drizella (Cinderela)</li>
+                                <li>Rainha de Copas (Alice no País das Maravilhas)</li>
+                                <li>Capitão Gancho (Peter Pan)</li>
+                                <li>Cruella de Vil, Jasper & Gaspar (101 Dálmatas)</li>
+                                <li>Madame Mim (A Espada Era a Lei)</li>
+                                <li>Úrsula (A Pequena Sereia)</li>
+                                <li>Gaston (A Bela e a Fera)</li>
+                                <li>Jafar (Aladdin)</li>
+                                <li>Scar (O Rei Leão)</li>
+                                <li>Governador Ratcliffe (Pocahontas)</li>
+                                <li>Juiz Claude Frollo (O Corcunda de Notre Dame)</li>
+                                <li>Agonia & Pânico (Hércules)</li>
+                                <li>Shan Yu (Mulan)</li>
+                                <li>Clayton (Tarzan)</li>
+                                <li>Yzma (A Nova Onda do Imperador)</li>
+                                <li>Dr. Facilier (A Princesa e o Sapo)</li>
+                                <li>Mamãe Gothel (Enrolados)</li>
+                                <li>Príncipe Hans (Frozen)</li>
+                                <li>Tamatoa (Moana)</li>
+                                <li>Rumpelstiltskin & Zelena / Bruxa Má do Oeste (OUAT / Disney)</li>
+                                <li>Morgana (Rei Arthur)</li>
+                                <li>O Caçador (Branca de Neve)</li>
+                                <li>Edgar Balthazar (Aristogatas)</li>
+                                <li>Príncipe João (Robin Hood)</li>
+                                <li>Rei de Chifres (O Caldeirão Mágico)</li>
+                                <li>Comandante Rourke & Helga Sinclair (Atlantis)</li>
+                            </ul>
+
+                            <div class="progenitor-section-title">Heróis (Personagens Heróis)</div>
+                            <ul class="progenitor-list">
+                                <li>Branca de Neve e Príncipe Florian</li>
+                                <li>Cinderela e Príncipe Encantado</li>
+                                <li>Aurora e Príncipe Phillip</li>
+                                <li>Ariel e Príncipe Eric</li>
+                                <li>Bela e Fera (Príncipe Adam)</li>
+                                <li>Jasmine e Aladdin</li>
+                                <li>Pocahontas e John Smith</li>
+                                <li>Mulan e Li Shang</li>
+                                <li>Tiana e Príncipe Naveen</li>
+                                <li>Rapunzel e Flynn Rider (José Bezerra)</li>
+                                <li>Merida, Moana, Raya</li>
+                                <li>Anna e Kristoff, Elsa</li>
+                                <li>Esmeralda e Phoebus</li>
+                                <li>Mégara e Hércules</li>
+                                <li>Jane Porter e Tarzan</li>
+                                <li>Kida e Milo Thatch</li>
+                                <li>Mirabel (Encanto)</li>
+                                <li>Asha (Wish: O Poder dos Desejos)</li>
+                            </ul>
+
+                            <div class="progenitor-section-title">Personagens (Comuns Disney / Contos)</div>
+                            <ul class="progenitor-list">
+                                <li>Chapeleiro Maluco (Alice no País das Maravilhas)</li>
+                                <li>Gato de Cheshire / Gato Risonho (Alice no País das Maravilhas)</li>
+                                <li>Coelho Branco (Alice no País das Maravilhas)</li>
+                                <li>Gênio da Lâmpada (Aladdin)</li>
+                                <li>Lumière (A Bela e a Fera)</li>
+                                <li>Horloge (A Bela e a Fera)</li>
+                                <li>Madame Samovar (A Bela e a Fera)</li>
+                                <li>Zip (A Bela e a Fera)</li>
+                                <li>Guarda-Roupa / Madame de Garderobe (A Bela e a Fera)</li>
+                                <li>Sininho / Tinker Bell (Peter Pan)</li>
+                                <li>Fada Madrinha (Cinderela)</li>
+                                <li>Flora, Fauna e Primavera (A Bela Adormecida)</li>
+                                <li>Fada Azul (Pinóquio)</li>
+                                <li>Luisa, Isabela, Bruno, Camilo e Pepa Madrigal (Encanto)</li>
+                                <li>João Darling & Miguel Darling (Peter Pan)</li>
+                                <li>Sr. Smee / Barrica (Peter Pan)</li>
+                                <li>Chapeuzinho Vermelho (Contos)</li>
+                                <li>Merlin (A Espada Era a Lei)</li>
+                                <li>Evanora (Mágico de Oz)</li>
+                                <li>Oscar Diggs / O Mágico de Oz (Mágico de Oz)</li>
+                                <li>Glinda (Mágico de Oz)</li>
+                                <li>Maui (Moana)</li>
+                                <li>Zeus e Hera (Hércules)</li>
+                                <li>Hermes (Hércules)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Contagem de Filhos (Máx 4 Geral) -->
+                    <div class="counter-badge-display" id="counter-display">
+                        Filhos Registrados: 0 / 4
+                    </div>
+
+                    <!-- Input de Busca -->
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome..." onkeyup="searchRoster()">
+                </div>
+
+                <!-- Botões de Filtragem Rápida por Categoria -->
+                <div class="filter-buttons">
+                    <button id="btn-filter-all" class="filter-btn active" onclick="filterRoster('all')">Todos</button>
+                    <button id="btn-filter-villains" class="filter-btn" onclick="filterRoster('villains')">Vilões</button>
+                    <button id="btn-filter-heroes" class="filter-btn" onclick="filterRoster('heroes')">Heróis</button>
+                    <button id="btn-filter-disney" class="filter-btn" onclick="filterRoster('disney')">Personagens Disney / Contos</button>
+                </div>
+            </div>
+
+            <div id="roster-grid" class="roster-grid">
+                <div class="empty-msg">Nenhuma ficha criada ainda. Acesse "Criar Ficha" para inaugurar o roster!</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 4. CRIAR FICHA -->
+    <main id="view-criar-ficha" class="page-view">
+        <div class="container" style="padding-top: 140px;">
+            <div class="section-header">
+                <h2>Formulário de Personagem</h2>
+                <p>Preencha os dados do seu herdeiro para ingressar em Auradon Prep. (Máximo de 4 filhos no total e limite de 4 filhos por progenitor).</p>
+            </div>
+            
+            <div class="form-container">
+                <form id="character-form" onsubmit="saveCharacter(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nome do Personagem</label>
+                            <input type="text" id="char-name" required placeholder="Ex: Maeve Mim">
+                        </div>
+                        <div class="form-group">
+                            <label>Filiação (Pai ou Mãe Disney / Contos)</label>
+                            <input type="text" id="char-parent" required placeholder="Ex: Chapeleiro Maluco ou Maui">
+                            <span class="helper-text">Cada progenitor pode ter no máximo 4 filhos registrados.</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Categoria de Origem</label>
+                            <select id="char-category" required>
+                                <option value="villains">Vilão (Personagens Vilões)</option>
+                                <option value="heroes">Herói (Personagens Heróis)</option>
+                                <option value="disney" selected>Personagens (Comuns Disney / Contos)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Idade / Ano Escolar</label>
+                            <input type="text" id="char-age" required placeholder="Ex: 16 anos / 2º Ano">
+                        </div>
+                        <div class="form-group full">
+                            <label>Aparência (Photoplayer - Link da Imagem)</label>
+                            <input type="text" id="char-photo" required placeholder="Cole a URL da foto do seu personagem">
+                        </div>
+                        <div class="form-group full">
+                            <label>Poderes & Habilidades</label>
+                            <textarea id="char-powers" rows="3" required placeholder="Descreva os feitiços, talentos físicos ou magia herdada..."></textarea>
+                        </div>
+                        <div class="form-group full">
+                            <label>Personalidade & História (Tema Disney / Contos)</label>
+                            <textarea id="char-history" rows="4" required placeholder="Descreva a trajetória com base em reinos e contos clássicos..."></textarea>
+                            <span class="helper-text">História restrita exclusivamente a contos de fadas tradicionais e universos Disney.</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem;">📜 Finalizar e Registrar Ficha</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- 5. DOCÊNCIA -->
+    <main id="view-docentes" class="page-view">
+        <div class="container" style="padding-top: 140px;">
+            <div class="section-header">
+                <h2>Corpo Docente de Auradon Prep</h2>
+                <p>Professores e disciplinas da academia real.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/QvKsMvqK/fada-madrinha.jpg" alt="Fada Madrinha" onerror="this.src='https://i.ibb.co/QvKsMvqK/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Fada Madrinha</h3>
+                        <p><strong>Matéria:</strong> Bondade Corretiva 101</p>
+                        <p>Diretora da instituição, focada no ensino de empatia, ética e boas práticas morais para todos os alunos.</p>
+                        <span class="roster-tag tag-disney">DIRETORIA</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/d0MXyp33/alistair-blackwood.jpg" alt="Alistair Blackwood" onerror="this.src='https://i.ibb.co/d0MXyp33/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Alistair Blackwood</h3>
+                        <p><strong>Matérias:</strong> História da Magia, História de Auradon e Geografia dos Terrenos de Auradon</p>
+                        <p>Especialista em cronologias dos reinos e evolução de artefatos mágicos.</p>
+                        <span class="roster-tag tag-disney">HUMANIDADES</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/wrd9ntWM/fada-primavera.jpg" alt="Fada Primavera" onerror="this.src='https://i.ibb.co/wrd9ntWM/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Fada Primavera</h3>
+                        <p><strong>Matéria:</strong> Habilidades de Vida Sem Magia</p>
+                        <p>Ensina os alunos a realizarem tarefas cotidianas com autonomia e sem o uso de varinhas.</p>
+                        <span class="roster-tag tag-disney">PRÁTICA</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/pHDhhxp/sr-deley.jpg" alt="Sr. Deley" onerror="this.src='https://i.ibb.co/pHDhhxp/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Sr. Deley</h3>
+                        <p><strong>Matérias:</strong> Química / Ciências / Matemática</p>
+                        <p>Instrutor metódico de ciências exatas, cálculo e reações químicas controladas.</p>
+                        <span class="roster-tag tag-disney">EXATAS</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/whPmMDr6/coach-jenkins.jpg" alt="Coach Jenkins" onerror="this.src='https://i.ibb.co/whPmMDr6/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Coach Jenkins</h3>
+                        <p><strong>Matéria:</strong> Educação Física / Técnico do time de Tourney da Auradon Prep</p>
+                        <p>Responsável pelo condicionamento físico dos estudantes e pelos treinos do time oficial de Tourney.</p>
+                        <span class="roster-tag tag-disney">ESPORTES</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/R4vqMQQw/fada-fauna.jpg" alt="Fada Fauna" onerror="this.src='https://i.ibb.co/R4vqMQQw/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Fada Fauna</h3>
+                        <p><strong>Matérias:</strong> Botânica, Mágica e Poções</p>
+                        <p>Instrui sobre ervas místicas, elixires medicinais e flora encantada dos reinos.</p>
+                        <span class="roster-tag tag-disney">CIÊNCIAS MÁGICAS</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/R4vqMQQw/celina-lira.jpg" alt="Celina Lira" onerror="this.src='https://i.ibb.co/R4vqMQQw/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Celina Lira</h3>
+                        <p><strong>Matéria:</strong> Música e Expressão Teatral</p>
+                        <p>Desenvolve o talento vocal, arranjos musicais e performances no auditório de Auradon.</p>
+                        <span class="roster-tag tag-disney">ARTES</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/k2twXNQ9/capitao-phoebus.jpg" alt="Capitão Phoebus" onerror="this.src='https://i.ibb.co/k2twXNQ9/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Capitão Phoebus</h3>
+                        <p><strong>Matéria:</strong> Esgrima e Luta</p>
+                        <p>Treinador militar focado em técnicas de florete, autodefesa, honra e manuseio seguro de espadas.</p>
+                        <span class="roster-tag tag-disney">COMBATE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 6. LOCAIS DE AURADON -->
+    <main id="view-locais" class="page-view">
+        <div class="container" style="padding-top: 140px;">
+            <div class="section-header">
+                <h2>Locais de Auradon</h2>
+                <p>Mapeamento de todos os ambientes e espaços de convivência da escola.</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Auradon Academy" onerror="this.src='https://i.ibb.co/Z1Fbksxj/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Auradon Academy (Fachada Principal)</h3>
+                        <p>A maior instituição de ensino do reino, responsável por formar a nova geração de príncipes, princesas, heróis, vilões e futuros líderes.</p>
+                        <span class="roster-tag tag-disney">FACHADA PRINCIPAL</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/jvzRW7Xq/dormitorios-feminino.jpg" alt="Dormitórios Reais (Feminino)" onerror="this.src='https://i.ibb.co/jvzRW7Xq/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Dormitórios Reais (Feminino)</h3>
+                        <p>Acomodam as alunas em quartos duplos decorados com dosséis e em tons clássicos, promovendo a convivência e a amizade.</p>
+                        <span class="roster-tag tag-disney">ALA RESIDENCIAL</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/v632qC5N/dormitorios-masculino.jpg" alt="Dormitórios Reais (Masculino)" onerror="this.src='https://i.ibb.co/v632qC5N/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Dormitórios Reais (Masculino)</h3>
+                        <p>Acomodam os alunos em quartos duplos com estilo nobre em tons de azul, verde e madeira, exibindo estandartes de Auradon Prep.</p>
+                        <span class="roster-tag tag-disney">ALA RESIDENCIAL</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/PzJPz4HF/jardim-harmonia.jpg" alt="Jardim da Harmonia" onerror="this.src='https://i.ibb.co/PzJPz4HF/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Jardim da Harmonia</h3>
+                        <p>O lugar mais tranquilo da Academia, com sebes esculpidas, fonte mágica central iluminada e estátuas ornamentais.</p>
+                        <span class="roster-tag tag-disney">ÁREA VERDE</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/Kx4RGvMm/ginasio-real.jpg" alt="Ginásio Real" onerror="this.src='https://i.ibb.co/Kx4RGvMm/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Ginásio Real & Campo de Tourney</h3>
+                        <p>Centro esportivo completo para educação física, treinos de Tourney, esgrima e combate mágico com arquibancadas ao ar livre.</p>
+                        <span class="roster-tag tag-disney">ESPORTES</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/LXxSjT2c/lago-espelhos.jpg" alt="Lago dos Espelhos" onerror="this.src='https://i.ibb.co/LXxSjT2c/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Lago dos Espelhos</h3>
+                        <p>Lago cristalino localizado a 2 km da escola com colunas de pedra e templo de ruínas, cujas águas refletem o coração de quem observa.</p>
+                        <span class="roster-tag tag-disney">MARCO MÁGICO</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/FLjbRqxt/museu-historia.jpg" alt="Museu da História" onerror="this.src='https://i.ibb.co/FLjbRqxt/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Museu da História dos Reinos</h3>
+                        <p>Fachada clássica com iluminação noturna que guarda coroas, relíquias, armas lendárias e livros mágicos com áreas restritas.</p>
+                        <span class="roster-tag tag-disney">RELÍQUIAS</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/hFgJrNM7/praca-central.jpg" alt="Praça Central" onerror="this.src='https://i.ibb.co/hFgJrNM7/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Praça Central de Auradon</h3>
+                        <p>O coração de Auradon, cercada por construções de pedra, canteiros floridos, fontes e cafeterias para encontro dos alunos.</p>
+                        <span class="roster-tag tag-disney">CONVIVÊNCIA</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/Jwxnnxn4/sala-esgrima.jpg" alt="Sala de Esgrima" onerror="this.src='https://i.ibb.co/Jwxnnxn4/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Sala de Esgrima e Luta</h3>
+                        <p>Espaço circular interno decorado em azul e amarelo com marcações no chão onde o Capitão Phoebus ministra aulas práticas de duelo.</p>
+                        <span class="roster-tag tag-disney">TREINAMENTO</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/xS595hRS/corredor-armarios.jpg" alt="Corredor de Armários" onerror="this.src='https://i.ibb.co/xS595hRS/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Corredor de Armários</h3>
+                        <p>Varanda da academia com filas de armários azuis e o brasão de Auradon Prep, mesas de estudo e regras de Tourney expostas.</p>
+                        <span class="roster-tag tag-disney">INTERNET & ESTUDO</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/cX6fYdRW/escadarias-principais.jpg" alt="Escadarias Principais" onerror="this.src='https://i.ibb.co/cX6fYdRW/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Escadarias Principais do Hall</h3>
+                        <p>Saguão grandioso em madeira nobre com lustres de cristal e vitral ao fundo que conecta a entrada aos corredores superiores.</p>
+                        <span class="roster-tag tag-disney">HALL PRINCIPAL</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img src="https://i.ibb.co/CKcdSXc7/salas-aula.jpg" alt="Salas de Aula" onerror="this.src='https://i.ibb.co/CKcdSXc7/image.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3>Salas de Aula Tradicionais</h3>
+                        <p>Salas amplas com vigas de madeira no teto, bancadas duplas, quadros negros e estantes para as disciplinas teóricas.</p>
+                        <span class="roster-tag tag-disney">AULAS TEÓRICAS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="disclaimer-box">
+            <strong>Aviso de Projeto Independente:</strong> O projeto Descendentes — End Of Magic é um jogo de interpretação (RPG) feito por fãs de forma independente e não possui vínculo oficial com a The Walt Disney Company.
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Descendentes — End Of Magic. Todos os direitos reservados aos criadores do RPG.</p>
+    </footer>
+
+    <!-- MODALS -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h3 style="color: var(--accent-gold); margin-bottom: 1.5rem; text-align: center;">Acessar Portal</h3>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Nome de Usuário</label>
+                    <input type="text" required placeholder="Seu usuário">
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Senha</label>
+                    <input type="password" required placeholder="Sua senha">
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('registerModal')">&times;</span>
+            <h3 style="color: var(--accent-gold); margin-bottom: 1.5rem; text-align: center;">Cadastrar Conta</h3>
+            <form onsubmit="handleRegister(event)">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Nome Completo</label>
+                    <input type="text" required placeholder="Seu nome">
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Nome de Usuário</label>
+                    <input type="text" required placeholder="Username no jogo">
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Senha</label>
+                    <input type="password" required placeholder="Criar senha">
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Confirmar Senha</label>
+                    <input type="password" required placeholder="Repetir senha">
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%;">Finalizar Cadastro</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let studentRoster = [];
+        let currentFilter = 'all';
+
+        function switchNav(viewId) {
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const activeLink = document.getElementById(`link-${viewId}`);
+            if(activeLink) activeLink.classList.add('active');
+
+            document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
+            document.getElementById(`view-${viewId}`).classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+        }
+
+        function toggleProgenitoresMenu() {
+            const menu = document.getElementById('progenitoresMenu');
+            menu.classList.toggle('show');
+        }
+
+        window.addEventListener('click', function(e) {
+            if (!e.target.closest('.progenitores-dropdown-container')) {
+                document.getElementById('progenitoresMenu').classList.remove('show');
+            }
+        });
+
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('Login efetuado com sucesso!');
+            closeModal('loginModal');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            alert('Conta de jogador criada com sucesso!');
+            closeModal('registerModal');
+        }
+
+        function saveCharacter(e) {
+            e.preventDefault();
+
+            // 1. Validação do Limite Total de 4 Filhos por Jogador
+            if (studentRoster.length >= 4) {
+                alert('⚠️ Limite atingido! Cada jogador pode registrar no máximo 4 filhos no total.');
+                return;
+            }
+            
+            const name = document.getElementById('char-name').value;
+            const parentInput = document.getElementById('char-parent').value.trim();
+            const category = document.getElementById('char-category').value;
+            const age = document.getElementById('char-age').value;
+            const photo = document.getElementById('char-photo').value;
+            const powers = document.getElementById('char-powers').value;
+            const history = document.getElementById('char-history').value;
+
+            const parentNormalized = parentInput.toLowerCase();
+
+            // 2. Validação do Limite Individual de 4 Filhos por Progenitor
+            const existingSiblingsCount = studentRoster.filter(s => s.parent.toLowerCase() === parentNormalized).length;
+            if (existingSiblingsCount >= 4) {
+                alert(`⚠️ Limite excedido para o progenitor "${parentInput}"! Cada progenitor pode ter no máximo 4 filhos cadastrados.`);
+                return;
+            }
+
+            const newChar = { name, parent: parentInput, category, age, photo, powers, history };
+            studentRoster.push(newChar);
+
+            updateCounterDisplay();
+            renderRoster(currentFilter);
+            document.getElementById('character-form').reset();
+            alert('Ficha registrada com sucesso! Veja na aba Alunos & Fichas.');
+            switchNav('alunos');
+        }
+
+        function updateCounterDisplay() {
+            const count = studentRoster.length;
+            document.getElementById('counter-display').innerText = `Filhos Registrados: ${count} / 4`;
+        }
+
+        function renderRoster(filter = 'all') {
+            currentFilter = filter;
+            const grid = document.getElementById('roster-grid');
+            
+            let filtered = studentRoster;
+            if(filter !== 'all') {
+                filtered = studentRoster.filter(s => s.category === filter);
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="empty-msg">Nenhuma ficha cadastrada nesta categoria.</div>`;
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(student => {
+                let tagClass = 'tag-disney';
+                let tagLabel = 'Personagem / Conto';
+                if(student.category === 'villains') {
+                    tagClass = 'tag-villains';
+                    tagLabel = 'Vilões';
+                } else if(student.category === 'heroes') {
+                    tagClass = 'tag-heroes';
+                    tagLabel = 'Heróis';
+                }
+
+                html += `
+                    <div class="roster-card">
+                        <img src="student.photo"alt="{student.name}" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+                        <div class="roster-info">
+                            <div class="roster-header">
+                                <span class="roster-name">${student.name}</span>
+                                <span class="roster-tag tagClass">{tagLabel}</span>
+                            </div>
+                            <div class="roster-details">
+                                <p><strong>Filiação:</strong> ${student.parent}</p>
+                                <p><strong>Ano/Idade:</strong> ${student.age}</p>
+                                <p style="margin-top:0.4rem;"><strong>Poderes:</strong> ${student.powers}</p>
+                                <p style="margin-top:0.4rem;"><strong>História:</strong> ${student.history}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            grid.innerHTML = html;
+        }
+
+        function filterRoster(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-filter-${category}`);
+            if(activeBtn) activeBtn.classList.add('active');
+            renderRoster(category);
+        }
+
+        function searchRoster() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.roster-card');
+            
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if(text.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        updateCounterDisplay();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descendentes — Bem vindos ao colegio de Auradon | RPG Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #090614;
+            --bg-card: rgba(23, 15, 38, 0.85);
+            --bg-glass: rgba(18, 11, 31, 0.7);
+            --accent-purple: #8a2be2;
+            --accent-glow: #bd00ff;
+            --accent-gold: #e5c158;
+            --accent-emerald: #10b981;
+            --accent-ruby: #ef4444;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(189, 0, 255, 0.3);
+            --border-gold: rgba(229, 193, 88, 0.4);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(9, 6, 20, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand-text {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(9, 6, 20, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(229, 193, 88, 0.4);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px var(--accent-glow);
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            padding: 0.4rem 0.6rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+            background: rgba(229, 193, 88, 0.1);
+            text-shadow: 0 0 8px rgba(229, 193, 88, 0.5);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--accent-purple);
+            color: var(--text-main);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-glow);
+            background: rgba(138, 43, 226, 0.2);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #e5c158, #b8860b);
+            color: #090614;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(229, 193, 88, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(229, 193, 88, 0.6);
+        }
+
+        /* Views Switching */
+        .page-view {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .page-view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 2rem 60px;
+            text-align: center;
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(138, 43, 226, 0.15);
+            border: 1px solid var(--border-glow);
+            border-radius: 50px;
+            color: var(--accent-glow);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #ffffff 30%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Container & Grid */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        /* Capa / Banner Exclusivo da Seção de Alunos */
+        .roster-banner-container {
+            width: 100%;
+            height: 280px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .roster-banner-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85) contrast(1.1);
+            transition: transform 0.6s ease;
+        }
+
+        .roster-banner-container:hover img {
+            transform: scale(1.03);
+        }
+
+        .roster-banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(9, 6, 20, 0.95), transparent);
+            text-align: center;
+        }
+
+        .roster-banner-overlay h2 {
+            color: var(--accent-gold);
+            font-size: 2.2rem;
+            text-shadow: 0 0 15px rgba(229, 193, 88, 0.5);
+            margin-bottom: 0.3rem;
+        }
+
+        .roster-banner-overlay p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-img-wrap {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 1.8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-glow);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .card:hover::before {
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Painel de Progenitores e Filtros */
+        .filter-bar {
+            background: var(--bg-glass);
+            padding: 1.2rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-glow);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .filter-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .progenitores-dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .progenitores-btn {
+            background: linear-gradient(135deg, var(--accent-purple), #581c87);
+            color: white;
+            border: 1px solid var(--accent-glow);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+            transition: var(--transition);
+        }
+
+        .progenitores-btn:hover {
+            background: linear-gradient(135deg, #7c3aed, #6b21a8);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
         .progenitores-menu {
             display: none;
             position: absolute;
@@ -425,15 +1900,15 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             z-index: 100;
             width: 440px;
-            max-width: 90vw;
             padding: 1rem;
         }
 
         .progenitores-menu.show {
             display: block;
-            animation: fadeIn 0.25s ease;
+            animation: fadeIn 0.3s ease;
         }
 
+        /* Abas Internas dos Progenitores */
         .prog-tabs-header {
             display: flex;
             gap: 5px;
@@ -453,6 +1928,7 @@
             text-align: center;
             border-radius: 6px;
             cursor: pointer;
+            transition: var(--transition);
         }
 
         .prog-tab-btn.active, .prog-tab-btn:hover {
@@ -559,7 +2035,7 @@
 
         .roster-card img {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
         }
 
@@ -574,35 +2050,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
         }
 
         .roster-name {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--accent-gold);
         }
 
         .roster-tag {
-            font-size: 0.72rem;
+            font-size: 0.75rem;
             padding: 3px 8px;
             border-radius: 4px;
             font-weight: 700;
             text-transform: uppercase;
-            white-space: nowrap;
         }
 
         .tag-villains { background: rgba(239, 68, 68, 0.2); color: var(--accent-ruby); border: 1px solid var(--accent-ruby); }
         .tag-heroes { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
         .tag-disney { background: rgba(138, 43, 226, 0.2); color: var(--accent-glow); border: 1px solid var(--accent-purple); }
 
-        .roster-details {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* Elenco Canon */
+        /* Estilos específicos para a Seção Canon */
         .canon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -613,69 +2081,23 @@
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
             border-radius: var(--radius-md);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-        }
-
-        .canon-card:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 5px 20px rgba(229, 193, 88, 0.15);
-        }
-
-        .canon-card img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
-
-        .canon-body {
             padding: 1.2rem;
             display: flex;
             flex-direction: column;
-            gap: 0.65rem;
-            flex: 1;
-            justify-content: space-between;
-        }
-
-        .canon-parent {
-            font-size: 0.85rem;
-            color: var(--text-muted);
+            gap: 0.8rem;
+            position: relative;
         }
 
         .canon-status {
             font-size: 0.75rem;
             font-weight: 700;
-            padding: 5px 8px;
+            padding: 4px 8px;
             border-radius: 6px;
             text-align: center;
             text-transform: uppercase;
         }
-
-        .status-vago {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--accent-emerald);
-            border: 1px solid var(--accent-emerald);
-        }
-
-        .status-ocupado {
-            background: rgba(239, 68, 68, 0.2);
-            color: #fca5a5;
-            border: 1px solid var(--accent-ruby);
-        }
-
-        .canon-actions-row {
-            display: flex;
-            gap: 0.45rem;
-            margin-top: 0.2rem;
-        }
-
-        .btn-mini {
-            padding: 0.42rem 0.65rem;
-            font-size: 0.78rem;
-            border-radius: 8px;
-        }
+        .status-vago { background: rgba(16, 185, 129, 0.2); color: var(--accent-emerald); border: 1px solid var(--accent-emerald); }
+        .status-ocupado { background: rgba(239, 68, 68, 0.2); color: var(--accent-ruby); border: 1px solid var(--accent-ruby); }
 
         /* Form Container */
         .form-container {
@@ -763,7 +2185,6 @@
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            padding: 1rem;
         }
 
         .modal.open {
@@ -773,10 +2194,10 @@
         .modal-content {
             background: var(--bg-card);
             border: 1px solid var(--border-gold);
-            padding: 2.2rem;
+            padding: 2.5rem;
             border-radius: var(--radius-lg);
             width: 100%;
-            max-width: 460px;
+            max-width: 450px;
             position: relative;
             box-shadow: 0 0 40px rgba(189, 0, 255, 0.3);
         }
@@ -798,12 +2219,9 @@
             font-style: italic;
         }
 
-        @media (max-width: 1050px) {
-            .nav-links { display: none; }
-        }
-
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full { grid-column: span 1; }
             .roster-banner-container { height: 200px; }
@@ -814,18 +2232,18 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a class="logo" onclick="switchNav('inicio')">
+        <a href="#" class="logo" onclick="switchNav('inicio')">
             <div class="logo-icon">👑</div>
-            <span>Bem vindos a Auradon</span>
+            <span> Bem vindos a Auradon</span>
         </a>
         <ul class="nav-links">
             <li><a id="link-inicio" class="active" onclick="switchNav('inicio')">Início</a></li>
             <li><a id="link-canon" onclick="switchNav('canon')">Elenco Canon</a></li>
-            <li><a id="link-lore" onclick="switchNav('lore')">História</a></li>
             <li><a id="link-alunos" onclick="switchNav('alunos')">Alunos & Fichas</a></li>
             <li><a id="link-criar-ficha" onclick="switchNav('criar-ficha')">Criar Ficha</a></li>
             <li><a id="link-docentes" onclick="switchNav('docentes')">Docência</a></li>
             <li><a id="link-locais" onclick="switchNav('locais')">Locais</a></li>
+            <li><a id="link-lore" onclick="switchNav('lore')">História</a></li>
         </ul>
         <div class="nav-actions">
             <button class="btn btn-outline" onclick="openModal('loginModal')">Entrar</button>
@@ -833,6 +2251,8 @@
         </div>
     </nav>
 
+    <!-- VIEWS -->
+    
     <!-- 1. INÍCIO -->
     <main id="view-inicio" class="page-view active">
         <header class="hero">
@@ -841,8 +2261,7 @@
             <p>Bem-vindo ao portal oficial do nosso universo. A barreira da Ilha dos Perdidos acabou de cair e os filhos dos vilões estão chegando em Auradon Prep para o novo ano letivo. Acompanharemos a convivência, rixas, alianças, segredos e novos poderes entre filhos de heróis e vilões com a ajuda de Mal, Evie, Carlos e Jay.</p>
             <div class="hero-cta">
                 <a class="btn btn-gold" onclick="switchNav('criar-ficha')">📜 Criar Sua Ficha</a>
-                <a class="btn btn-outline" onclick="switchNav('canon')">👑 Elenco Canon</a>
-                <a class="btn btn-outline" onclick="switchNav('lore')">📖 Explorar a Lore</a>
+                <a class="btn btn-outline" onclick="switchNav('canon')">⭐ Reivindicar Personagem Canon</a>
             </div>
         </header>
 
@@ -854,17 +2273,17 @@
             <div class="grid-3">
                 <div class="card" onclick="switchNav('canon')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img data-card-key="banner-canon" data-raw-src="https://ibb.co/M5B5RBpt" data-accent="#8a2be2" alt="Elenco Canon">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Canon">
                     </div>
                     <div class="card-body">
                         <h3>Elenco Canon (Franquia)</h3>
-                        <p>Escolha entre os 25 personagens oficiais da franquia. Os vagos estão disponíveis para uso; os ocupados ficam bloqueados.</p>
+                        <p>Escolha e reivindique personagens oficiais da franquia Descendentes que estejam vagos para jogar!</p>
                         <span class="roster-tag tag-heroes">ORIGINAIS</span>
                     </div>
                 </div>
                 <div class="card" onclick="switchNav('alunos')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img data-card-key="banner-alunos" data-raw-src="https://ibb.co/DPXMfRnD" data-accent="#bd00ff" alt="Alunos">
+                        <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Alunos">
                     </div>
                     <div class="card-body">
                         <h3>Fichas dos Alunos</h3>
@@ -874,70 +2293,38 @@
                 </div>
                 <div class="card" onclick="switchNav('locais')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img data-card-key="local-academia" data-raw-src="https://ibb.co/Z1Fbksxj" data-accent="#e5c158" alt="Locais de Auradon">
+                        <img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Auradon Prep">
                     </div>
                     <div class="card-body">
                         <h3>Locais de Auradon</h3>
                         <p>Visite a fachada do castelo, o Jardim da Harmonia, o Lago dos Espelhos e todas as instalações.</p>
-                        <span class="roster-tag tag-disney">AMBIENTES</span>
+                        <span class="roster-tag tag-disney">12 AMBIENTES</span>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- 2. ELENCO CANON (FRANQUIA) -->
+    <!-- 2. ELENCO CANON (PERSONAGENS OFICIAIS DA FRANQUIA) -->
     <main id="view-canon" class="page-view">
         <div class="container" style="padding-top: 140px;">
-            <div class="roster-banner-container">
-                <img data-card-key="banner-canon" data-raw-src="https://ibb.co/M5B5RBpt" data-accent="#8a2be2" alt="Capa Elenco Canon">
-                <div class="roster-banner-overlay">
-                    <h2>Elenco Canon (Franquia)</h2>
-                    <p>Escolha seu personagem oficial favorito. Vago = Disponível | Ocupado = Indisponível</p>
-                </div>
-            </div>
-
             <div class="section-header">
-                <h2>Personagens Oficiais da Franquia</h2>
-                <p id="canon-summary">Carregando elenco...</p>
+                <h2>Elenco Canon — Descendentes</h2>
+                <p>Estes são os personagens oficiais da franquia. Verifique quem está <strong>Vago</strong> para jogar ou se já está <strong>Ocupado</strong> por algum membro.</p>
             </div>
 
-            <div id="canon-grid" class="canon-grid"></div>
-        </div>
-    </main>
-
-    <!-- 3. LORE / HISTÓRIA -->
-    <main id="view-lore" class="page-view">
-        <div class="container" style="padding-top: 140px;">
-            <div class="section-header">
-                <h2>O Reino de Auradon</h2>
-                <p>Descubra os acontecimentos que moldam o novo ano letivo em Auradon Prep.</p>
-            </div>
-            <div class="grid-3">
-                <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏰</div>
-                    <h3>Auradon Prep</h3>
-                    <p>Sob a administração da Fada Madrinha e designada pelo governo real de Auradon, a prestigiada instituição abre portas para mais filhos de vilões e heróis aprenderem a conviver em harmonia.</p>
-                </div>
-                <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">✨</div>
-                    <h3>Fim da Magia?</h3>
-                    <p>Com a abertura da barreira muitos alunos estão recém conhecendo seus dons mágicos, mesmo Auradon insistindo em uma vida sem magia. Como os alunos lidarão com seus dons e seguir as regras de Auradon.</p>
-                </div>
-                <div class="card" style="padding: 2rem;">
-                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏴‍☠️</div>
-                    <h3>Tensão & Alianças</h3>
-                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola, exigindo consenso e auxílio de nossos VKs.</p>
-                </div>
+            <div id="canon-grid" class="canon-grid">
+                <!-- Preenchido via JavaScript -->
             </div>
         </div>
     </main>
 
-    <!-- 4. ALUNOS & FICHAS -->
+    <!-- 3. ALUNOS & FICHAS -->
     <main id="view-alunos" class="page-view">
         <div class="container" style="padding-top: 140px;">
+            
             <div class="roster-banner-container">
-                <img data-card-key="banner-alunos" data-raw-src="https://ibb.co/DPXMfRnD" data-accent="#bd00ff" alt="Capa dos Personagens">
+                <img src="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" alt="Capa dos Personagens - Descendentes" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80'">
                 <div class="roster-banner-overlay">
                     <h2>Alunos & Fichas de Auradon</h2>
                     <p>Explore o roster oficial de estudantes, herdeiros e heróis do nosso RPG</p>
@@ -1068,7 +2455,7 @@
         </div>
     </main>
 
-    <!-- 5. CRIAR FICHA -->
+    <!-- 4. CRIAR FICHA -->
     <main id="view-criar-ficha" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
@@ -1101,10 +2488,9 @@
                             <input type="text" id="char-age" required placeholder="Ex: 16 anos / 2º Ano">
                         </div>
                         <div class="form-group full">
-                            <label>Aparência (Photoplayer - Link da Imagem ou Arquivo)</label>
-                            <input type="text" id="char-photo" placeholder="Cole uma URL direta (.jpg/.png) ou deixe em branco para retrato automático">
-                            <input type="file" id="char-photo-file" accept="image/*" style="margin-top: 0.4rem;">
-                            <span class="helper-text">Se enviar um arquivo ou colar uma URL direta, ela será usada; se não carregar, entra um retrato automático sem quebrar.</span>
+                            <label>Aparência (Photoplayer - Link da Imagem)</label>
+                            <input type="text" id="char-photo" required value="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" placeholder="Cole a URL da foto do seu personagem">
+                            <span class="helper-text">Sua imagem de capa padrão já está inserida automaticamente na ficha!</span>
                         </div>
                         <div class="form-group full">
                             <label>Poderes & Habilidades</label>
@@ -1121,6 +2507,33 @@
         </div>
     </main>
 
+    <!-- 5. LORE / HISTÓRIA -->
+    <main id="view-lore" class="page-view">
+        <div class="container" style="padding-top: 140px;">
+            <div class="section-header">
+                <h2>O Reino de Auradon</h2>
+                <p>Descubra os acontecimentos que moldam o novo ano letivo em Auradon Prep.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card" style="padding: 2rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏰</div>
+                    <h3>Auradon Prep</h3>
+                    <p>Sob a administração da Fada Madrinha e designada pelo governo real de Auradon, a prestigiada instituição abre portas para mais filhos de vilões e heróis aprenderem a conviver em harmonia.</p>
+                </div>
+                <div class="card" style="padding: 2rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">✨</div>
+                    <h3>Fim da Magia?</h3>
+                    <p>Com a abertura da barreira muitos alunos estão recém conhecendo seus dons mágicos, mesmo Auradon insistindo em uma vida sem magia. Como os alunos lidarão com seus dons e seguir as regras de Auradon, lidando com filhos de mocinhos.</p>
+                </div>
+                <div class="card" style="padding: 2rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏴‍☠️</div>
+                    <h3>Tensão & Alianças</h3>
+                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola, exigindo consenso e auxílio de nossos VKs.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <!-- 6. DOCÊNCIA -->
     <main id="view-docentes" class="page-view">
         <div class="container" style="padding-top: 140px;">
@@ -1130,7 +2543,7 @@
             </div>
             <div class="grid-3">
                 <div class="card">
-                    <div class="card-img-wrap"><img data-card-key="docente-fada" data-raw-src="https://ibb.co/QvKsMvqK" data-accent="#e5c158" alt="Fada Madrinha"></div>
+                    <div class="card-img-wrap"><img src="https://i.ibb.co/QvKsMvqK/fada-madrinha.jpg" alt="Fada Madrinha" onerror="this.src='https://i.ibb.co/QvKsMvqK/image.jpg'"></div>
                     <div class="card-body">
                         <h3>Fada Madrinha</h3>
                         <p><strong>Matéria:</strong> Bondade Corretiva 101</p>
@@ -1139,7 +2552,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-img-wrap"><img data-card-key="docente-alistair" data-raw-src="https://ibb.co/d0MXyp33" data-accent="#8a2be2" alt="Alistair Blackwood"></div>
+                    <div class="card-img-wrap"><img src="https://i.ibb.co/d0MXyp33/alistair-blackwood.jpg" alt="Alistair" onerror="this.src='https://i.ibb.co/d0MXyp33/image.jpg'"></div>
                     <div class="card-body">
                         <h3>Alistair Blackwood</h3>
                         <p><strong>Matérias:</strong> História da Magia e de Auradon</p>
@@ -1148,7 +2561,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-img-wrap"><img data-card-key="docente-coach" data-raw-src="https://ibb.co/whPmMDr6" data-accent="#10b981" alt="Coach Jenkins"></div>
+                    <div class="card-img-wrap"><img src="https://i.ibb.co/whPmMDr6/coach-jenkins.jpg" alt="Jenkins" onerror="this.src='https://i.ibb.co/whPmMDr6/image.jpg'"></div>
                     <div class="card-body">
                         <h3>Coach Jenkins</h3>
                         <p><strong>Matéria:</strong> Educação Física & Tourney</p>
@@ -1169,7 +2582,7 @@
             </div>
             <div class="grid-3">
                 <div class="card">
-                    <div class="card-img-wrap"><img data-card-key="local-academia" data-raw-src="https://ibb.co/Z1Fbksxj" data-accent="#e5c158" alt="Auradon Academy"></div>
+                    <div class="card-img-wrap"><img src="https://i.ibb.co/Z1Fbksxj/auradon-academy.jpg" alt="Academia"></div>
                     <div class="card-body">
                         <h3>Auradon Academy</h3>
                         <p>A maior instituição de ensino do reino para príncipes, princesas e heróis.</p>
@@ -1177,7 +2590,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-img-wrap"><img data-card-key="local-jardim" data-raw-src="https://ibb.co/PzJPz4HF" data-accent="#10b981" alt="Jardim da Harmonia"></div>
+                    <div class="card-img-wrap"><img src="https://i.ibb.co/PzJPz4HF/jardim-harmonia.jpg" alt="Jardim"></div>
                     <div class="card-body">
                         <h3>Jardim da Harmonia</h3>
                         <p>O lugar mais tranquilo da Academia com fonte mágica e estátuas.</p>
@@ -1196,25 +2609,7 @@
         <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Descendentes — End Of Magic. Todos os direitos reservados aos criadores do RPG.</p>
     </footer>
 
-    <!-- MODAL EDITAR FOTO -->
-    <div id="photoModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('photoModal')">&times;</span>
-            <h3 style="color: var(--accent-gold); margin-bottom: 1rem; text-align: center;">Atualizar Imagem</h3>
-            <p id="photoModalTargetName" style="color: var(--text-muted); font-size: 0.85rem; text-align: center; margin-bottom: 1.2rem;"></p>
-            <div class="form-group" style="margin-bottom: 1rem;">
-                <label>Link Direto da Imagem (URL)</label>
-                <input type="text" id="photoModalUrl" placeholder="https://.../imagem.jpg">
-            </div>
-            <div class="form-group" style="margin-bottom: 1.4rem;">
-                <label>Ou Enviar Foto do Dispositivo</label>
-                <input type="file" id="photoModalFile" accept="image/*">
-            </div>
-            <button type="button" class="btn btn-gold" style="width: 100%;" onclick="savePhotoModal()">Salvar Imagem</button>
-        </div>
-    </div>
-
-    <!-- MODALS LOGIN / REGISTER -->
+    <!-- MODALS -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
@@ -1240,206 +2635,40 @@
         </div>
     </div>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        const STORAGE_KEY = 'auradon_rpg_state_v1';
         let studentRoster = [];
         let currentFilter = 'all';
-        let customPhotos = {};
-        let photoEditContext = null;
+        const DEFAULT_PHOTO = 'https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg';
 
-        // Os 25 personagens oficiais Canon
+        // Lista de Personagens Oficiais (Canon) da Franquia Descendentes
         let canonCharacters = [
-            { id: 1, name: "Mal", parent: "Filha de Malévola e Hades", image: "https://ibb.co/1pZTL1m", color: "#a855f7", status: "vago", claimedBy: "" },
-            { id: 2, name: "Evie", parent: "Filha da Rainha Má e Rei Magnifico", image: "https://ibb.co/fGrNfbQz", color: "#3b82f6", status: "vago", claimedBy: "" },
-            { id: 3, name: "Jay", parent: "Filho de Jafar", image: "https://ibb.co/6Rycrm4Q", color: "#ef4444", status: "vago", claimedBy: "" },
-            { id: 4, name: "Carlos De Vil", parent: "Filho de Cruella de Vil", image: "https://ibb.co/1Y4hpX4h", color: "#e2e8f0", status: "vago", claimedBy: "" },
-            { id: 5, name: "Ben", parent: "Filho de Bela e Fera", image: "https://ibb.co/Jj9B02Pt", color: "#e5c158", status: "vago", claimedBy: "" },
-            { id: 6, name: "Audrey", parent: "Filha de Aurora e Príncipe Phillip", image: "https://ibb.co/wFNPcfG5", color: "#f472b6", status: "vago", claimedBy: "" },
-            { id: 7, name: "Jane", parent: "Filha da Fada Madrinha", image: "https://ibb.co/hrmQMvk", color: "#38bdf8", status: "vago", claimedBy: "" },
-            { id: 8, name: "Doug", parent: "Filho do Dunga", image: "https://ibb.co/pjskGtVW", color: "#60a5fa", status: "vago", claimedBy: "" },
-            { id: 9, name: "Lonnie", parent: "Filha de Fa Mulan e Li Shang", image: "https://ibb.co/nMHbBnm8", color: "#10b981", status: "vago", claimedBy: "" },
-            { id: 10, name: "Chad Encantado", parent: "Filho de Cinderela e Rei Encantado", image: "https://ibb.co/bj1bf8Mf", color: "#facc15", status: "vago", claimedBy: "" },
-            { id: 11, name: "Chloe Charming", parent: "Cinderela e Príncipe Encantado", image: "https://ibb.co/PZmk3jD2", color: "#93c5fd", status: "vago", claimedBy: "" },
-            { id: 12, name: "Red", parent: "Rainha de Copas", image: "https://ibb.co/gZB1mXzK", color: "#dc2626", status: "vago", claimedBy: "" },
-            { id: 13, name: "Dizzy Tremaine", parent: "Drizella Tremaine", image: "https://ibb.co/0VDFzXZm", color: "#c084fc", status: "vago", claimedBy: "" },
-            { id: 14, name: "Celia Facilier", parent: "Dr. Facilier", image: "https://ibb.co/d01vHrg2", color: "#991b1b", status: "vago", claimedBy: "" },
-            { id: 15, name: "Squeaky Smee", parent: "Sr. Smee", image: "https://ibb.co/C35h9FWB", color: "#fb923c", status: "vago", claimedBy: "" },
-            { id: 16, name: "Squirmy Smee", parent: "Sr. Smee", image: "https://ibb.co/ZpHzvrVL", color: "#f59e0b", status: "vago", claimedBy: "" },
-            { id: 17, name: "Princesa Pink", parent: "Rainha de Copas", image: "https://ibb.co/RkdLG2w4", color: "#ec4899", status: "vago", claimedBy: "" },
-            { id: 18, name: "Max Hatter", parent: "Maddox Hatter", image: "https://ibb.co/JRwLcts7", color: "#2dd4bf", status: "vago", claimedBy: "" },
-            { id: 19, name: "Luis Madrigal", parent: "Luisa Madrigal", image: "https://ibb.co/QRYk7mC", color: "#fbbf24", status: "vago", claimedBy: "" },
-            { id: 20, name: "Hazel Hook", parent: "Capitão Gancho", image: "https://ibb.co/kgJPzQ3k", color: "#f87171", status: "vago", claimedBy: "" },
-            { id: 21, name: "Felix Facilier", parent: "Dr. Facilier", image: "https://ibb.co/hkwP6MY", color: "#a78bfa", status: "vago", claimedBy: "" },
-            { id: 22, name: "Robbie Hood", parent: "Robin Hood", image: "https://ibb.co/0yX9Z8S4", color: "#34d399", status: "vago", claimedBy: "" },
-            { id: 23, name: "Uma", parent: "Úrsula", image: "https://ibb.co/0jhKLbjm", color: "#06b6d4", status: "vago", claimedBy: "" },
-            { id: 24, name: "Harry Hook", parent: "Capitão Gancho", image: "https://ibb.co/22MrhjM", color: "#ef4444", status: "vago", claimedBy: "" },
-            { id: 25, name: "Gil", parent: "Gaston", image: "https://ibb.co/xSKdy1S0", color: "#eab308", status: "vago", claimedBy: "" }
+            { id: 1, name: "Mal (Filha de Malévola)", status: "vago", claimedBy: "" },
+            { id: 2, name: "Evie (Filha da Rainha Má)", status: "vago", claimedBy: "" },
+            { id: 3, name: "Carlos De Vil (Filho de Cruella)", status: "vago", claimedBy: "" },
+            { id: 4, name: "Jay (Filho de Jafar)", status: "vago", claimedBy: "" },
+            { id: 5, name: "Rei Ben (Filho da Bela e a Fera)", status: "vago", claimedBy: "" },
+            { id: 6, name: "Audrey (Filha da Bela Adormecida)", status: "vago", claimedBy: "" },
+            { id: 7, name: "Uma (Filha de Úrsula)", status: "vago", claimedBy: "" },
+            { id: 8, name: "Harry Hook (Filho do Capitão Gancho)", status: "vago", claimedBy: "" },
+            { id: 9, name: "Gil (Filho de Gaston)", status: "vago", claimedBy: "" },
+            { id: 10, name: "Jane (Filha da Fada Madrinha)", status: "vago", claimedBy: "" },
+            { id: 11, name: "Lonnie (Filha de Mulan)", status: "vago", claimedBy: "" },
+            { id: 12, name: "Audrey (Filha de Aurora)", status: "vago", claimedBy: "" },
+            { id: 13, name: "Chad Charming (Filho da Cinderela)", status: "vago", claimedBy: "" },
+            { id: 14, name: "Audrey / Dizzy Tremaine (Filha de Drizella)", status: "vago", claimedBy: "" },
+            { id: 15, name: "Celia (Filha do Dr. Facilier)", status: "vago", claimedBy: "" }
         ];
-
-        function saveState() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                    studentRoster,
-                    canonCharacters,
-                    customPhotos
-                }));
-            } catch (err) {
-                // Ignora erro de quota se houver imagem muito grande
-            }
-        }
-
-        function loadState() {
-            try {
-                const raw = localStorage.getItem(STORAGE_KEY);
-                if (!raw) return;
-                const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed.studentRoster)) studentRoster = parsed.studentRoster;
-                if (parsed.customPhotos && typeof parsed.customPhotos === 'object') customPhotos = parsed.customPhotos;
-                if (Array.isArray(parsed.canonCharacters) && parsed.canonCharacters.length === canonCharacters.length) {
-                    canonCharacters = canonCharacters.map(base => {
-                        const saved = parsed.canonCharacters.find(item => item.id === base.id);
-                        return saved ? { ...base, status: saved.status || 'vago', claimedBy: saved.claimedBy || '' } : base;
-                    });
-                }
-            } catch (err) {
-                // Ignora JSON inválido
-            }
-        }
-
-        function escapeXml(str) {
-            return String(str || '').replace(/[<>&"]/g, ch => ({
-                '<': '&lt;',
-                '>': '&gt;',
-                '&': '&amp;',
-                '"': '&quot;'
-            }[ch]));
-        }
-
-        function makePortraitSvg(title, subtitle, accentColor = '#e5c158') {
-            const safeTitle = escapeXml(title).slice(0, 24);
-            const safeSub = escapeXml(subtitle).slice(0, 34);
-            const safeColor = /^#[0-9a-fA-F]{3,6}$/.test(accentColor) ? accentColor : '#e5c158';
-            const initials = escapeXml(
-                String(title || 'AU').trim().split(/\s+/).slice(0, 2).map(w => w[0] || '').join('').toUpperCase() || 'AU'
-            );
-
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="440" height="300" viewBox="0 0 440 300">
-                <defs>
-                    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#1e1038"/>
-                        <stop offset="55%" stop-color="#110922"/>
-                        <stop offset="100%" stop-color="#070410"/>
-                    </linearGradient>
-                    <radialGradient id="glow" cx="50%" cy="38%" r="45%">
-                        <stop offset="0%" stop-color="${safeColor}" stop-opacity="0.32"/>
-                        <stop offset="100%" stop-color="#090614" stop-opacity="0"/>
-                    </radialGradient>
-                </defs>
-                <rect width="440" height="300" fill="url(#bg)"/>
-                <rect width="440" height="300" fill="url(#glow)"/>
-                <rect x="12" y="12" width="416" height="276" rx="14" fill="none" stroke="${safeColor}" stroke-opacity="0.45" stroke-width="1.5"/>
-                <circle cx="220" cy="112" r="46" fill="#170d2c" stroke="${safeColor}" stroke-width="2.5"/>
-                <text x="220" y="122" text-anchor="middle" fill="#ffffff" font-family="Cinzel, Georgia, serif" font-size="24" font-weight="bold">${initials}</text>
-                <text x="220" y="192" text-anchor="middle" fill="${safeColor}" font-family="Cinzel, Georgia, serif" font-size="20" font-weight="bold">${safeTitle}</text>
-                <text x="220" y="220" text-anchor="middle" fill="#cbd5e1" font-family="Plus Jakarta Sans, sans-serif" font-size="12">${safeSub}</text>
-                <text x="220" y="256" text-anchor="middle" fill="#94a3b8" font-family="Plus Jakarta Sans, sans-serif" font-size="10" letter-spacing="2">AURADON PREP</text>
-            </svg>`;
-            return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
-        }
-
-        function isDirectImageUrl(url) {
-            if (!url) return false;
-            const trimmed = url.trim();
-            if (trimmed.startsWith('data:image/')) return true;
-            if (/^https?:\/\/i\.ibb\.co\//i.test(trimmed)) return true;
-            return /\.(png|jpe?g|webp|gif)(\?.*)?$/i.test(trimmed);
-        }
-
-        function applyImage(imgEl, rawUrl, title, subtitle, accentColor) {
-            const fallback = makePortraitSvg(title, subtitle, accentColor);
-            const trimmed = (rawUrl || '').trim();
-
-            if (!isDirectImageUrl(trimmed)) {
-                imgEl.onerror = null;
-                imgEl.src = fallback;
-                return;
-            }
-
-            imgEl.onerror = function() {
-                imgEl.onerror = null;
-                imgEl.src = fallback;
-            };
-            imgEl.src = trimmed;
-        }
-
-        function initStaticImages() {
-            document.querySelectorAll('img[data-raw-src]').forEach(img => {
-                const key = img.getAttribute('data-card-key');
-                const stored = key && customPhotos[key] ? customPhotos[key] : img.getAttribute('data-raw-src');
-                const title = img.getAttribute('alt') || 'Auradon';
-                const accent = img.getAttribute('data-accent') || '#e5c158';
-                applyImage(img, stored, title, 'Colégio de Auradon', accent);
-            });
-        }
-
-        function openPhotoModal(type, idOrKey, label) {
-            photoEditContext = { type, idOrKey };
-            document.getElementById('photoModalTargetName').textContent = `Personagem / Seção: ${label}`;
-            document.getElementById('photoModalUrl').value = '';
-            document.getElementById('photoModalFile').value = '';
-            openModal('photoModal');
-        }
-
-        function readFileAsDataUrl(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-        }
-
-        async function savePhotoModal() {
-            if (!photoEditContext) return;
-            const urlInput = document.getElementById('photoModalUrl').value.trim();
-            const fileInput = document.getElementById('photoModalFile');
-            let finalSrc = '';
-
-            if (fileInput.files && fileInput.files[0]) {
-                finalSrc = await readFileAsDataUrl(fileInput.files[0]);
-            } else if (urlInput) {
-                finalSrc = urlInput;
-            } else {
-                alert('Informe uma URL direta de imagem ou escolha um arquivo.');
-                return;
-            }
-
-            if (photoEditContext.type === 'canon') {
-                const char = canonCharacters.find(c => c.id === photoEditContext.idOrKey);
-                if (char) {
-                    char.image = finalSrc;
-                    saveState();
-                    renderCanon();
-                }
-            } else if (photoEditContext.type === 'static') {
-                customPhotos[photoEditContext.idOrKey] = finalSrc;
-                saveState();
-                initStaticImages();
-            }
-
-            closeModal('photoModal');
-            photoEditContext = null;
-        }
 
         function switchNav(viewId) {
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             const activeLink = document.getElementById(`link-${viewId}`);
-            if (activeLink) activeLink.classList.add('active');
+            if(activeLink) activeLink.classList.add('active');
 
             document.querySelectorAll('.page-view').forEach(view => view.classList.remove('active'));
             document.getElementById(`view-${viewId}`).classList.add('active');
 
-            if (viewId === 'canon') {
+            if(viewId === 'canon') {
                 renderCanon();
             }
 
@@ -1471,7 +2700,7 @@
         window.addEventListener('click', function(e) {
             if (!e.target.closest('.progenitores-dropdown-container')) {
                 const menu = document.getElementById('progenitoresMenu');
-                if (menu) menu.classList.remove('show');
+                if(menu) menu.classList.remove('show');
             }
         });
 
@@ -1487,103 +2716,62 @@
             closeModal('registerModal');
         }
 
-        function updateCanonSummary() {
-            const total = canonCharacters.length;
-            const vagos = canonCharacters.filter(c => c.status === 'vago').length;
-            const ocupados = total - vagos;
-            const summaryEl = document.getElementById('canon-summary');
-            if (summaryEl) {
-                summaryEl.textContent = `${vagos} vagos disponíveis para escolher • ${ocupados} ocupados (bloqueados) • ${total} no total`;
-            }
-        }
-
+        // Renderizar a lista de Elenco Canon (Verificando Vago/Ocupado)
         function renderCanon() {
             const grid = document.getElementById('canon-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
+            let html = '';
 
             canonCharacters.forEach(char => {
-                const isVago = char.status === 'vago';
-                const card = document.createElement('div');
-                card.className = 'canon-card';
+                let statusClass = char.status === 'vago' ? 'status-vago' : 'status-ocupado';
+                let statusText = char.status === 'vago' ? 'Vago (Disponível)' : `Ocupado por: ${char.claimedBy}`;
+                
+                html += `
+                    <div class="canon-card">
+                        <h3 style="color: var(--accent-gold); font-size: 1.1rem;">${char.name}</h3>
+                        <div class="canon-status statusClass">{statusText}</div>
+                `;
 
-                const img = document.createElement('img');
-                img.alt = char.name;
-                applyImage(img, char.image, char.name, char.parent, char.color);
-
-                const body = document.createElement('div');
-                body.className = 'canon-body';
-
-                const title = document.createElement('h3');
-                title.style.color = 'var(--accent-gold)';
-                title.style.fontSize = '1.1rem';
-                title.textContent = char.name;
-
-                const parent = document.createElement('p');
-                parent.className = 'canon-parent';
-                parent.textContent = char.parent;
-
-                const statusBadge = document.createElement('div');
-                statusBadge.className = `canon-status ${isVago ? 'status-vago' : 'status-ocupado'}`;
-                statusBadge.textContent = isVago ? 'Vago — Pode Usar' : `Ocupado por ${char.claimedBy} — Indisponível`;
-
-                const actionsRow = document.createElement('div');
-                actionsRow.className = 'canon-actions-row';
-
-                const claimBtn = document.createElement('button');
-                claimBtn.style.flex = '1';
-                if (isVago) {
-                    claimBtn.className = 'btn btn-gold btn-mini';
-                    claimBtn.textContent = '👑 Escolher';
-                    claimBtn.onclick = () => claimCanon(char.id);
+                if (char.status === 'vago') {
+                    html += `<button class="btn btn-gold" style="font-size: 0.8rem; padding: 0.4rem;" onclick="claimCanon(${char.id})">⭐ Reivindicar Personagem</button>`;
                 } else {
-                    claimBtn.className = 'btn btn-locked btn-mini';
-                    claimBtn.disabled = true;
-                    claimBtn.textContent = '🔒 Ocupado';
+                    html += `<button class="btn btn-outline" style="font-size: 0.8rem; padding: 0.4rem; opacity: 0.6;" onclick="releaseCanon(${char.id})">Liberar Personagem</button>`;
                 }
 
-                const photoBtn = document.createElement('button');
-                photoBtn.className = 'btn btn-outline btn-mini';
-                photoBtn.title = 'Definir foto direta ou arquivo';
-                photoBtn.textContent = '🖼️ Foto';
-                photoBtn.onclick = () => openPhotoModal('canon', char.id, char.name);
-
-                actionsRow.appendChild(claimBtn);
-                actionsRow.appendChild(photoBtn);
-
-                body.appendChild(title);
-                body.appendChild(parent);
-                body.appendChild(statusBadge);
-                body.appendChild(actionsRow);
-
-                card.appendChild(img);
-                card.appendChild(body);
-                grid.appendChild(card);
+                html += `</div>`;
             });
 
-            updateCanonSummary();
+            grid.innerHTML = html;
         }
 
+        // Função para reivindicar personagem vago
         function claimCanon(id) {
             const char = canonCharacters.find(c => c.id === id);
-            if (!char) return;
-
-            if (char.status !== 'vago') {
-                alert(`❌ ${char.name} já está ocupado por ${char.claimedBy} e não pode ser usado.`);
+            if (char.status === 'ocupado') {
+                alert('⚠️ Este personagem já está ocupado por outro jogador!');
                 return;
             }
 
-            const playerName = prompt(`"${char.name}" está vago! Digite seu nome para ocupar este personagem:`);
+            const playerName = prompt(`Digite seu nome de usuário para reivindicar "${char.name}":`);
             if (playerName && playerName.trim() !== '') {
                 char.status = 'ocupado';
                 char.claimedBy = playerName.trim();
-                saveState();
                 renderCanon();
-                alert(`✅ Você agora ocupa ${char.name}! Ele ficará marcado como ocupado para os outros jogadores.`);
+                alert(`Parabéns! Você agora é o intérprete oficial de ${char.name} em Auradon.`);
             }
         }
 
-        async function saveCharacter(e) {
+        // Liberar caso queira desocupar
+        function releaseCanon(id) {
+            const char = canonCharacters.find(c => c.id === id);
+            const confirmRelease = confirm(`Deseja realmente liberar o personagem ${char.name}?`);
+            if (confirmRelease) {
+                char.status = 'vago';
+                char.claimedBy = '';
+                renderCanon();
+            }
+        }
+
+        function saveCharacter(e) {
             e.preventDefault();
 
             if (studentRoster.length >= 4) {
@@ -1591,17 +2779,16 @@
                 return;
             }
             
-            const name = document.getElementById('char-name').value.trim();
+            const name = document.getElementById('char-name').value;
             const parentInput = document.getElementById('char-parent').value.trim();
             const category = document.getElementById('char-category').value;
-            const age = document.getElementById('char-age').value.trim();
+            const age = document.getElementById('char-age').value;
             let photo = document.getElementById('char-photo').value.trim();
-            const fileInput = document.getElementById('char-photo-file');
-            const powers = document.getElementById('char-powers').value.trim();
-            const history = document.getElementById('char-history').value.trim();
+            const powers = document.getElementById('char-powers').value;
+            const history = document.getElementById('char-history').value;
 
-            if (fileInput.files && fileInput.files[0]) {
-                photo = await readFileAsDataUrl(fileInput.files[0]);
+            if (!photo) {
+                photo = DEFAULT_PHOTO;
             }
 
             const parentNormalized = parentInput.toLowerCase();
@@ -1614,11 +2801,11 @@
 
             const newChar = { name, parent: parentInput, category, age, photo, powers, history };
             studentRoster.push(newChar);
-            saveState();
 
             updateCounterDisplay();
             renderRoster(currentFilter);
             document.getElementById('character-form').reset();
+            document.getElementById('char-photo').value = DEFAULT_PHOTO;
             
             alert('Ficha registrada com sucesso! Veja na aba Alunos & Fichas.');
             switchNav('alunos');
@@ -1634,7 +2821,7 @@
             const grid = document.getElementById('roster-grid');
             
             let filtered = studentRoster;
-            if (filter !== 'all') {
+            if(filter !== 'all') {
                 filtered = studentRoster.filter(s => s.category === filter);
             }
 
@@ -1643,53 +2830,44 @@
                 return;
             }
 
-            grid.innerHTML = '';
+            let html = '';
             filtered.forEach(student => {
                 let tagClass = 'tag-disney';
                 let tagLabel = 'Personagem / Conto';
-                let accent = '#bd00ff';
-                if (student.category === 'villains') {
+                if(student.category === 'villains') {
                     tagClass = 'tag-villains';
                     tagLabel = 'Vilões';
-                    accent = '#ef4444';
-                } else if (student.category === 'heroes') {
+                } else if(student.category === 'heroes') {
                     tagClass = 'tag-heroes';
                     tagLabel = 'Heróis';
-                    accent = '#10b981';
                 }
 
-                const card = document.createElement('div');
-                card.className = 'roster-card';
-
-                const img = document.createElement('img');
-                img.alt = student.name;
-                applyImage(img, student.photo, student.name, `Filho(a) de ${student.parent}`, accent);
-
-                const info = document.createElement('div');
-                info.className = 'roster-info';
-                info.innerHTML = `
-                    <div class="roster-header">
-                        <span class="roster-name">${escapeXml(student.name)}</span>
-                        <span class="roster-tag ${tagClass}">${tagLabel}</span>
-                    </div>
-                    <div class="roster-details">
-                        <p><strong>Filiação:</strong> ${escapeXml(student.parent)}</p>
-                        <p><strong>Ano/Idade:</strong> ${escapeXml(student.age)}</p>
-                        <p style="margin-top:0.4rem;"><strong>Poderes:</strong> ${escapeXml(student.powers)}</p>
-                        <p style="margin-top:0.4rem;"><strong>História:</strong> ${escapeXml(student.history)}</p>
+                html += `
+                    <div class="roster-card">
+                        <img src="student.photo"alt="{student.name}" onerror="this.src='${DEFAULT_PHOTO}'">
+                        <div class="roster-info">
+                            <div class="roster-header">
+                                <span class="roster-name">${student.name}</span>
+                                <span class="roster-tag tagClass">{tagLabel}</span>
+                            </div>
+                            <div class="roster-details">
+                                <p><strong>Filiação:</strong> ${student.parent}</p>
+                                <p><strong>Ano/Idade:</strong> ${student.age}</p>
+                                <p style="margin-top:0.4rem;"><strong>Poderes:</strong> ${student.powers}</p>
+                                <p style="margin-top:0.4rem;"><strong>História:</strong> ${student.history}</p>
+                            </div>
+                        </div>
                     </div>
                 `;
-
-                card.appendChild(img);
-                card.appendChild(info);
-                grid.appendChild(card);
             });
+
+            grid.innerHTML = html;
         }
 
         function filterRoster(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById(`btn-filter-${category}`);
-            if (activeBtn) activeBtn.classList.add('active');
+            if(activeBtn) activeBtn.classList.add('active');
             renderRoster(category);
         }
 
@@ -1699,7 +2877,7 @@
             
             cards.forEach(card => {
                 const text = card.innerText.toLowerCase();
-                if (text.includes(query)) {
+                if(text.includes(query)) {
                     card.style.display = 'flex';
                 } else {
                     card.style.display = 'none';
@@ -1707,10 +2885,7 @@
             });
         }
 
-        loadState();
-        initStaticImages();
         updateCounterDisplay();
-        renderRoster(currentFilter);
         renderCanon();
     </script>
 </body>
