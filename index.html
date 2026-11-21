@@ -862,7 +862,7 @@
             <li><a id="link-alunos" onclick="switchNav('alunos')">Alunos & Fichas</a></li>
             <li><a id="link-criar-ficha" onclick="switchNav('criar-ficha')">Criar Ficha</a></li>
             <li><a id="link-docentes" onclick="switchNav('docentes')">Docência</a></li>
-            <li><a id="link-locais" onclick="switchNav('locais')">Locais de Auradon</a></li>
+            <li><a id="link-locais" onclick="switchNav('locais')">Locais</a></li>
         </ul>
         <div class="nav-actions">
             <button class="btn btn-outline" onclick="openModal('loginModal')">Entrar</button>
@@ -886,7 +886,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Explorar o Portal</h2>
-                <p>Navegue pelas seções principais da academia.</p>
+                <p>Navegue pelas seções principais da academia e dos reinos.</p>
             </div>
             <div class="grid-3">
                 <div class="card" onclick="switchNav('canon')" style="cursor: pointer;">
@@ -901,12 +901,12 @@
                 </div>
                 <div class="card" onclick="switchNav('locais')" style="cursor: pointer;">
                     <div class="card-img-wrap">
-                        <img class="smart-img" data-raw-src="https://ibb.co/7NkDmx09" alt="Locais de Auradon">
+                        <img class="smart-img" data-raw-src="https://ibb.co/7NkDmx09" alt="Locais de Auradon e da Ilha">
                     </div>
                     <div class="card-body">
-                        <h3>Locais de Auradon</h3>
-                        <p>Visite todos os 16 ambientes da academia e de Auradon City, incluindo cafés temáticos, dormitórios, arena e biblioteca.</p>
-                        <span class="roster-tag tag-disney">16 AMBIENTES</span>
+                        <h3>Locais de Auradon & Ilha</h3>
+                        <p>Visite todos os 22 ambientes oficiais: salas de aula, dormitórios, cafés temáticos de Auradon City e os recantos sombrios da Ilha dos Perdidos.</p>
+                        <span class="roster-tag tag-disney">22 AMBIENTES</span>
                     </div>
                 </div>
                 <div class="card" onclick="switchNav('docentes')" style="cursor: pointer;">
@@ -947,7 +947,7 @@
     <main id="view-lore" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
-                <h2>O Reino de Auradon</h2>
+                <h2>O Reino de Auradon e a Ilha</h2>
                 <p>Descubra os acontecimentos que moldam o novo ano letivo em Auradon Prep.</p>
             </div>
             <div class="grid-3">
@@ -964,7 +964,7 @@
                 <div class="card" style="padding: 2rem;">
                     <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏴‍☠️</div>
                     <h3>Tensão & Alianças</h3>
-                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola, exigindo consenso e auxílio de nossos VKs.</p>
+                    <p>Embora as pontes permaneçam abertas, antigos ressentimentos e novos segredos envolvem os corredores da escola e as docas da Ilha, exigindo consenso e auxílio de nossos VKs.</p>
                 </div>
             </div>
         </div>
@@ -1194,12 +1194,12 @@
         </div>
     </main>
 
-    <!-- 7. LOCAIS DE AURADON (16 AMBIENTES COM LINKS IMGBB E DESCRIÇÕES EXATAS) -->
+    <!-- 7. LOCAIS DE AURADON E ILHA (22 AMBIENTES COM LINKS IMGBB E DESCRIÇÕES DETALHADAS) -->
     <main id="view-locais" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
-                <h2>Locais de Auradon</h2>
-                <p>Os 16 ambientes oficiais da academia e de Auradon City para encontros, aulas e cenas de RPG.</p>
+                <h2>Locais de Auradon & Ilha dos Perdidos</h2>
+                <p>Os 22 ambientes oficiais da academia, de Auradon City e da Ilha dos Perdidos para encontros e cenas de RPG.</p>
             </div>
             <div id="locais-grid" class="grid-3"></div>
         </div>
@@ -1305,7 +1305,6 @@
             });
         }
 
-        // Limite de até 2 clubes selecionados
         function initClubSelectionLimit() {
             const checkboxes = document.querySelectorAll('input[name="char-clubs"]');
             checkboxes.forEach(box => {
@@ -1387,7 +1386,7 @@
             }
         ];
 
-        // 16 Locais de Auradon com descrições fiéis e links ImgBB
+        // 22 Locais Oficiais (16 de Auradon + 6 da Ilha dos Perdidos com descrições fiéis e aprimoradas)
         const locaisList = [
             {
                 name: "1. Fachada de Auradon Prep / Auradon Academy",
@@ -1502,6 +1501,48 @@
                 badge: "PONTO SOCIAL",
                 tagClass: "tag-villains",
                 image: "https://ibb.co/p6ccpxrg"
+            },
+            {
+                name: "17. A Ilha dos Perdidos",
+                desc: "Uma ilha-prisão sombria e isolada, erguida nas proximidades de Auradon pelo Rei Fera e pela Fada Madrinha. Cercada por uma cúpula mágica inpenetrável, a Ilha neutraliza qualquer manifestação de magia, impede a saída de seus habitantes e bloqueia totalmente sinais de Wi-Fi e telefonia celular. Sob um céu perpetuamente cinzento e nublado, o cenário é formado por vielas estreitas, edifícios em ruínas e eletrodomésticos arcaicos, onde os vilões e seus descendentes sobrevivem exclusivamente a partir das sobras e descartes enviados pelo reino de Auradon.",
+                badge: "ILHA DOS PERDIDOS",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/8FYyRp4"
+            },
+            {
+                name: "18. Esconderijo do Quarteto Principal",
+                desc: "O lendário refúgio secreto onde Mal, Evie, Jay e Carlos passavam horas longe do controle dos pais, articulando planos e travessuras pela Ilha. O interior possui a atmosfera de um apartamento abandonado e bagunçado, com paredes cobertas por grafites autorais do grupo e um marcante painel pintado por Mal com o icônico lema \"Podres até o Núcleo\". Para manter intrusos afastados, a entrada conta com um engenhoso mecanismo de segurança: a porta só se destranca quando uma pedra atinge com precisão a placa \"Cuidado com as pedras voadoras\", localizada no alto do portal. Com a destruição do Castelo da Barganha após a queda de Malévola, o local tornou-se o principal abrigo planejado por Mal ao retornar à sua terra natal.",
+                badge: "ILHA - ESCONDERIJO",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/CpfGY81B"
+            },
+            {
+                name: "19. O Fliperama Vodu do Dr. Facilier",
+                desc: "Um sinistro fliperama subterrâneo de estética vodu, administrado pessoalmente pelo Dr. Facilier. Devido ao racionamento de recursos e à ausência de tecnologias recentes na Ilha, todas as máquinas e atrações funcionam por mecanismos manuais e engrenagens improvisadas, utilizando telas de galinheiro enferrujadas no lugar do vidro comum. As atrações mantêm um clima sombrio — com simulações de monstros marinhos devorando marujos e desafios de habilidade para batedores de carteira — e, como se trata do estabelecimento do Homem da Sombra, cada jogo é sutilmente adulterado para garantir que a casa sempre saia vitoriosa.",
+                badge: "ILHA - FLIPERAMA",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/S4BF3F5S"
+            },
+            {
+                name: "20. Enseada dos Piratas",
+                desc: "O ponto de atracação do lendário navio Jolly Roger e o principal reduto da tripulação pirata liderada por Uma. A enseada é marcada por águas escuras, névoa constante e cais de madeira gasta. Nas profundezas ao redor da embarcação, nadam os perigosos crocodilos descendentes do histórico Tick-Tock Croc, que rondam o casco em busca de restos e tornam a aproximação de estranhos ao navio uma tarefa extremamente arriscada sem a permissão dos piratas.",
+                badge: "ILHA - PIRATAS",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/35X6VzB8"
+            },
+            {
+                name: "21. O Enrole e Pinte da Lady Tremaine",
+                desc: "O decadente salão de beleza da Ilha dos Perdidos, pertencente a Lady Tremaine e administrado junto de suas filhas, Anastasia e Drizella. Montado com materiais sucateados, espelhos trincados e móveis velhos, o espaço tem como verdadeira força criativa a jovem Dizzy Tremaine. Embora seja tratada como serviçal e obrigada a varrer o chão e limpar a sujeira do salão, é Dizzy quem possui o autêntico talento artístico da família para criar cortes modernos, tinturas vibrantes e penteados ousados para os clientes.",
+                badge: "ILHA - SALÃO",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/46fvNvM"
+            },
+            {
+                name: "22. O Peixe com Batatas Fritas da Úrsula",
+                desc: "Localizado nas docas da Ilha dos Perdidos, este restaurante rústico e agitado pertence à ex-bruxa do mar Úrsula, que comanda o negócio dos fundos enquanto assiste a novelas e lucra vendendo frutos do mar fritos. O ambiente tem um marcante aroma marinho e decoração pitoresca composta por tentáculos de papelão e lustres em formato de timão. Servindo refeições de qualidade duvidosa sob o lema inflexible \"Você vai aceitar do jeito que eu faço\", o local é famoso por seus números musicais improvisados, fartura de bebidas e por ser o quartel-general oficial da gangue pirata de Uma, Harry Hook e Gil. Para encerrar o banquete e sair da mesa, os clientes precisam seguir a tradicional regra da casa: gritar bem alto a frase \"Chega, já acabei!\".",
+                badge: "ILHA - DORMITÓRIO / HQ",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/SDC5NP8C"
             }
         ];
 
