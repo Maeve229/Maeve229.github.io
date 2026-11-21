@@ -387,6 +387,7 @@
             color: var(--text-muted);
             font-size: 0.85rem;
             line-height: 1.5;
+            list-style: none;
         }
 
         .card-list li {
@@ -537,7 +538,7 @@
 
         .roster-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
             gap: 1.5rem;
         }
 
@@ -558,7 +559,7 @@
 
         .roster-card img {
             width: 100%;
-            height: 200px;
+            height: 210px;
             object-fit: cover;
         }
 
@@ -599,7 +600,24 @@
         .roster-details {
             font-size: 0.85rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.55;
+        }
+
+        .club-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.3rem;
+        }
+
+        .club-pill {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(229, 193, 88, 0.14);
+            border: 1px solid var(--border-gold);
+            color: var(--accent-gold);
+            font-weight: 600;
         }
 
         /* Elenco Canon */
@@ -671,7 +689,7 @@
             border: 1px solid var(--border-gold);
             border-radius: var(--radius-lg);
             padding: 2.5rem;
-            max-width: 800px;
+            max-width: 850px;
             margin: 2rem auto;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
         }
@@ -712,6 +730,38 @@
         input:focus, select:focus, textarea:focus {
             border-color: var(--accent-gold);
             box-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
+        }
+
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 0.65rem;
+            margin-top: 0.2rem;
+        }
+
+        .club-option {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.65rem 0.8rem;
+            background: rgba(9, 6, 20, 0.75);
+            border: 1px solid var(--border-glow);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .club-option:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .club-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent-gold);
+            cursor: pointer;
         }
 
         .helper-text {
@@ -855,8 +905,8 @@
                     </div>
                     <div class="card-body">
                         <h3>Locais de Auradon</h3>
-                        <p>Visite todos os 13 ambientes da academia: fachada, hall, armários, jardim, lago, arena de esgrima, biblioteca e dormitórios.</p>
-                        <span class="roster-tag tag-disney">13 AMBIENTES</span>
+                        <p>Visite todos os 16 ambientes da academia e de Auradon City, incluindo cafés temáticos, dormitórios, arena e biblioteca.</p>
+                        <span class="roster-tag tag-disney">16 AMBIENTES</span>
                     </div>
                 </div>
                 <div class="card" onclick="switchNav('docentes')" style="cursor: pointer;">
@@ -1029,7 +1079,7 @@
                         Filhos Registrados: 0 / 4
                     </div>
 
-                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome..." onkeyup="searchRoster()">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nome ou conto..." onkeyup="searchRoster()">
                 </div>
 
                 <div class="filter-buttons">
@@ -1059,12 +1109,30 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Nome do Personagem</label>
-                            <input type="text" id="char-name" required placeholder="Ex: Maeve Mim">
+                            <input type="text" id="char-name" required placeholder="Ex: Mal">
                         </div>
                         <div class="form-group">
-                            <label>Filiação (Progenitor)</label>
-                            <input type="text" id="char-parent" required placeholder="Ex: Chapeleiro Maluco ou Maui">
+                            <label>Filiação (Pai ou Progenitor)</label>
+                            <input type="text" id="char-parent" required placeholder="Ex: Hades ou Chapeleiro Maluco">
                             <span class="helper-text">Cada progenitor pode ter no máximo 4 filhos registrados.</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Nome do Conto do Pai</label>
+                            <input type="text" id="char-parent-tale" required placeholder="Ex: Hércules, A Bela Adormecida, Alice no País das Maravilhas">
+                        </div>
+                        <div class="form-group">
+                            <label>Gênero</label>
+                            <select id="char-gender" required>
+                                <option value="Menina">Menina</option>
+                                <option value="Menino">Menino</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Local de Origem</label>
+                            <select id="char-origin-place" required>
+                                <option value="Auradon">Auradon</option>
+                                <option value="Ilha dos Perdidos">Ilha dos Perdidos</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Categoria de Origem</label>
@@ -1078,10 +1146,27 @@
                             <label>Idade / Ano Escolar</label>
                             <input type="text" id="char-age" required placeholder="Ex: 16 anos / 2º Ano">
                         </div>
+                        <div class="form-group">
+                            <label>Nome do Avatar (Aparência)</label>
+                            <input type="text" id="char-avatar-name" required placeholder="Ex: Dove Cameron - Mal">
+                        </div>
                         <div class="form-group full">
                             <label>Aparência (Photoplayer - Link da Imagem)</label>
                             <input type="text" id="char-photo" required value="https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg" placeholder="Cole a URL da foto do seu personagem">
                             <span class="helper-text">Sua imagem de capa padrão já está inserida automaticamente na ficha!</span>
+                        </div>
+                        <div class="form-group full">
+                            <label>Escolha de Clubes (Até 2 Clubes — Principais Clubes)</label>
+                            <div class="clubs-grid" id="clubs-selector">
+                                <label class="club-option"><input type="checkbox" name="char-clubs" value="Clube de Artes"> ➤ Clube de Artes</label>
+                                <label class="club-option"><input type="checkbox" name="char-clubs" value="Clube de Música"> ➤ Clube de Música</label>
+                                <label class="club-option"><input type="checkbox" name="char-clubs" value="Clube de Teatro"> ➤ Clube de Teatro</label>
+                                <label class="club-option"><input type="checkbox" name="char-clubs" value="Clube de Jardinagem"> ➤ Clube de Jardinagem</label>
+                                <label class="club-option"><input type="checkbox" name="char-clubs" value="Clube de Culinária"> ➤ Clube de Culinária</label>
+                                <label class="club-option"><input type="checkbox" name="char-clubs" value="Clube de Jornalismo"> ➤ Clube de Jornalismo</label>
+                                <label class="club-option"><input type="checkbox" name="char-clubs" value="Clube de Duelos"> ➤ Clube de Duelos</label>
+                            </div>
+                            <span class="helper-text">Selecione até 2 clubes entre as opções de Principais Clubes.</span>
                         </div>
                         <div class="form-group full">
                             <label>Poderes & Habilidades</label>
@@ -1109,12 +1194,12 @@
         </div>
     </main>
 
-    <!-- 7. LOCAIS DE AURADON (13 AMBIENTES COM LINKS IMGBB E DESCRIÇÕES EXATAS) -->
+    <!-- 7. LOCAIS DE AURADON (16 AMBIENTES COM LINKS IMGBB E DESCRIÇÕES EXATAS) -->
     <main id="view-locais" class="page-view">
         <div class="container" style="padding-top: 140px;">
             <div class="section-header">
                 <h2>Locais de Auradon</h2>
-                <p>Os 13 ambientes oficiais da academia para encontros, aulas e cenas de RPG.</p>
+                <p>Os 16 ambientes oficiais da academia e de Auradon City para encontros, aulas e cenas de RPG.</p>
             </div>
             <div id="locais-grid" class="grid-3"></div>
         </div>
@@ -1220,6 +1305,20 @@
             });
         }
 
+        // Limite de até 2 clubes selecionados
+        function initClubSelectionLimit() {
+            const checkboxes = document.querySelectorAll('input[name="char-clubs"]');
+            checkboxes.forEach(box => {
+                box.addEventListener('change', () => {
+                    const checked = document.querySelectorAll('input[name="char-clubs"]:checked');
+                    if (checked.length > 2) {
+                        box.checked = false;
+                        alert('⚠️ Você pode escolher no máximo 2 clubes entre as opções.');
+                    }
+                });
+            });
+        }
+
         // 8 Professores com seus links ImgBB
         const docentesList = [
             {
@@ -1288,7 +1387,7 @@
             }
         ];
 
-        // 13 Locais de Auradon com descrições fiéis e links ImgBB
+        // 16 Locais de Auradon com descrições fiéis e links ImgBB
         const locaisList = [
             {
                 name: "1. Fachada de Auradon Prep / Auradon Academy",
@@ -1382,6 +1481,27 @@
                 badge: "CENTRO REAL",
                 tagClass: "tag-villains",
                 image: "https://ibb.co/YVf2zzs"
+            },
+            {
+                name: "14. Café do Castiçal",
+                desc: "É uma cafeteria tranquila e acolhedora localizada em Auradon City, bastante frequentada pelos alunos da Auradon Prep que buscam um refúgio fora do campus. É conhecido por ser um lugar silencioso e reservado, ideal para estudar depois da aula ou apenas relaxar.",
+                badge: "CAFETERIA",
+                tagClass: "tag-disney",
+                image: "https://ibb.co/6JpHmp22"
+            },
+            {
+                name: "15. O Cabaré Culinário",
+                desc: "É um restaurante temático agitado na rua principal de Auradon City, a cinco minutos da Auradon Prep, inspirado no banquete de A Bela e a Fera. Enquanto garçons servem pratos clássicos como suflê de queijo, pudim flambado e a famosa Grey Stuff, o salão ganha vida com um karaokê musical onde os próprios alunos de Auradon sobem ao palco, pegam os microfones e soltam a voz cantando e dançando os maiores sucessos do reino sob aplausos e luzes coloridas. Como o atendimento é tão entusiasmado que a comida e a música não param nunca, a única regra para encerrar o banquete na sua mesa é gritar bem alto: \"Chega, já acabei!\"",
+                badge: "RESTAURANTE & KARAOKE",
+                tagClass: "tag-heroes",
+                image: "https://ibb.co/Qjvx66kq"
+            },
+            {
+                name: "16. O Café Louco por Chá",
+                desc: "É uma cafeteria vibrante e colorida localizada bem ao lado do campo de Tourney da Auradon Prep, pertencente ao pai de Ally (filha da Alice), com decoração excêntrica inspirada no País das Maravilhas, cheia de relógios tortos, xícaras empilhadas e mesas temáticas. Funcionando como o principal ponto de encontro social dos estudantes fora das aulas, o local vive agitado com conversas animadas, música ambiente e aromas de cafés especiais, chás variados e doces criativos. É nas mesas desse café que os alunos se reúnem para relaxar, fofocar, fazer confissões e se arrumar antes dos grandes bailes, frequentemente sendo palco de pequenas confusões mágicas e momentos divertidos entre os personagens.",
+                badge: "PONTO SOCIAL",
+                tagClass: "tag-villains",
+                image: "https://ibb.co/p6ccpxrg"
             }
         ];
 
@@ -1671,13 +1791,23 @@
                 return;
             }
 
-            const name = document.getElementById('char-name').value;
+            const name = document.getElementById('char-name').value.trim();
             const parentInput = document.getElementById('char-parent').value.trim();
+            const parentTale = document.getElementById('char-parent-tale').value.trim();
+            const gender = document.getElementById('char-gender').value;
+            const originPlace = document.getElementById('char-origin-place').value;
             const category = document.getElementById('char-category').value;
-            const age = document.getElementById('char-age').value;
+            const age = document.getElementById('char-age').value.trim();
+            const avatarName = document.getElementById('char-avatar-name').value.trim();
             let photo = document.getElementById('char-photo').value.trim();
-            const powers = document.getElementById('char-powers').value;
-            const history = document.getElementById('char-history').value;
+            const powers = document.getElementById('char-powers').value.trim();
+            const history = document.getElementById('char-history').value.trim();
+
+            const selectedClubs = Array.from(document.querySelectorAll('input[name="char-clubs"]:checked')).map(el => el.value);
+            if (selectedClubs.length > 2) {
+                alert('⚠️ Escolha no máximo 2 clubes.');
+                return;
+            }
 
             if (!photo) photo = DEFAULT_PHOTO;
 
@@ -1688,7 +1818,21 @@
                 return;
             }
 
-            studentRoster.push({ name, parent: parentInput, category, age, photo, powers, history });
+            studentRoster.push({
+                name,
+                parent: parentInput,
+                parentTale,
+                gender,
+                originPlace,
+                category,
+                age,
+                avatarName,
+                clubs: selectedClubs,
+                photo,
+                powers,
+                history
+            });
+
             updateCounterDisplay();
             renderRoster(currentFilter);
             document.getElementById('character-form').reset();
@@ -1729,11 +1873,15 @@
                     tagLabel = 'Heróis';
                 }
 
+                const clubsHtml = (student.clubs && student.clubs.length > 0)
+                    ? `<div class="club-badges">${student.clubs.map(c => `<span class="club-pill">➤ ${c}</span>`).join('')}</div>`
+                    : '<span>Nenhum clube selecionado</span>';
+
                 const card = document.createElement('div');
                 card.className = 'roster-card';
 
                 const img = document.createElement('img');
-                img.alt = student.name;
+                img.alt = student.avatarName || student.name;
                 attachSmartImage(img, student.photo || DEFAULT_PHOTO, student.name);
 
                 const info = document.createElement('div');
@@ -1745,8 +1893,14 @@
                     </div>
                     <div class="roster-details">
                         <p><strong>Filiação:</strong> ${student.parent}</p>
+                        <p><strong>Conto do Pai:</strong> ${student.parentTale}</p>
+                        <p><strong>Gênero:</strong> ${student.gender}</p>
+                        <p><strong>Local de Origem:</strong> ${student.originPlace}</p>
                         <p><strong>Ano/Idade:</strong> ${student.age}</p>
-                        <p style="margin-top:0.4rem;"><strong>Poderes:</strong> ${student.powers}</p>
+                        <p><strong>Avatar (Aparência):</strong> ${student.avatarName}</p>
+                        <p style="margin-top:0.4rem;"><strong>Clubes:</strong></p>
+                        ${clubsHtml}
+                        <p style="margin-top:0.5rem;"><strong>Poderes:</strong> ${student.powers}</p>
                         <p style="margin-top:0.4rem;"><strong>História:</strong> ${student.history}</p>
                     </div>
                 `;
@@ -1774,6 +1928,7 @@
         }
 
         initStaticSmartImages();
+        initClubSelectionLimit();
         updateCounterDisplay();
         renderCanon();
         renderDocentes();
