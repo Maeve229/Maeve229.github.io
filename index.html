@@ -728,8 +728,84 @@
         // Extrai o ID de links do ImgBB (páginas ibb.co/ID ou links diretos i.ibb.co/ID/arquivo.jpg)
         function getImgBBId(url) {
             const clean = String(url || "").trim();
-            const directMatch = clean.match(/^https?:\/\/(?:i\.)?ibb\.co(?:\.com)?\/([A-Za-z0-9_-]+)(?:\/[^/?#]+)?\/?$/i);
-            return directMatch ? directMatch[1] : "";
+            if (!clean) return "";
+            const match = clean.match(/^https?:\/\/(?:www\.)?(?:i\.)?ibb\.co(?:\.com)?\/([A-Za-z0-9_-]+)(?:\/[^/?#]+)?\/?$/i);
+            return match ? match[1] : "";
+        }
+
+        // Constrói múltiplas rotas diretas e seguras para links ibb.co / i.ibb.co
+        function buildImgCandidates(url, fallbackUrl = DEFAULT_COVER) {
+            const clean = String(url || "").trim();
+            const list = [];
+            const push = (u) => {
+                const trimmed = String(u || "").trim();
+                if (trimmed && !list.includes(trimmed)) list.push(trimmed);
+            };
+            const isIbbPage = /^https?:\/\/(?:www\.)?ibb\.co(?:\.com)?\/([A-Za-z0-9_-]+)\/?$/i.test(clean);
+            const id = getImgBBId(clean);
+
+            // Se já for link direto (não apenas página ibb.co/ID), tenta primeiro
+            if (clean && !isIbbPage) {
+                push(clean);
+            }
+
+            // Para links do ImgBB, testa formatos diretos mais comuns no CDN
+            if (id) {
+                push(`https://i.ibb.co/${id}/${id}.jpg`);
+                push(`https://i.ibb.co/${id}/${id}.png`);
+                push(`https://i.ibb.co/${id}/${id}.webp`);
+                push(`https://i.ibb.co.com/${id}/${id}.jpg`);
+                push(`https://i.ibb.co.com/${id}/${id}.png`);
+            }
+
+            // Por último, adiciona alternativas do fallback padrão
+            if (fallbackUrl) {
+                const fbClean = String(fallbackUrl).trim();
+                const fbIsPage = /^https?:\/\/(?:www\.)?ibb\.co(?:\.com)?\/([A-Za-z0-9_-]+)\/?$/i.test(fbClean);
+                const fbId = getImgBBId(fbClean);
+                if (fbClean && !fbIsPage) push(fbClean);
+                if (fbId) {
+                    push(`https://i.ibb.co/${fbId}/${fbId}.jpg`);
+                    push(`https://i.ibb.co/${fbId}/${fbId}.png`);
+                } else if (fbClean) {
+                    push(fbClean);
+                }
+            }
+
+            return list;
+        }
+
+        function handleSmartImgError(imgEl) {
+            const queueRaw = imgEl.getAttribute("data-candidates") || "[]";
+            let queue = [];
+            try { queue = JSON.parse(decodeURIComponent(queueRaw)); } catch (e) { queue = []; }
+            const nextIdx = parseInt(imgEl.getAttribute("data-cand-idx") || "0", 10) + 1;
+            if (nextIdx < queue.length) {
+                imgEl.setAttribute("data-cand-idx", String(nextIdx));
+                imgEl.src = queue[nextIdx];
+                return;
+            }
+            const originalHref = imgEl.getAttribute("data-original-url") || DEFAULT_COVER;
+            const title = imgEl.getAttribute("data-title") || "Imagem";
+            const wrap = imgEl.parentElement;
+            if (wrap && !wrap.querySelector(".img-fallback-card")) {
+                imgEl.classList.add("hidden");
+                const card = document.createElement("div");
+                card.className = "img-fallback-card w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-purple-950 via-[#180c36] to-slate-950 text-purple-100";
+                card.innerHTML = `<i class="fa-solid fa-crown text-amber-300/80 text-lg mb-1.5"></i><p class="text-xs font-bold text-amber-200 line-clamp-2">${escapeHtml(title)}</p><a href="${escapeHtml(originalHref)}" target="_blank" rel="noopener noreferrer" class="mt-2 px-2.5 py-1 rounded-lg bg-amber-400/15 border border-amber-400/40 text-[10px] font-semibold text-amber-300 hover:bg-amber-400/25">Ver Imagem</a>`;
+                wrap.appendChild(card);
+            }
+        }
+
+        function renderSmartImg(url, options = {}) {
+            const fallbackUrl = options.fallback || DEFAULT_COVER;
+            const candidates = buildImgCandidates(url, fallbackUrl);
+            const firstSrc = candidates[0] || DEFAULT_COVER;
+            const encodedQueue = encodeURIComponent(JSON.stringify(candidates));
+            const classes = options.className || "w-full h-full object-cover object-top";
+            const altText = options.alt || "Imagem";
+
+            return `<img src="${escapeHtml(firstSrc)}" alt="${escapeHtml(altText)}" loading="eager" decoding="async" referrerpolicy="no-referrer" data-candidates="${encodedQueue}" data-cand-idx="0" data-original-url="${escapeHtml(url || fallbackUrl)}" data-title="${escapeHtml(altText)}" onerror="handleSmartImgError(this)" class="${escapeHtml(classes)}" />`;
         }
 
         // Constrói múltiplas rotas diretas para páginas ibb.co/<id> que não carregam diretamente como <img>
@@ -993,9 +1069,9 @@
                 return `
                     <div class="glass-card rounded-2xl p-4 border ${isOccupied ? "border-amber-400/60" : "border-purple-800/70"} flex flex-col justify-between space-y-3">
                         <div class="space-y-3">
-                            <div class="relative aspect-square w-full rounded-xl overflow-hidden bg-purple-950">
-                                ${renderSmartImg(char.img, { alt: char.name })}
-                                <span class="absolute top-2 right-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${isOccupied ? "bg-amber-400 text-slate-950" : "bg-emerald-500 text-slate-950"}">
+                            <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-purple-950 border border-purple-800/60">
+                                ${renderSmartImg(char.img, { alt: char.name, className: "w-full h-full object-cover object-top" })}
+                                <span class="absolute top-2 right-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow ${isOccupied ? "bg-amber-400 text-slate-950" : "bg-emerald-400 text-slate-950"}">
                                     ${isOccupied ? "Ocupado" : "Vago"}
                                 </span>
                             </div>
@@ -1246,7 +1322,7 @@
             if (!grid) return;
             grid.innerHTML = TEACHERS.map((t) => `
                 <div class="glass-card rounded-2xl p-4 space-y-2.5 border border-purple-800/70">
-                    <div class="aspect-square rounded-xl overflow-hidden bg-purple-950">${renderSmartImg(t.img, { alt: t.name })}</div>
+                    <div class="aspect-[4/5] rounded-xl overflow-hidden bg-purple-950 border border-purple-800/60">${renderSmartImg(t.img, { alt: t.name, className: "w-full h-full object-cover object-top" })}</div>
                     <h3 class="font-cinzel font-bold text-base text-white">${escapeHtml(t.name)}</h3>
                     <p class="text-xs text-amber-300/90">${escapeHtml(t.subject)}</p>
                 </div>
@@ -1302,8 +1378,8 @@
             const scene = ALL_SCENES.find((s) => s.id === state.selectedSceneId) || ALL_SCENES[0];
             cardEl.innerHTML = `
                 <div class="glass-card rounded-2xl p-4 space-y-3 border border-purple-800/70">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-purple-950">
-                        ${renderSmartImg(scene.img, { alt: scene.name })}
+                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-purple-950 border border-purple-800/60">
+                        ${renderSmartImg(scene.img, { alt: scene.name, className: "w-full h-full object-cover object-center" })}
                     </div>
                     <div>
                         <span class="text-[10px] font-bold uppercase tracking-wider text-amber-300">${escapeHtml(scene.category)}</span>
