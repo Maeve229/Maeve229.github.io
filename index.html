@@ -954,10 +954,11 @@
             grid.innerHTML = filtered.map((char) => {
                 const claim = state.canonClaims[char.id];
                 const isOccupied = Boolean(claim && claim.player);
+                const profile = state.canonProfiles[char.id] || {};
 
                 return `
                     <div class="glass-card rounded-2xl p-4 border ${isOccupied ? "border-amber-400/60" : "border-purple-800/70"} flex flex-col justify-between space-y-3">
-                        <div class="space-y-3">
+                        <div class="space-y-3 cursor-pointer" onclick="${isOccupied ? `viewCanonFicha(${char.id})` : ""}">
                             <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-purple-950 border border-purple-800/60">
                                 ${renderSmartImg(char.img, { alt: char.name, className: "w-full h-full object-cover object-top" })}
                                 <span class="absolute top-2 right-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold shadow ${isOccupied ? "bg-amber-400 text-slate-950" : "bg-emerald-400 text-slate-950"}">
@@ -972,14 +973,20 @@
                             ${isOccupied ? `
                                 <div class="p-2.5 rounded-xl bg-purple-950/80 border border-amber-400/30 text-xs text-purple-100 space-y-1">
                                     <p><i class="fa-solid fa-user text-amber-300 mr-1"></i> Em uso por: <strong>${escapeHtml(claim.player)}</strong></p>
+                                    <p class="text-[10px] text-amber-300 underline font-semibold mt-1"><i class="fa-solid fa-eye mr-1"></i> Clique para ver ficha completa</p>
                                 </div>
                             ` : ""}
                         </div>
 
                         ${isOccupied ? `
-                            <button type="button" onclick="releaseCanonCharacter(${char.id})" class="w-full py-2.5 px-3 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-500 text-white transition shadow flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-unlock"></i> DESOCUPAR CANON (Deixar Vago)
-                            </button>
+                            <div class="space-y-1.5">
+                                <button type="button" onclick="viewCanonFicha(${char.id})" class="w-full py-2 px-3 rounded-xl text-xs font-bold bg-purple-900 hover:bg-purple-800 text-amber-300 transition shadow flex items-center justify-center gap-1.5 border border-amber-400/30">
+                                    <i class="fa-solid fa-id-card"></i> Ver Ficha do Canon
+                                </button>
+                                <button type="button" onclick="releaseCanonCharacter(${char.id})" class="w-full py-2 px-3 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-500 text-white transition shadow flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-unlock"></i> DESOCUPAR CANON (Deixar Vago)
+                                </button>
+                            </div>
                         ` : `
                             <button type="button" onclick="claimCanonCharacter(${char.id})" class="w-full py-2.5 px-3 rounded-xl text-xs font-bold bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 hover:brightness-110 transition shadow flex items-center justify-center gap-1.5">
                                 <i class="fa-solid fa-hand-sparkles"></i> Reivindicar Personagem
@@ -993,99 +1000,67 @@
             if (headerCanon) headerCanon.textContent = `${occupiedEntries.length}/25`;
         }
 
-        function releaseCanonCharacter(charId) {
+        function viewCanonFicha(charId) {
             const char = CANON_CHARACTERS.find((c) => c.id === charId);
-            delete state.canonClaims[charId];
-            delete state.canonProfiles[charId];
-            if (char) {
-                const targetName = normalizeName(char.name);
-                state.dormitoryAssignments.girls = state.dormitoryAssignments.girls.filter((n) => normalizeName(n) !== targetName);
-                state.dormitoryAssignments.boys = state.dormitoryAssignments.boys.filter((n) => normalizeName(n) !== targetName);
-            }
-            saveState();
-            renderCanonGrid();
-            renderActiveScene();
-            showToast(`${char ? char.name : "Personagem"} foi desocupado! Agora está VAGO.`, "success");
-        }
+            const claim = state.canonClaims[charId];
+            const profile = state.canonProfiles[charId] || {};
+            if (!char || !claim) return;
 
-        function assignCharacterToDormitory(charName, gender) {
-            const cleanName = String(charName || "").trim();
-            if (!cleanName) return;
-            const bucketKey = gender === "Menino" ? "boys" : "girls";
-            const list = state.dormitoryAssignments[bucketKey];
-            const exists = list.some((item) => normalizeName(item) === normalizeName(cleanName));
-            if (!exists) {
-                list.push(cleanName);
-            }
-        }
-
-        function openCanonFichaModal(char, existingClaim = {}, existingProfile = {}) {
-            const defaultGender = FEMALE_CANON_IDS.has(char.id) ? "Menina" : "Menino";
-            const currentGender = existingProfile.gender || defaultGender;
-            const currentPlayer = existingClaim.player || state.currentPlayerSession || "";
-            const currentOrigin = existingProfile.origin || "Auradon";
-            const currentClubs = existingProfile.clubs || "";
-            const currentBio = existingProfile.bio || "";
-
-            return openModal({
-                title: `Ficha Canon — ${char.name}`,
+            openModal({
+                title: `📜 FICHA COMPLETA — ${char.name}`,
                 messageHtml: `
                     <div class="space-y-3 text-xs text-purple-100 max-h-[65vh] overflow-y-auto pr-1">
-                        <div class="flex items-center gap-3 p-2.5 rounded-xl bg-purple-950/80 border border-amber-400/40">
-                            <div class="w-16 h-20 rounded-lg overflow-hidden bg-purple-900 shrink-0 border border-purple-700/60">
-                                ${renderSmartImg(char.img, { alt: char.name, className: "w-full h-full object-cover object-top" })}
-                            </div>
-                            <div class="min-w-0">
-                                <p class="font-cinzel font-bold text-sm text-amber-300 truncate">${escapeHtml(char.name)}</p>
-                                <p class="text-[11px] text-purple-200 truncate">Progenitor: ${escapeHtml(char.parent)}</p>
-                                <p class="text-[10px] text-purple-300/80 truncate">Conto: ${escapeHtml(char.story)}</p>
-                                <p class="text-[10px] text-emerald-300 mt-0.5"><i class="fa-solid fa-image mr-1"></i>Imagem do canon aplicada automaticamente</p>
-                            </div>
+                        <div class="aspect-[4/3] w-full rounded-xl overflow-hidden bg-purple-950 border border-amber-400/40">
+                            ${renderSmartImg(char.img, { alt: char.name, className: "w-full h-full object-cover object-top" })}
                         </div>
-
-                        <div>
-                            <label class="block font-semibold text-amber-300 mb-1">Nome do Jogador *</label>
-                            <input id="canon-ficha-player" type="text" value="${escapeHtml(currentPlayer)}" placeholder="Ex: Ana / @jogador1" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400" />
+                        <div class="p-3 rounded-xl bg-purple-950/80 border border-purple-800/70 space-y-1.5">
+                            <p class="text-sm font-bold text-amber-300">${escapeHtml(char.name)}</p>
+                            <p><strong class="text-purple-200">Jogador:</strong> ${escapeHtml(claim.player)}</p>
+                            <p><strong class="text-purple-200">Progenitor:</strong> ${escapeHtml(char.parent)}</p>
+                            <p><strong class="text-purple-200">Conto Original:</strong> ${escapeHtml(char.story)}</p>
+                            <p><strong class="text-purple-200">Dormitório:</strong> ${escapeHtml(profile.gender || (FEMALE_CANON_IDS.has(char.id) ? "Menina" : "Menino"))}</p>
+                            <p><strong class="text-purple-200">Origem:</strong> ${escapeHtml(profile.origin || "Auradon")}</p>
+                            <p><strong class="text-purple-200">Clubes:</strong> ${escapeHtml(profile.clubs || "Nenhum informado")}</p>
                         </div>
-
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <div>
-                                <label class="block font-semibold text-amber-300 mb-1">Dormitório / Gênero</label>
-                                <select id="canon-ficha-gender" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400">
-                                    <option value="Menina" ${currentGender === "Menina" ? "selected" : ""}>Menina (Quarto de 4 Garotas)</option>
-                                    <option value="Menino" ${currentGender === "Menino" ? "selected" : ""}>Menino (Quarto de 4 Garotos)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-amber-300 mb-1">Origem</label>
-                                <select id="canon-ficha-origin" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400">
-                                    <option value="Auradon" ${currentOrigin === "Auradon" ? "selected" : ""}>Auradon</option>
-                                    <option value="Ilha dos Perdidos" ${currentOrigin === "Ilha dos Perdidos" ? "selected" : ""}>Ilha dos Perdidos</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block font-semibold text-amber-300 mb-1">Clubes (até 2)</label>
-                            <input id="canon-ficha-clubs" type="text" value="${escapeHtml(currentClubs)}" placeholder="Ex: Clube de Duelos, Clube de Música" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400" />
-                        </div>
-
-                        <div>
-                            <label class="block font-semibold text-amber-300 mb-1">História / Personalidade / Detalhes</label>
-                            <textarea id="canon-ficha-bio" rows="3" placeholder="Preencha os detalhes do personagem..." class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400">${escapeHtml(currentBio)}</textarea>
+                        <div class="p-3 rounded-xl bg-purple-950/80 border border-purple-800/70 space-y-1">
+                            <p class="font-bold text-amber-300">História & Detalhes:</p>
+                            <p class="text-purple-100 leading-relaxed whitespace-pre-line">${escapeHtml(profile.bio || "Sem histórico cadastrado.")}</p>
                         </div>
                     </div>
                 `,
-                confirmText: "Salvar Ficha Canon"
-            }).then((confirmed) => {
-                if (!confirmed) return null;
-                return {
-                    player: (document.getElementById("canon-ficha-player")?.value || "").trim(),
-                    gender: document.getElementById("canon-ficha-gender")?.value || defaultGender,
-                    origin: document.getElementById("canon-ficha-origin")?.value || "Auradon",
-                    clubs: (document.getElementById("canon-ficha-clubs")?.value || "").trim(),
-                    bio: (document.getElementById("canon-ficha-bio")?.value || "").trim()
-                };
+                confirmText: "Fechar",
+                showCancel: false
+            });
+        }
+
+        function viewOcFicha(ocId) {
+            const oc = state.ocs.find((o) => o.id === ocId);
+            if (!oc) return;
+
+            openModal({
+                title: `📜 FICHA COMPLETA — ${oc.name}`,
+                messageHtml: `
+                    <div class="space-y-3 text-xs text-purple-100 max-h-[65vh] overflow-y-auto pr-1">
+                        <div class="aspect-[4/3] w-full rounded-xl overflow-hidden bg-purple-950 border border-amber-400/40">
+                            ${renderSmartImg(oc.photoUrl, { alt: oc.name, className: "w-full h-full object-cover object-top" })}
+                        </div>
+                        <div class="p-3 rounded-xl bg-purple-950/80 border border-purple-800/70 space-y-1.5">
+                            <p class="text-sm font-bold text-amber-300">${escapeHtml(oc.name)}</p>
+                            <p><strong class="text-purple-200">Jogador:</strong> ${escapeHtml(oc.player)}</p>
+                            <p><strong class="text-purple-200">Progenitor:</strong> ${escapeHtml(oc.parent)}</p>
+                            <p><strong class="text-purple-200">Conto do Pai:</strong> ${escapeHtml(oc.parentStory)}</p>
+                            <p><strong class="text-purple-200">Photoplayer:</strong> ${escapeHtml(oc.photoplayer)}</p>
+                            <p><strong class="text-purple-200">Origem / Gênero:</strong> ${escapeHtml(oc.origin)} (${escapeHtml(oc.gender)})</p>
+                            <p><strong class="text-purple-200">Clubes:</strong> ${Array.isArray(oc.clubs) ? escapeHtml(oc.clubs.join(", ")) : escapeHtml(oc.clubs || "Nenhum")}</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-purple-950/80 border border-purple-800/70 space-y-1">
+                            <p class="font-bold text-amber-300">História / Poderes / Personalidade:</p>
+                            <p class="text-purple-100 leading-relaxed whitespace-pre-line">${escapeHtml(oc.bio)}</p>
+                        </div>
+                    </div>
+                `,
+                confirmText: "Fechar",
+                showCancel: false
             });
         }
 
@@ -1270,7 +1245,7 @@
 
         function renderOcCard(oc, isPending) {
             return `
-                <div class="p-4 rounded-2xl bg-purple-950/60 border border-purple-800/70 space-y-2.5">
+                <div class="p-4 rounded-2xl bg-purple-950/60 border border-purple-800/70 space-y-2.5 cursor-pointer hover:border-amber-400/60 transition" onclick="viewOcFicha('${oc.id}')">
                     <div class="flex items-start gap-3">
                         <div class="w-16 h-16 rounded-xl overflow-hidden bg-purple-950 shrink-0">
                             ${renderSmartImg(oc.photoUrl, { alt: oc.name })}
@@ -1283,8 +1258,11 @@
                         </div>
                     </div>
                     <p class="text-xs text-purple-100 line-clamp-3 leading-relaxed">${escapeHtml(oc.bio)}</p>
+                    <div class="flex items-center justify-between text-[11px] text-amber-300 font-semibold pt-1 border-t border-purple-900/60">
+                        <span><i class="fa-solid fa-eye mr-1"></i>Clique para abrir a ficha completa</span>
+                    </div>
                     ${state.isAdminUnlocked && isPending ? `
-                        <div class="flex gap-2 pt-1">
+                        <div class="flex gap-2 pt-1" onclick="event.stopPropagation()">
                             <button type="button" onclick="approveOc('${oc.id}')" class="flex-1 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition">Aprovar (Dar OK)</button>
                             <button type="button" onclick="rejectOc('${oc.id}')" class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition">Recusar</button>
                         </div>
