@@ -645,7 +645,7 @@
                 activeTab: "lore",
                 sceneFilter: "all",
                 selectedSceneId: "loc-1",
-                selectedEventId: "evt-1",
+                selectedEventId: "",
                 adminPin: "AURADON2026",
                 isAdminUnlocked: false,
                 currentPlayerSession: "",
@@ -654,7 +654,7 @@
                 dormitoryAssignments: { girls: [], boys: [] },
                 ocs: [],
                 sceneTurns: {},
-                events: [{ id: "evt-1", title: "Baile de Boas-Vindas", date: "2026-08-15", img: DEFAULT_EVENT_COVER, desc: "Celebração oficial de abertura do ano letivo em Auradon Prep.", turns: [] }],
+                events: [],
                 doubts: [{ id: "dbt-1", author: "Fada Madrinha", text: "Bem-vindos à Sala da Fada Madrinha! Podem enviar suas dúvidas sobre regras, OCs ou cenas.", createdAt: "Oficial" }],
                 bannedUsers: {}
             };
@@ -1492,6 +1492,13 @@
         function renderEvents() {
             const grid = document.getElementById("events-list-grid");
             if (!grid) return;
+
+            if (!state.events || state.events.length === 0) {
+                grid.innerHTML = `<p class="text-xs text-purple-300/75 col-span-2 italic">Nenhum evento publicado no momento. Adicione um novo evento pelo formulário ao lado!</p>`;
+                renderActiveEventScene();
+                return;
+            }
+
             grid.innerHTML = state.events.map((ev) => `
                 <div class="glass-card rounded-2xl p-4 space-y-2.5 border ${ev.id === state.selectedEventId ? "border-amber-400" : "border-purple-800/70"}">
                     <div class="aspect-video w-full rounded-xl overflow-hidden bg-purple-950">
@@ -1506,12 +1513,6 @@
             renderActiveEventScene();
         }
 
-        function selectEvent(eventId) {
-            state.selectedEventId = eventId;
-            saveState();
-            renderEvents();
-        }
-
         function renderActiveEventScene() {
             const titleEl = document.getElementById("active-event-scene-title");
             const metaEl = document.getElementById("active-event-scene-meta");
@@ -1519,6 +1520,15 @@
             const formEl = document.getElementById("event-turn-form");
             const feedEl = document.getElementById("event-turns-feed");
             if (!titleEl || !feedEl) return;
+
+            if (!state.events || state.events.length === 0) {
+                titleEl.textContent = "Nenhum evento selecionado";
+                if (metaEl) metaEl.textContent = "";
+                if (statusEl) statusEl.textContent = "Publique um evento para liberar a sala de cenas.";
+                if (formEl) formEl.classList.add("hidden");
+                feedEl.innerHTML = "";
+                return;
+            }
 
             const ev = state.events.find((item) => item.id === state.selectedEventId) || state.events[0];
             if (!ev) return;
