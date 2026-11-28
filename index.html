@@ -455,29 +455,7 @@
                 <div class="flex flex-wrap items-center gap-2">
                     <button type="button" onclick="toggleAdminAuth()" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-400 text-slate-950">Alternar Modo Admin</button>
                     <button type="button" onclick="changeAdminPin()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-purple-950 text-purple-200 border border-purple-700/60">Alterar PIN</button>
-                    <span id="sync-status-badge" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-950 text-amber-300 border border-amber-400/30">
-                        <i class="fa-solid fa-rotate mr-1"></i> Modo Local (Configure o Banco Compartilhado)
-                    </span>
                 </div>
-
-                <div class="p-4 rounded-xl bg-purple-950/60 border border-amber-400/30 space-y-3">
-                    <div>
-                        <h3 class="font-cinzel font-bold text-sm text-amber-300">Conexão Compartilhada (Para Todos Verem as Fichas e Cenas)</h3>
-                        <p class="text-xs text-purple-200/80 mt-0.5">
-                            Como o GitHub Pages hospeda apenas arquivos estáticos, salve aqui a URL de um banco JSON público compatível com CORS ou o seu endpoint de sincronização para que todos os jogadores no link vejam as alterações uns dos outros.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                        <input id="shared-api-url-input" type="url" placeholder="https://seu-endpoint-compartilhado/estado" class="sm:col-span-2 px-3.5 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs sm:text-sm text-white focus:outline-none focus:border-amber-400" />
-                        <div class="flex gap-2">
-                            <button type="button" onclick="saveSharedEndpoint()" class="flex-1 px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition">Salvar Link</button>
-                            <button type="button" onclick="pullSharedState(true)" class="px-3 py-2 rounded-xl text-xs font-bold bg-purple-800 hover:bg-purple-700 text-amber-300 border border-amber-400/30 transition" title="Sincronizar agora">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                 <form onsubmit="handleBanUserSubmit(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-purple-950/50 p-4 rounded-xl border border-purple-800/60">
                     <input id="ban-username-input" type="text" required placeholder="Nome exato do jogador a banir" class="px-3.5 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs sm:text-sm text-white focus:outline-none focus:border-rose-400" />
                     <input id="ban-reason-input" type="text" placeholder="Motivo do banimento (opcional)" class="px-3.5 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs sm:text-sm text-white focus:outline-none focus:border-rose-400" />
@@ -643,8 +621,8 @@
             { id: "loc-8", category: "Auradon Prep", name: "Arena de Esgrima & Treino", desc: "Espaço esportivo dedicado ao treinamento físico, aulas de combate com espadas e preparação de equipes competitivas da escola, como a R.O.A.R. (Esgrima Real).", img: "https://ibb.co/JjCq7Xrd" },
             { id: "loc-9", category: "Auradon Prep", name: "Ginasio - Campo de Tourney", desc: "Complexo atlético onde são disputadas as partidas de Tourney (esporte oficial que mistura lacrosse, hóquei, futebol e futebol americano, com obstáculos e canhões).", img: "https://ibb.co/tMwYRk0X" },
             { id: "loc-10", category: "Auradon Prep", name: "Museu de História Cultural de Auradon / Museu da História dos Reinos", desc: "Instituição localizada na Cidade de Auradon que guarda relíquias históricas e artefatos mágicos banidos sob forte segurança, incluindo a Varinha da Fada Madrinha, o Cetro de Malévola, a Roda de Fiar e as estátuas dos vilões.", img: "https://ibb.co/VWdYGQ9f" },
-            { id: "loc-11", category: "Auradon Prep", name: "Alas dos Dormitórios das Meninas", desc: "Ala residencial feminina do internato, dividida em quartos duplos decorados em tons pastel, flores e detalhes clássicos da realeza de Auradon.", img: "https://ibb.co/hRDKY479" },
-            { id: "loc-12", category: "Auradon Prep", name: "Alas dos Dormitórios dos Meninos", desc: "Ala residencial masculina da escola, equipada com quartos confortáveis, áreas comuns e espaço para artigos esportivos e videogames dos estudantes.", img: "https://ibb.co/v6GCf965" },
+            { id: "loc-11", category: "Auradon Prep", name: "Alas dos Dormitório das Meninas", desc: "Ala residencial feminina do internato, dividida em quartos duplos decorados em tons pastel, flores e detalhes clássicos da realeza de Auradon.", img: "https://ibb.co/hRDKY479" },
+            { id: "loc-12", category: "Auradon Prep", name: "Alas dos Dormitório dos Meninos", desc: "Ala residencial masculina da escola, equipada com quartos confortáveis, áreas comuns e espaço para artigos esportivos e videogames dos estudantes.", img: "https://ibb.co/v6GCf965" },
             { id: "loc-13", category: "Auradon Prep", name: "Praça Central de Auradon", desc: "Coração cívico da Cidade de Auradon, cercado por estabelecimentos locais (como cafeterias e ateliês), onde ocorrem festivais, pronunciamentos reais e celebrações do reino.", img: "https://ibb.co/YVf2zzs" },
             { id: "loc-14", category: "Auradon City", name: "Café do Castiçal", desc: "Cafeteria tranquila e acolhedora localizada em Auradon City, bastante frequentada pelos alunos da Auradon Prep que buscam um refúgio fora do campus. É conhecida por ser um lugar silencioso e reservado, ideal para estudar depois da aula ou apenas relaxar.", img: "https://ibb.co/6JpHmp22" },
             { id: "loc-15", category: "Auradon City", name: "O Cabaré Culinário", desc: "Restaurante temático agitado na rua principal de Auradon City, a cinco minutos da Auradon Prep, inspirado no banquete de A Bela e a Fera. Enquanto garçons servem pratos clássicos como suflê de queijo, pudim flambado e a famosa Grey Stuff, o salão ganha vida com um karaokê musical onde os próprios alunos de Auradon sobem ao palco, pegam os microfones e soltam a voz cantando e dançando os maiores sucessos do reino sob aplausos e luzes coloridas. Como o atendimento é tão entusiasmado que a comida e a música não param nunca, a única regra para encerrar o banquete na sua mesa é gritar bem alto: 'Chega, já acabei!'.", img: "https://ibb.co/Qjvx66kq" },
@@ -660,135 +638,6 @@
         ];
 
         const STORAGE_KEY = "bem_vindo_a_descendentes_state_v2";
-        const SHARED_ENDPOINT_KEY = "bem_vindo_a_descendentes_shared_url_v1";
-        let isApplyingRemoteState = false;
-        let syncTimer = null;
-
-        function getSharedEndpoint() {
-            try { return (localStorage.getItem(SHARED_ENDPOINT_KEY) || "").trim(); } catch (e) { return ""; }
-        }
-
-        function setSharedEndpoint(url) {
-            try {
-                if (url) localStorage.setItem(SHARED_ENDPOINT_KEY, url.trim());
-                else localStorage.removeItem(SHARED_ENDPOINT_KEY);
-            } catch (e) {}
-        }
-
-        function updateSyncBadge(text, isOnline = false) {
-            const badge = document.getElementById("sync-status-badge");
-            if (!badge) return;
-            badge.className = isOnline
-                ? "px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-400/40"
-                : "px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-950 text-amber-300 border border-amber-400/30";
-            badge.innerHTML = `<i class="fa-solid ${isOnline ? "fa-globe" : "fa-hard-drive"} mr-1"></i> ${escapeHtml(text)}`;
-        }
-
-        async function saveSharedEndpoint() {
-            const input = document.getElementById("shared-api-url-input");
-            const url = (input?.value || "").trim();
-            setSharedEndpoint(url);
-            if (!url) {
-                updateSyncBadge("Modo Local (Apenas este navegador)", false);
-                showToast("Sincronização remota removida. Modo local ativo.", "info");
-                return;
-            }
-            updateSyncBadge("Conectando ao servidor...", true);
-            const loaded = await pullSharedState(false);
-            if (!loaded) await pushSharedState(false);
-            showToast("Link de sincronização salvo!", "success");
-        }
-
-        function serializeSharedSnapshot() {
-            return {
-                canonClaims: state.canonClaims || {},
-                canonProfiles: state.canonProfiles || {},
-                dormitoryAssignments: state.dormitoryAssignments || { girls: [], boys: [] },
-                ocs: state.ocs || [],
-                sceneTurns: state.sceneTurns || {},
-                events: state.events || [],
-                doubts: state.doubts || [],
-                bannedUsers: state.bannedUsers || {},
-                updatedAt: Date.now()
-            };
-        }
-
-        function applySharedSnapshot(remoteData) {
-            if (!remoteData || typeof remoteData !== "object") return false;
-            const payload = remoteData.data && typeof remoteData.data === "object" ? remoteData.data : remoteData;
-            isApplyingRemoteState = true;
-            try {
-                if (payload.canonClaims && typeof payload.canonClaims === "object") state.canonClaims = payload.canonClaims;
-                if (payload.canonProfiles && typeof payload.canonProfiles === "object") state.canonProfiles = payload.canonProfiles;
-                if (payload.dormitoryAssignments && typeof payload.dormitoryAssignments === "object") {
-                    state.dormitoryAssignments = {
-                        girls: Array.isArray(payload.dormitoryAssignments.girls) ? payload.dormitoryAssignments.girls : [],
-                        boys: Array.isArray(payload.dormitoryAssignments.boys) ? payload.dormitoryAssignments.boys : []
-                    };
-                }
-                if (Array.isArray(payload.ocs)) state.ocs = payload.ocs;
-                if (payload.sceneTurns && typeof payload.sceneTurns === "object") state.sceneTurns = payload.sceneTurns;
-                if (Array.isArray(payload.events)) state.events = payload.events;
-                if (Array.isArray(payload.doubts)) state.doubts = payload.doubts;
-                if (payload.bannedUsers && typeof payload.bannedUsers === "object") state.bannedUsers = payload.bannedUsers;
-
-                try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
-
-                renderCanonGrid();
-                renderOcs();
-                renderActiveScene();
-                renderEvents();
-                renderDoubts();
-                renderAdminPanel();
-                checkBanScreen();
-                return true;
-            } finally {
-                isApplyingRemoteState = false;
-            }
-        }
-
-        async function pullSharedState(showFeedback = false) {
-            const url = getSharedEndpoint();
-            if (!url) return false;
-            try {
-                const res = await fetch(url, { method: "GET", headers: { "Accept": "application/json" } });
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const data = await res.json();
-                applySharedSnapshot(data);
-                updateSyncBadge("Sincronizado Online", true);
-                if (showFeedback) showToast("Dados atualizados com os outros jogadores!", "success");
-                return true;
-            } catch (err) {
-                updateSyncBadge("Falha na sincronização (verifique CORS/URL)", false);
-                if (showFeedback) showToast("Não foi possível buscar os dados remotos agora.", "error");
-                return false;
-            }
-        }
-
-        async function pushSharedState(showFeedback = false) {
-            const url = getSharedEndpoint();
-            if (!url || isApplyingRemoteState) return false;
-            try {
-                const res = await fetch(url, {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(serializeSharedSnapshot())
-                });
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                updateSyncBadge("Salvo Online para Todos", true);
-                return true;
-            } catch (err) {
-                updateSyncBadge("Salvo Localmente (Servidor indisponível)", false);
-                if (showFeedback) showToast("Salvo no navegador; verifique o endpoint remoto.", "error");
-                return false;
-            }
-        }
-
-        function scheduleSharedPush() {
-            if (!getSharedEndpoint() || isApplyingRemoteState) return;
-            if (syncTimer) clearTimeout(syncTimer);
-            syncTimer = setTimeout(() => { pushSharedState(false); }, 350);
-        }
 
         function safeParseJSON(raw, fallback) { try { return raw ? JSON.parse(raw) : fallback; } catch (e) { return fallback; } }
         function createInitialState() {
@@ -806,21 +655,19 @@
                 ocs: [],
                 sceneTurns: {},
                 events: [],
-                doubts: [],
+                doubts: [{ id: "dbt-1", author: "Fada Madrinha", text: "Bem-vindos à Sala da Fada Madrinha! Podem enviar suas dúvidas sobre regras, OCs ou cenas.", createdAt: "Oficial" }],
                 bannedUsers: {}
             };
         }
 
-        function saveState() {
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
-            scheduleSharedPush();
-        }
-
         let state = { ...createInitialState(), ...safeParseJSON(localStorage.getItem(STORAGE_KEY), {}) };
-
+        
+        // Garantir que a lista de eventos comece limpa sem o evento padrão antigo
         if (state.events && state.events.some(e => e.id === "evt-1" || e.title === "BAILE DE BOAS-VINDAS")) {
             state.events = state.events.filter(e => e.id !== "evt-1" && e.title !== "BAILE DE BOAS-VINDAS");
-            if (state.selectedEventId === "evt-1") state.selectedEventId = "";
+            if (state.selectedEventId === "evt-1") {
+                state.selectedEventId = "";
+            }
             saveState();
         }
 
@@ -830,6 +677,8 @@
         }
         if (!Array.isArray(state.dormitoryAssignments.girls)) state.dormitoryAssignments.girls = [];
         if (!Array.isArray(state.dormitoryAssignments.boys)) state.dormitoryAssignments.boys = [];
+
+        function saveState() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {} }
 
         function showToast(msg, type = "info") {
             const container = document.getElementById("toast-container");
@@ -862,7 +711,9 @@
             const isIbbPage = /^https?:\/\/(?:www\.)?ibb\.co(?:\.com)?\/([A-Za-z0-9_-]+)\/?$/i.test(clean);
             const id = getImgBBId(clean);
 
-            if (clean && !isIbbPage) push(clean);
+            if (clean && !isIbbPage) {
+                push(clean);
+            }
 
             if (id) {
                 push(`https://i.ibb.co/${id}/${id}.jpg`);
@@ -974,98 +825,6 @@
                 confirmText: "Entendi",
                 showCancel: false
             });
-        }
-
-        function openCanonFichaModal(char) {
-            return new Promise((resolve) => {
-                const defaultGender = FEMALE_CANON_IDS.has(char.id) ? "Menina" : "Menino";
-                openModal({
-                    title: `✨ PREENCHER FICHA DE CANON — ${char.name}`,
-                    messageHtml: `
-                        <div class="space-y-3 text-xs text-purple-100 max-h-[60vh] overflow-y-auto pr-1">
-                            <div class="aspect-[4/3] w-full rounded-xl overflow-hidden bg-purple-950 border border-amber-400/40">
-                                ${renderSmartImg(char.img, { alt: char.name, className: "w-full h-full object-cover object-top" })}
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-purple-200 mb-1">Seu Nome de Jogador *</label>
-                                <input id="canon-player-input" type="text" placeholder="Ex: Ana / @jogador1" class="w-full px-3 py-2 rounded-xl bg-purple-950 border border-purple-700 text-white text-xs focus:outline-none focus:border-amber-400" />
-                            </div>
-                            <div class="grid grid-cols-2 gap-2">
-                                <div>
-                                    <label class="block font-semibold text-purple-200 mb-1">Dormitório *</label>
-                                    <select id="canon-gender-select" class="w-full px-3 py-2 rounded-xl bg-purple-950 border border-purple-700 text-white text-xs focus:outline-none focus:border-amber-400">
-                                        <option value="Menina" ${defaultGender === "Menina" ? "selected" : ""}>Menina (Quarto de 4)</option>
-                                        <option value="Menino" ${defaultGender === "Menino" ? "selected" : ""}>Menino (Quarto de 4)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block font-semibold text-purple-200 mb-1">Origem *</label>
-                                    <select id="canon-origin-select" class="w-full px-3 py-2 rounded-xl bg-purple-950 border border-purple-700 text-white text-xs focus:outline-none focus:border-amber-400">
-                                        <option value="Auradon">Auradon</option>
-                                        <option value="Ilha dos Perdidos">Ilha dos Perdidos</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-purple-200 mb-1">Clubes (opcional)</label>
-                                <input id="canon-clubs-input" type="text" placeholder="Ex: Clube de Artes, Duelos..." class="w-full px-3 py-2 rounded-xl bg-purple-950 border border-purple-700 text-white text-xs focus:outline-none focus:border-amber-400" />
-                            </div>
-                            <div>
-                                <label class="block font-semibold text-purple-200 mb-1">História / Interpretação *</label>
-                                <textarea id="canon-bio-input" rows="3" placeholder="Como pretende interpretar este personagem..." class="w-full px-3 py-2 rounded-xl bg-purple-950 border border-purple-700 text-white text-xs focus:outline-none focus:border-amber-400"></textarea>
-                            </div>
-                        </div>
-                    `,
-                    confirmText: "Salvar & Reivindicar",
-                    showCancel: true
-                }).then((res) => {
-                    if (!res) return resolve(null);
-                    const player = document.getElementById("canon-player-input")?.value?.trim() || "";
-                    const gender = document.getElementById("canon-gender-select")?.value || defaultGender;
-                    const origin = document.getElementById("canon-origin-select")?.value || "Auradon";
-                    const clubs = document.getElementById("canon-clubs-input")?.value?.trim() || "";
-                    const bio = document.getElementById("canon-bio-input")?.value?.trim() || "";
-                    resolve({ player, gender, origin, clubs, bio });
-                });
-            });
-        }
-
-        function assignCharacterToDormitory(characterName, gender) {
-            if (!characterName) return;
-            const key = gender === "Menino" ? "boys" : "girls";
-            if (!state.dormitoryAssignments) state.dormitoryAssignments = { girls: [], boys: [] };
-            if (!Array.isArray(state.dormitoryAssignments[key])) state.dormitoryAssignments[key] = [];
-            const list = state.dormitoryAssignments[key];
-            if (!list.includes(characterName)) {
-                list.push(characterName);
-            }
-        }
-
-        function releaseCanonCharacter(charId) {
-            const char = CANON_CHARACTERS.find((c) => c.id === charId);
-            if (!char) return;
-            delete state.canonClaims[charId];
-            delete state.canonProfiles[charId];
-
-            if (state.dormitoryAssignments) {
-                if (Array.isArray(state.dormitoryAssignments.girls)) {
-                    state.dormitoryAssignments.girls = state.dormitoryAssignments.girls.filter((n) => n !== char.name);
-                }
-                if (Array.isArray(state.dormitoryAssignments.boys)) {
-                    state.dormitoryAssignments.boys = state.dormitoryAssignments.boys.filter((n) => n !== char.name);
-                }
-            }
-            saveState();
-            renderCanonGrid();
-            renderActiveScene();
-            showToast(`${char.name} agora está VAGO!`, "info");
-        }
-
-        function selectEvent(eventId) {
-            state.selectedEventId = eventId;
-            saveState();
-            renderEvents();
-            renderActiveEventScene();
         }
 
         function normalizeName(name) { return String(name || "").trim().toLowerCase(); }
@@ -1205,6 +964,7 @@
             grid.innerHTML = filtered.map((char) => {
                 const claim = state.canonClaims[char.id];
                 const isOccupied = Boolean(claim && claim.player);
+                const profile = state.canonProfiles[char.id] || {};
 
                 return `
                     <div class="glass-card rounded-2xl p-4 border ${isOccupied ? "border-amber-400/60" : "border-purple-800/70"} flex flex-col justify-between space-y-3">
@@ -1903,10 +1663,6 @@
         }
 
         window.addEventListener("DOMContentLoaded", () => {
-            const endpointInput = document.getElementById("shared-api-url-input");
-            const savedUrl = getSharedEndpoint();
-            if (endpointInput && savedUrl) endpointInput.value = savedUrl;
-
             populateProgenitorsDropdown();
             populateOcClubsCheckboxes();
             renderLoreClubs();
@@ -1919,18 +1675,6 @@
             updateAdminUI();
             checkBanScreen();
             switchTab(state.activeTab || "lore");
-
-            if (savedUrl) {
-                updateSyncBadge("Sincronizando...", true);
-                pullSharedState(false);
-                setInterval(() => {
-                    if (!document.hidden && getSharedEndpoint()) {
-                        pullSharedState(false);
-                    }
-                }, 8000);
-            } else {
-                updateSyncBadge("Modo Local (Apenas este navegador)", false);
-            }
         });
     </script>
 </body>
