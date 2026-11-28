@@ -24,62 +24,24 @@
         };
     </script>
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #080614;
-            color: #f3e8ff;
-            overflow-x: hidden;
-        }
-        .font-cinzel {
-            font-family: 'Cinzel', serif;
-        }
-        .glass-card {
-            background: rgba(20, 14, 42, 0.78);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(168, 85, 247, 0.25);
-        }
-        .royal-glow {
-            box-shadow: 0 0 25px rgba(245, 158, 11, 0.14), inset 0 0 15px rgba(139, 92, 246, 0.12);
-        }
-        .club-card {
-            background: rgba(17, 12, 36, 0.85);
-            border: 1px solid rgba(245, 158, 11, 0.22);
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .club-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(245, 158, 11, 0.6);
-            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0b0719;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4c1d95;
-            border-radius: 999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6d28d9;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #080614; color: #f3e8ff; overflow-x: hidden; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .glass-card { background: rgba(20, 14, 42, 0.78); backdrop-filter: blur(12px); border: 1px solid rgba(168, 85, 247, 0.25); }
+        .royal-glow { box-shadow: 0 0 25px rgba(245, 158, 11, 0.14), inset 0 0 15px rgba(139, 92, 246, 0.12); }
+        .club-card { background: rgba(17, 12, 36, 0.85); border: 1px solid rgba(245, 158, 11, 0.22); transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+        .club-card:hover { transform: translateY(-2px); border-color: rgba(245, 158, 11, 0.6); box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0b0719; }
+        ::-webkit-scrollbar-thumb { background: #4c1d95; border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6d28d9; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-purple-600 selection:text-white">
 
-    <!-- Toast / Notificação Flutuante -->
     <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 max-w-sm w-full px-3 sm:px-0 pointer-events-none"></div>
 
-    <!-- Modal de Confirmação / Entrada / Regras Customizado -->
     <div id="custom-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
         <div class="glass-card royal-glow rounded-2xl max-w-md w-full p-6 border border-amber-400/40 space-y-4">
             <h3 id="modal-title" class="font-cinzel font-bold text-lg text-auradon-gold"></h3>
@@ -99,7 +61,6 @@
         </div>
     </div>
 
-    <!-- Banner de Usuário Banido -->
     <div id="banned-screen" class="fixed inset-0 z-40 hidden items-center justify-center bg-[#070511]/95 backdrop-blur-md p-6">
         <div class="glass-card rounded-2xl max-w-lg w-full p-7 border border-rose-500/50 text-center space-y-4">
             <div class="w-14 h-14 mx-auto rounded-2xl bg-rose-950/90 border border-rose-500/50 flex items-center justify-center text-rose-400 text-2xl">
@@ -109,16 +70,13 @@
             <p id="banned-reason-text" class="text-sm text-purple-100 leading-relaxed">
                 Seu jogador foi banido da administração do portal Bem vindo a Descendentes.
             </p>
-            <p class="text-xs text-purple-300/80">
-                Apenas a administração do portal pode revogar o banimento.
-            </p>
+            <p class="text-xs text-purple-300/80">Apenas a administração do portal pode revogar o banimento.</p>
             <button id="banned-open-admin-btn" type="button" onclick="toggleAdminAuth()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-purple-950/90 hover:bg-purple-900 text-amber-300 border border-amber-400/40 transition">
                 <i class="fa-solid fa-shield-halved mr-1"></i> Desbloquear Modo Admin
             </button>
         </div>
     </div>
 
-    <!-- Cabeçalho Principal -->
     <header class="relative overflow-hidden border-b border-purple-800/60 bg-gradient-to-b from-[#1a0b36] via-[#110926] to-[#080614]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 relative z-10">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -156,7 +114,6 @@
         </div>
     </header>
 
-    <!-- Navegação Principal -->
     <nav class="sticky top-0 z-30 bg-[#0c081d]/95 backdrop-blur-md border-b border-purple-900/80">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 py-2.5 flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar">
             <button data-tab="lore" onclick="switchTab('lore')" class="nav-tab whitespace-nowrap px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition flex items-center gap-2 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 shadow">
@@ -187,10 +144,7 @@
         </div>
     </nav>
 
-    <!-- Conteúdo Principal -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8">
-
-        <!-- ABA 1: LORE -->
         <section id="tab-lore" class="tab-panel space-y-6">
             <div class="glass-card royal-glow rounded-2xl p-5 sm:p-7 space-y-3 border border-purple-800/70">
                 <h2 class="font-cinzel font-bold text-xl sm:text-2xl text-auradon-gold flex items-center gap-2">
@@ -240,10 +194,7 @@
             </div>
         </section>
 
-        <!-- ABA 2: ELENCO CANON (COM DESOCUPAÇÃO DIRETA) -->
         <section id="tab-canon" class="tab-panel hidden space-y-6">
-            
-            <!-- Painel Superior de Desocupação Rápida -->
             <div id="quick-release-panel" class="glass-card royal-glow rounded-2xl p-4 sm:p-5 border border-amber-400/40 space-y-3">
                 <div class="flex items-center justify-between">
                     <h3 class="font-cinzel font-bold text-base text-amber-300 flex items-center gap-2">
@@ -254,9 +205,7 @@
                 <p class="text-xs text-purple-200/85">
                     Se alguém desistiu ou não quer mais um personagem, basta clicar nele abaixo para <strong>liberá-lo imediatamente como VAGO</strong> (sem banir o jogador).
                 </p>
-                <div id="quick-release-buttons" class="flex flex-wrap gap-2 pt-1">
-                    <!-- Botões de personagens ocupados gerados via JS -->
-                </div>
+                <div id="quick-release-buttons" class="flex flex-wrap gap-2 pt-1"></div>
             </div>
 
             <div class="glass-card rounded-2xl p-5 sm:p-7 space-y-4 border border-purple-800/70">
@@ -275,7 +224,6 @@
             </div>
         </section>
 
-        <!-- DEMAIS ABAS PERMANECEM IGUAIS -->
         <section id="tab-fichas" class="tab-panel hidden space-y-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                 <div class="lg:col-span-5 glass-card royal-glow rounded-2xl p-5 sm:p-6 border border-purple-800/70 space-y-4">
@@ -398,7 +346,7 @@
                         </h2>
                     </div>
                     <div class="flex flex-wrap gap-1.5" id="scene-category-filters">
-                        <button type="button" data-filter="all" onclick="setSceneFilter('all')" class="scene-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-400 text-slate-950">Todos (29)</button>
+                        <button type="button" data-filter="all" onclick="setSceneFilter('all')" class="scene-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-400 text-slate-950">Todos (30)</button>
                         <button type="button" data-filter="Auradon Prep" onclick="setSceneFilter('Auradon Prep')" class="scene-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-950/80 text-purple-200 border border-purple-700/50 hover:border-amber-400">Auradon Prep (13)</button>
                         <button type="button" data-filter="Auradon City" onclick="setSceneFilter('Auradon City')" class="scene-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-950/80 text-purple-200 border border-purple-700/50 hover:border-amber-400">Auradon City (3)</button>
                         <button type="button" data-filter="Ilha dos Perdidos" onclick="setSceneFilter('Ilha dos Perdidos')" class="scene-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-950/80 text-purple-200 border border-purple-700/50 hover:border-amber-400">Ilha dos Perdidos (7)</button>
@@ -413,6 +361,7 @@
                             <select id="scene-select" onchange="handleSceneSelectChange()" class="w-full px-3.5 py-2.5 rounded-xl bg-purple-950/90 border border-amber-400/50 text-xs sm:text-sm font-semibold text-white focus:outline-none focus:border-amber-400"></select>
                         </div>
                         <div id="active-scene-card"></div>
+                        <div id="dormitory-rooms-panel" class="hidden glass-card rounded-2xl p-4 space-y-3 border border-amber-400/40"></div>
                     </div>
 
                     <div class="lg:col-span-7 space-y-5">
@@ -555,6 +504,8 @@
             { id: 24, name: "Harry Hook", parent: "Capitão Gancho", story: "Peter Pan", img: "https://ibb.co/22MrhjM" },
             { id: 25, name: "Gil", parent: "Gaston", story: "A Bela e a Fera", img: "https://ibb.co/xSKdy1S0" }
         ];
+
+        const FEMALE_CANON_IDS = new Set([1, 2, 6, 7, 9, 11, 12, 13, 14, 17, 20, 23]);
 
         const PROGENITORS_CATEGORIZED = {
             "Vilões (Casais em Destaque & Demais)": [
@@ -699,6 +650,8 @@
                 isAdminUnlocked: false,
                 currentPlayerSession: "",
                 canonClaims: {},
+                canonProfiles: {},
+                dormitoryAssignments: { girls: [], boys: [] },
                 ocs: [],
                 sceneTurns: {},
                 events: [{ id: "evt-1", title: "Baile de Boas-Vindas", date: "2026-08-15", img: DEFAULT_EVENT_COVER, desc: "Celebração oficial de abertura do ano letivo em Auradon Prep.", turns: [] }],
@@ -708,9 +661,14 @@
         }
 
         let state = { ...createInitialState(), ...safeParseJSON(localStorage.getItem(STORAGE_KEY), {}) };
-        function saveState() {
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+        if (!state.canonProfiles || typeof state.canonProfiles !== "object") state.canonProfiles = {};
+        if (!state.dormitoryAssignments || typeof state.dormitoryAssignments !== "object") {
+            state.dormitoryAssignments = { girls: [], boys: [] };
         }
+        if (!Array.isArray(state.dormitoryAssignments.girls)) state.dormitoryAssignments.girls = [];
+        if (!Array.isArray(state.dormitoryAssignments.boys)) state.dormitoryAssignments.boys = [];
+
+        function saveState() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {} }
 
         function showToast(msg, type = "info") {
             const container = document.getElementById("toast-container");
@@ -726,7 +684,6 @@
             return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
-        // Extrai o ID de links do ImgBB (páginas ibb.co/ID ou links diretos i.ibb.co/ID/arquivo.jpg)
         function getImgBBId(url) {
             const clean = String(url || "").trim();
             if (!clean) return "";
@@ -734,7 +691,6 @@
             return match ? match[1] : "";
         }
 
-        // Constrói múltiplas rotas diretas e seguras para links ibb.co / i.ibb.co
         function buildImgCandidates(url, fallbackUrl = DEFAULT_COVER) {
             const clean = String(url || "").trim();
             const list = [];
@@ -745,12 +701,10 @@
             const isIbbPage = /^https?:\/\/(?:www\.)?ibb\.co(?:\.com)?\/([A-Za-z0-9_-]+)\/?$/i.test(clean);
             const id = getImgBBId(clean);
 
-            // Se já for link direto (não apenas página ibb.co/ID), tenta primeiro
             if (clean && !isIbbPage) {
                 push(clean);
             }
 
-            // Para links do ImgBB, testa formatos diretos mais comuns no CDN
             if (id) {
                 push(`https://i.ibb.co/${id}/${id}.jpg`);
                 push(`https://i.ibb.co/${id}/${id}.png`);
@@ -759,7 +713,6 @@
                 push(`https://i.ibb.co.com/${id}/${id}.png`);
             }
 
-            // Por último, adiciona alternativas do fallback padrão
             if (fallbackUrl) {
                 const fbClean = String(fallbackUrl).trim();
                 const fbIsPage = /^https?:\/\/(?:www\.)?ibb\.co(?:\.com)?\/([A-Za-z0-9_-]+)\/?$/i.test(fbClean);
@@ -807,71 +760,6 @@
             const altText = options.alt || "Imagem";
 
             return `<img src="${escapeHtml(firstSrc)}" alt="${escapeHtml(altText)}" loading="eager" decoding="async" referrerpolicy="no-referrer" data-candidates="${encodedQueue}" data-cand-idx="0" data-original-url="${escapeHtml(url || fallbackUrl)}" data-title="${escapeHtml(altText)}" onerror="handleSmartImgError(this)" class="${escapeHtml(classes)}" />`;
-        }
-
-        // Constrói múltiplas rotas diretas para páginas ibb.co/<id> que não carregam diretamente como <img>
-        function buildImgCandidates(url, fallbackUrl = DEFAULT_COVER) {
-            const clean = String(url || "").trim();
-            const list = [];
-            const push = (u) => { if (u && !list.includes(u)) list.push(u); };
-            const isIbbPage = /^https?:\/\/(?:www\.)?ibb\.co\/([A-Za-z0-9_-]+)\/?$/i.test(clean);
-            const id = getImgBBId(clean);
-
-            if (!isIbbPage && clean) {
-                push(clean);
-            }
-            if (id) {
-                push(`https://i.ibb.co/${id}/${id}.jpg`);
-                push(`https://i.ibb.co/${id}/${id}.png`);
-                push(`https://i.ibb.co/${id}/${id}.webp`);
-                push(`https://i.ibb.co.com/${id}/${id}.jpg`);
-                push(`https://i.ibb.co.com/${id}/${id}.png`);
-            }
-            if (fallbackUrl) {
-                const fbId = getImgBBId(fallbackUrl);
-                if (fbId && !/^https?:\/\/(?:www\.)?ibb\.co\//i.test(fallbackUrl)) {
-                    push(fallbackUrl);
-                } else if (fbId) {
-                    push(`https://i.ibb.co/${fbId}/${fbId}.jpg`);
-                    push(`https://i.ibb.co/${fbId}/${fbId}.png`);
-                } else {
-                    push(fallbackUrl);
-                }
-            }
-            return list;
-        }
-
-        function handleSmartImgError(imgEl) {
-            const queueRaw = imgEl.getAttribute("data-candidates") || "[]";
-            let queue = [];
-            try { queue = JSON.parse(decodeURIComponent(queueRaw)); } catch (e) { queue = []; }
-            const idx = parseInt(imgEl.getAttribute("data-cand-idx") || "0", 10) + 1;
-            if (idx < queue.length) {
-                imgEl.setAttribute("data-cand-idx", String(idx));
-                imgEl.src = queue[idx];
-                return;
-            }
-            const originalHref = imgEl.getAttribute("data-original-url") || DEFAULT_COVER;
-            const title = imgEl.getAttribute("data-title") || "Imagem";
-            const wrap = imgEl.parentElement;
-            if (wrap && !wrap.querySelector(".img-fallback-card")) {
-                imgEl.classList.add("hidden");
-                const card = document.createElement("div");
-                card.className = "img-fallback-card w-full h-full flex flex-col items-center justify-center p-3 text-center bg-gradient-to-br from-purple-950 via-[#180c36] to-slate-950 text-purple-100";
-                card.innerHTML = `<i class="fa-solid fa-image text-amber-300/80 text-lg mb-1.5"></i><p class="text-xs font-bold text-amber-200 line-clamp-2">${escapeHtml(title)}</p><a href="${escapeHtml(originalHref)}" target="_blank" rel="noopener noreferrer" class="mt-2 px-2.5 py-1 rounded-lg bg-amber-400/15 border border-amber-400/40 text-[10px] font-semibold text-amber-300 hover:bg-amber-400/25">Abrir Link da Imagem</a>`;
-                wrap.appendChild(card);
-            }
-        }
-
-        function renderSmartImg(url, options = {}) {
-            const fallbackUrl = options.fallback || DEFAULT_COVER;
-            const candidates = buildImgCandidates(url, fallbackUrl);
-            const firstSrc = candidates[0] || DEFAULT_COVER;
-            const encodedQueue = encodeURIComponent(JSON.stringify(candidates));
-            const classes = options.className || "w-full h-full object-cover";
-            const altText = options.alt || "Imagem";
-
-            return `<img src="${escapeHtml(firstSrc)}" alt="${escapeHtml(altText)}" loading="lazy" decoding="async" referrerpolicy="no-referrer" data-candidates="${encodedQueue}" data-cand-idx="0" data-original-url="${escapeHtml(url || fallbackUrl)}" data-title="${escapeHtml(altText)}" onerror="handleSmartImgError(this)" class="${escapeHtml(classes)}" />`;
         }
 
         function openModal({ title, messageHtml, inputLabel = "", inputValue = "", confirmText = "Confirmar", showCancel = true }) {
@@ -1108,32 +996,136 @@
         function releaseCanonCharacter(charId) {
             const char = CANON_CHARACTERS.find((c) => c.id === charId);
             delete state.canonClaims[charId];
+            delete state.canonProfiles[charId];
+            if (char) {
+                const targetName = normalizeName(char.name);
+                state.dormitoryAssignments.girls = state.dormitoryAssignments.girls.filter((n) => normalizeName(n) !== targetName);
+                state.dormitoryAssignments.boys = state.dormitoryAssignments.boys.filter((n) => normalizeName(n) !== targetName);
+            }
             saveState();
             renderCanonGrid();
+            renderActiveScene();
             showToast(`${char ? char.name : "Personagem"} foi desocupado! Agora está VAGO.`, "success");
+        }
+
+        function assignCharacterToDormitory(charName, gender) {
+            const cleanName = String(charName || "").trim();
+            if (!cleanName) return;
+            const bucketKey = gender === "Menino" ? "boys" : "girls";
+            const list = state.dormitoryAssignments[bucketKey];
+            const exists = list.some((item) => normalizeName(item) === normalizeName(cleanName));
+            if (!exists) {
+                list.push(cleanName);
+            }
+        }
+
+        function openCanonFichaModal(char, existingClaim = {}, existingProfile = {}) {
+            const defaultGender = FEMALE_CANON_IDS.has(char.id) ? "Menina" : "Menino";
+            const currentGender = existingProfile.gender || defaultGender;
+            const currentPlayer = existingClaim.player || state.currentPlayerSession || "";
+            const currentOrigin = existingProfile.origin || "Auradon";
+            const currentClubs = existingProfile.clubs || "";
+            const currentBio = existingProfile.bio || "";
+
+            return openModal({
+                title: `Ficha Canon — ${char.name}`,
+                messageHtml: `
+                    <div class="space-y-3 text-xs text-purple-100 max-h-[65vh] overflow-y-auto pr-1">
+                        <div class="flex items-center gap-3 p-2.5 rounded-xl bg-purple-950/80 border border-amber-400/40">
+                            <div class="w-16 h-20 rounded-lg overflow-hidden bg-purple-900 shrink-0 border border-purple-700/60">
+                                ${renderSmartImg(char.img, { alt: char.name, className: "w-full h-full object-cover object-top" })}
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-cinzel font-bold text-sm text-amber-300 truncate">${escapeHtml(char.name)}</p>
+                                <p class="text-[11px] text-purple-200 truncate">Progenitor: ${escapeHtml(char.parent)}</p>
+                                <p class="text-[10px] text-purple-300/80 truncate">Conto: ${escapeHtml(char.story)}</p>
+                                <p class="text-[10px] text-emerald-300 mt-0.5"><i class="fa-solid fa-image mr-1"></i>Imagem do canon aplicada automaticamente</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-amber-300 mb-1">Nome do Jogador *</label>
+                            <input id="canon-ficha-player" type="text" value="${escapeHtml(currentPlayer)}" placeholder="Ex: Ana / @jogador1" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400" />
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <div>
+                                <label class="block font-semibold text-amber-300 mb-1">Dormitório / Gênero</label>
+                                <select id="canon-ficha-gender" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400">
+                                    <option value="Menina" ${currentGender === "Menina" ? "selected" : ""}>Menina (Quarto de 4 Garotas)</option>
+                                    <option value="Menino" ${currentGender === "Menino" ? "selected" : ""}>Menino (Quarto de 4 Garotos)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-amber-300 mb-1">Origem</label>
+                                <select id="canon-ficha-origin" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400">
+                                    <option value="Auradon" ${currentOrigin === "Auradon" ? "selected" : ""}>Auradon</option>
+                                    <option value="Ilha dos Perdidos" ${currentOrigin === "Ilha dos Perdidos" ? "selected" : ""}>Ilha dos Perdidos</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-amber-300 mb-1">Clubes (até 2)</label>
+                            <input id="canon-ficha-clubs" type="text" value="${escapeHtml(currentClubs)}" placeholder="Ex: Clube de Duelos, Clube de Música" class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400" />
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-amber-300 mb-1">História / Personalidade / Detalhes</label>
+                            <textarea id="canon-ficha-bio" rows="3" placeholder="Preencha os detalhes do personagem..." class="w-full px-3 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs text-white focus:outline-none focus:border-amber-400">${escapeHtml(currentBio)}</textarea>
+                        </div>
+                    </div>
+                `,
+                confirmText: "Salvar Ficha Canon"
+            }).then((confirmed) => {
+                if (!confirmed) return null;
+                return {
+                    player: (document.getElementById("canon-ficha-player")?.value || "").trim(),
+                    gender: document.getElementById("canon-ficha-gender")?.value || defaultGender,
+                    origin: document.getElementById("canon-ficha-origin")?.value || "Auradon",
+                    clubs: (document.getElementById("canon-ficha-clubs")?.value || "").trim(),
+                    bio: (document.getElementById("canon-ficha-bio")?.value || "").trim()
+                };
+            });
         }
 
         async function claimCanonCharacter(charId) {
             const char = CANON_CHARACTERS.find((c) => c.id === charId);
-            const player = await openModal({
-                title: `Reivindicar ${char ? char.name : "Personagem"}`,
-                messageHtml: "Digite seu nome de jogador para ocupar este personagem canon:",
-                inputLabel: "Nome do Jogador",
-                inputValue: state.currentPlayerSession || "",
-                confirmText: "Reivindicar"
-            });
-            if (!player || !player.trim()) return;
-            if (isUserBanned(player.trim()) && !state.isAdminUnlocked) {
-                state.currentPlayerSession = player.trim();
+            if (!char) return;
+
+            const ficha = await openCanonFichaModal(char);
+            if (!ficha) return;
+
+            if (!ficha.player) {
+                showToast("Preencha o nome do jogador para salvar a ficha.", "error");
+                return;
+            }
+
+            if (isUserBanned(ficha.player) && !state.isAdminUnlocked) {
+                state.currentPlayerSession = ficha.player;
                 saveState();
                 checkBanScreen();
                 return;
             }
-            state.currentPlayerSession = player.trim();
-            state.canonClaims[charId] = { player: player.trim(), claimedAt: new Date().toLocaleDateString("pt-BR") };
+
+            state.currentPlayerSession = ficha.player;
+            state.canonClaims[charId] = {
+                player: ficha.player,
+                claimedAt: new Date().toLocaleDateString("pt-BR")
+            };
+            state.canonProfiles[charId] = {
+                img: char.img,
+                gender: ficha.gender,
+                origin: ficha.origin,
+                clubs: ficha.clubs,
+                bio: ficha.bio
+            };
+
+            assignCharacterToDormitory(char.name, ficha.gender);
             saveState();
             renderCanonGrid();
-            showToast(`${char.name} agora pertence a ${player.trim()}!`, "success");
+            renderActiveScene();
+            showToast(`Ficha de ${char.name} salva e alocada no quarto de ${ficha.gender === "Menino" ? "4 garotos" : "4 garotas"}!`, "success");
         }
 
         function populateProgenitorsDropdown() {
@@ -1237,6 +1229,7 @@
                 bio,
                 status: "pending"
             });
+            assignCharacterToDormitory(name, gender);
             saveState();
             e.target.reset();
             document.getElementById("oc-photo-url").value = DEFAULT_COVER;
@@ -1279,22 +1272,21 @@
             return `
                 <div class="p-4 rounded-2xl bg-purple-950/60 border border-purple-800/70 space-y-2.5">
                     <div class="flex items-start gap-3">
-                        <div class="w-16 h-16 rounded-xl overflow-hidden bg-purple-900 shrink-0">
+                        <div class="w-16 h-16 rounded-xl overflow-hidden bg-purple-950 shrink-0">
                             ${renderSmartImg(oc.photoUrl, { alt: oc.name })}
                         </div>
                         <div class="min-w-0 flex-1">
                             <h4 class="font-cinzel font-bold text-sm text-white truncate">${escapeHtml(oc.name)}</h4>
-                            <p class="text-[11px] text-amber-300 truncate">${escapeHtml(oc.parent)}</p>
-                            <p class="text-[11px] text-purple-200">Jogador: <strong>${escapeHtml(oc.player)}</strong></p>
-                            <p class="text-[10px] text-purple-300/80">${escapeHtml(oc.origin)} • ${escapeHtml(oc.gender)}</p>
+                            <p class="text-xs text-amber-300 font-medium truncate">${escapeHtml(oc.parent)}</p>
+                            <p class="text-[11px] text-purple-300/80 truncate">Jogador: ${escapeHtml(oc.player)}</p>
+                            <p class="text-[10px] text-purple-400 truncate">Origem: ${escapeHtml(oc.origin)} • ${escapeHtml(oc.gender)}</p>
                         </div>
                     </div>
-                    ${oc.clubs && oc.clubs.length ? `<p class="text-[11px] text-amber-200/90">Clubes: ${escapeHtml(oc.clubs.join(", "))}</p>` : ""}
-                    <p class="text-xs text-purple-100 leading-relaxed">${escapeHtml(oc.bio)}</p>
+                    <p class="text-xs text-purple-100 line-clamp-3 leading-relaxed">${escapeHtml(oc.bio)}</p>
                     ${state.isAdminUnlocked && isPending ? `
                         <div class="flex gap-2 pt-1">
-                            <button type="button" onclick="approveOc('${oc.id}')" class="px-3 py-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold rounded-lg transition">Dar OK</button>
-                            <button type="button" onclick="rejectOc('${oc.id}')" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold rounded-lg transition">Recusar</button>
+                            <button type="button" onclick="approveOc('${oc.id}')" class="flex-1 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-bold transition">Aprovar (Dar OK)</button>
+                            <button type="button" onclick="rejectOc('${oc.id}')" class="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition">Recusar</button>
                         </div>
                     ` : ""}
                 </div>
@@ -1307,7 +1299,7 @@
             saveState();
             renderOcs();
             renderAdminPanel();
-            showToast("Ficha aprovada!", "success");
+            showToast("Ficha aprovada com sucesso!", "success");
         }
 
         function rejectOc(id) {
@@ -1315,27 +1307,30 @@
             saveState();
             renderOcs();
             renderAdminPanel();
-            showToast("Ficha recusada e removida.", "info");
+            showToast("Ficha removida/recusada.", "info");
         }
 
         function renderTeachers() {
             const grid = document.getElementById("teachers-grid");
             if (!grid) return;
             grid.innerHTML = TEACHERS.map((t) => `
-                <div class="glass-card rounded-2xl p-4 space-y-2.5 border border-purple-800/70">
-                    <div class="aspect-[4/5] rounded-xl overflow-hidden bg-purple-950 border border-purple-800/60">${renderSmartImg(t.img, { alt: t.name, className: "w-full h-full object-cover object-top" })}</div>
-                    <h3 class="font-cinzel font-bold text-base text-white">${escapeHtml(t.name)}</h3>
-                    <p class="text-xs text-amber-300/90">${escapeHtml(t.subject)}</p>
+                <div class="glass-card rounded-2xl p-4 space-y-3 border border-purple-800/70">
+                    <div class="aspect-[4/5] w-full rounded-xl overflow-hidden bg-purple-950 border border-purple-800/60">
+                        ${renderSmartImg(t.img, { alt: t.name, className: "w-full h-full object-cover object-top" })}
+                    </div>
+                    <div>
+                        <h3 class="font-cinzel font-bold text-base text-white">${escapeHtml(t.name)}</h3>
+                        <p class="text-xs text-amber-300 font-medium">${escapeHtml(t.subject)}</p>
+                    </div>
                 </div>
             `).join("");
         }
 
         function setSceneFilter(filter) {
             state.sceneFilter = filter;
-            saveState();
             document.querySelectorAll(".scene-filter-btn").forEach((btn) => {
-                const active = btn.getAttribute("data-filter") === filter;
-                btn.className = active
+                const isActive = btn.getAttribute("data-filter") === filter;
+                btn.className = isActive
                     ? "scene-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-400 text-slate-950"
                     : "scene-filter-btn px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-950/80 text-purple-200 border border-purple-700/50 hover:border-amber-400";
             });
@@ -1346,10 +1341,10 @@
             const select = document.getElementById("scene-select");
             if (!select) return;
             const list = state.sceneFilter === "all" ? ALL_SCENES : ALL_SCENES.filter((s) => s.category === state.sceneFilter);
+            select.innerHTML = list.map((s) => `<option value="${s.id}" ${s.id === state.selectedSceneId ? "selected" : ""}>${escapeHtml(s.name)}</option>`).join("");
             if (!list.some((s) => s.id === state.selectedSceneId) && list.length > 0) {
                 state.selectedSceneId = list[0].id;
             }
-            select.innerHTML = list.map((s) => `<option value="${escapeHtml(s.id)}" ${s.id === state.selectedSceneId ? "selected" : ""}>${escapeHtml(s.name)} (${escapeHtml(s.category)})</option>`).join("");
             renderActiveScene();
         }
 
@@ -1363,11 +1358,92 @@
 
         function goToScene(id) {
             state.selectedSceneId = id;
-            const target = ALL_SCENES.find((s) => s.id === id);
-            state.sceneFilter = target ? target.category : "all";
-            saveState();
             switchTab("cenas");
-            setSceneFilter(state.sceneFilter);
+            populateSceneSelect();
+        }
+
+        function renderDormitoryRooms(scene) {
+            const panel = document.getElementById("dormitory-rooms-panel");
+            if (!panel) return;
+
+            const isGirlsDorm = scene.id === "loc-11";
+            const isBoysDorm = scene.id === "loc-12";
+            if (!isGirlsDorm && !isBoysDorm) {
+                panel.classList.add("hidden");
+                panel.innerHTML = "";
+                return;
+            }
+
+            const bucketKey = isGirlsDorm ? "girls" : "boys";
+            const labelSingular = isGirlsDorm ? "Garota" : "Garoto";
+            const labelPlural = isGirlsDorm ? "Garotas" : "Garotos";
+            const occupants = state.dormitoryAssignments[bucketKey] || [];
+            const totalRooms = Math.max(2, Math.ceil((occupants.length + 1) / 4));
+
+            const roomsHtml = Array.from({ length: totalRooms }, (_, roomIdx) => {
+                const start = roomIdx * 4;
+                const roomMembers = occupants.slice(start, start + 4);
+                const slotsHtml = Array.from({ length: 4 }, (_, slotIdx) => {
+                    const memberName = roomMembers[slotIdx];
+                    if (memberName) {
+                        return `
+                            <div class="px-3 py-2 rounded-xl bg-purple-900/70 border border-amber-400/50 text-xs font-semibold text-white flex items-center justify-between gap-2">
+                                <span class="truncate"><i class="fa-solid fa-bed text-amber-300 mr-1.5"></i>${escapeHtml(memberName)}</span>
+                                <span class="text-[10px] text-amber-300 shrink-0">Vaga ${slotIdx + 1}/4</span>
+                            </div>
+                        `;
+                    }
+                    return `
+                        <button type="button" onclick="addDormitoryOccupant('${bucketKey}', ${roomIdx + 1})" class="w-full px-3 py-2 rounded-xl bg-purple-950/60 hover:bg-purple-900/60 border border-dashed border-purple-600/70 text-xs text-purple-300/85 hover:text-amber-300 transition flex items-center justify-between gap-2 text-left">
+                            <span><i class="fa-solid fa-plus mr-1.5 text-[10px]"></i>Vaga ${slotIdx + 1}/4 Livre (${labelSingular})</span>
+                            <span class="text-[10px] font-semibold">Preencher</span>
+                        </button>
+                    `;
+                }).join("");
+
+                return `
+                    <div class="p-3.5 rounded-2xl bg-purple-950/70 border border-purple-800/80 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-cinzel font-bold text-sm text-amber-300">Quarto ${roomIdx + 1} (${labelPlural})</h4>
+                            <span class="text-[11px] px-2 py-0.5 rounded-full bg-purple-900 text-purple-100 border border-purple-700/60">${roomMembers.length}/4 ocupadas</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            ${slotsHtml}
+                        </div>
+                    </div>
+                `;
+            }).join("");
+
+            panel.classList.remove("hidden");
+            panel.innerHTML = `
+                <div class="flex items-center justify-between gap-2">
+                    <h3 class="font-cinzel font-bold text-base text-auradon-gold flex items-center gap-2">
+                        <i class="fa-solid fa-door-open"></i> Quartos de 4 ${labelPlural}
+                    </h3>
+                    <button type="button" onclick="addDormitoryOccupant('${bucketKey}')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-400 text-slate-950 hover:brightness-110 transition">
+                        + Adicionar Nome
+                    </button>
+                </div>
+                <p class="text-xs text-purple-200/80">Cada quarto comporta até <strong>4 ${labelPlural.toLowerCase()}</strong>. Ao escolher um personagem ou adicionar um nome, o quarto é preenchido automaticamente.</p>
+                <div class="space-y-3">
+                    ${roomsHtml}
+                </div>
+            `;
+        }
+
+        async function addDormitoryOccupant(bucketKey, roomNumber = null) {
+            const labelSingular = bucketKey === "boys" ? "garoto" : "garota";
+            const name = await openModal({
+                title: `Preencher Quarto (${roomNumber ? `Quarto ${roomNumber}` : "Dormitório"})`,
+                messageHtml: `Digite o nome do personagem (${labelSingular}) para preencher automaticamente na próxima vaga de 4:`,
+                inputLabel: "Nome do Personagem",
+                confirmText: "Preencher Quarto"
+            });
+            if (!name || !name.trim()) return;
+            assignCharacterToDormitory(name.trim(), bucketKey === "boys" ? "Menino" : "Menina");
+            saveState();
+            renderActiveScene();
+            showToast(`${name.trim()} adicionado(a) ao quarto de 4!`, "success");
         }
 
         function renderActiveScene() {
@@ -1389,6 +1465,8 @@
                     <p class="text-xs text-purple-100/90 leading-relaxed">${escapeHtml(scene.desc)}</p>
                 </div>
             `;
+
+            renderDormitoryRooms(scene);
 
             const turns = state.sceneTurns[scene.id] || [];
             if (countEl) countEl.textContent = `${turns.length} turno(s)`;
