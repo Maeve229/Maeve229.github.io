@@ -456,28 +456,9 @@
                     <button type="button" onclick="toggleAdminAuth()" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-400 text-slate-950">Alternar Modo Admin</button>
                     <button type="button" onclick="changeAdminPin()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-purple-950 text-purple-200 border border-purple-700/60">Alterar PIN</button>
                     <span id="sync-status-badge" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-950 text-amber-300 border border-amber-400/30">
-                        <i class="fa-solid fa-rotate mr-1"></i> Modo Local (Configure o Banco Compartilhado)
+                        <i class="fa-solid fa-rotate mr-1"></i> Conectando ao Firebase...
                     </span>
                 </div>
-
-                <div class="p-4 rounded-xl bg-purple-950/60 border border-amber-400/30 space-y-3">
-                    <div>
-                        <h3 class="font-cinzel font-bold text-sm text-amber-300">Conexão Compartilhada (Para Todos Verem as Fichas e Cenas)</h3>
-                        <p class="text-xs text-purple-200/80 mt-0.5">
-                            Como o GitHub Pages hospeda apenas arquivos estáticos, salve aqui a URL de um banco JSON público compatível com CORS ou o seu endpoint de sincronização para que todos os jogadores no link vejam as alterações uns dos outros.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                        <input id="shared-api-url-input" type="url" placeholder="https://seu-endpoint-compartilhado/estado" class="sm:col-span-2 px-3.5 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs sm:text-sm text-white focus:outline-none focus:border-amber-400" />
-                        <div class="flex gap-2">
-                            <button type="button" onclick="saveSharedEndpoint()" class="flex-1 px-3 py-2 rounded-xl text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition">Salvar Link</button>
-                            <button type="button" onclick="pullSharedState(true)" class="px-3 py-2 rounded-xl text-xs font-bold bg-purple-800 hover:bg-purple-700 text-amber-300 border border-amber-400/30 transition" title="Sincronizar agora">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
                 <form onsubmit="handleBanUserSubmit(event)" class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-purple-950/50 p-4 rounded-xl border border-purple-800/60">
                     <input id="ban-username-input" type="text" required placeholder="Nome exato do jogador a banir" class="px-3.5 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs sm:text-sm text-white focus:outline-none focus:border-rose-400" />
                     <input id="ban-reason-input" type="text" placeholder="Motivo do banimento (opcional)" class="px-3.5 py-2 rounded-xl bg-purple-950/90 border border-purple-700/70 text-xs sm:text-sm text-white focus:outline-none focus:border-rose-400" />
@@ -494,41 +475,6 @@
     <footer class="border-t border-purple-900/80 bg-[#070512] py-5 px-4 text-center text-xs text-purple-300/75">
         <p class="font-cinzel text-amber-300/90 font-semibold">Bem vindo a Descendentes</p>
     </footer>
-
-    <!-- Integração do Firebase Realtime Database -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
-        // Suas credenciais obtidas no Console do Firebase
-        const firebaseConfig = {
-          apiKey: "SUA_API_KEY",
-          authDomain: "bem-vindo-colegio-auradon.firebaseapp.com",
-          databaseURL: "https://bem-vindo-colegio-auradon-default-rtdb.firebaseio.com", 
-          projectId: "bem-vindo-colegio-auradon",
-          storageBucket: "bem-vindo-colegio-auradon.appspot.com",
-          messagingSenderId: "1092314990057",
-          appId: "SEU_APP_ID"
-        };
-
-        // Inicializa o Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-
-        // Exemplo: Salvar dados de um turno
-        window.atualizarTurno = function(novoTurno) {
-          set(ref(db, 'partida/turno_atual'), novoTurno);
-        };
-
-        // Exemplo: Ouvir atualizações em tempo real
-        onValue(ref(db, 'partida/turno_atual'), (snapshot) => {
-          const turno = snapshot.val();
-          const elem = document.getElementById('elemento-turno');
-          if (elem) {
-              elem.innerText = `Turno: ${turno}`;
-          }
-        });
-    </script>
 
     <script>
         const DEFAULT_COVER = "https://i.ibb.co/DPXMfRnD/DPXMfRnD.jpg";
@@ -695,20 +641,8 @@
         ];
 
         const STORAGE_KEY = "bem_vindo_a_descendentes_state_v2";
-        const SHARED_ENDPOINT_KEY = "bem_vindo_a_descendentes_shared_url_v1";
         let isApplyingRemoteState = false;
-        let syncTimer = null;
-
-        function getSharedEndpoint() {
-            try { return (localStorage.getItem(SHARED_ENDPOINT_KEY) || "").trim(); } catch (e) { return ""; }
-        }
-
-        function setSharedEndpoint(url) {
-            try {
-                if (url) localStorage.setItem(SHARED_ENDPOINT_KEY, url.trim());
-                else localStorage.removeItem(SHARED_ENDPOINT_KEY);
-            } catch (e) {}
-        }
+        let firestoreSaveTimer = null;
 
         function updateSyncBadge(text, isOnline = false) {
             const badge = document.getElementById("sync-status-badge");
@@ -717,21 +651,6 @@
                 ? "px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-400/40"
                 : "px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-950 text-amber-300 border border-amber-400/30";
             badge.innerHTML = `<i class="fa-solid ${isOnline ? "fa-globe" : "fa-hard-drive"} mr-1"></i> ${escapeHtml(text)}`;
-        }
-
-        async function saveSharedEndpoint() {
-            const input = document.getElementById("shared-api-url-input");
-            const url = (input?.value || "").trim();
-            setSharedEndpoint(url);
-            if (!url) {
-                updateSyncBadge("Modo Local (Apenas este navegador)", false);
-                showToast("Sincronização remota removida. Modo local ativo.", "info");
-                return;
-            }
-            updateSyncBadge("Conectando ao servidor...", true);
-            const loaded = await pullSharedState(false);
-            if (!loaded) await pushSharedState(false);
-            showToast("Link de sincronização salvo!", "success");
         }
 
         function serializeSharedSnapshot() {
@@ -750,25 +669,27 @@
 
         function applySharedSnapshot(remoteData) {
             if (!remoteData || typeof remoteData !== "object") return false;
-            const payload = remoteData.data && typeof remoteData.data === "object" ? remoteData.data : remoteData;
             isApplyingRemoteState = true;
             try {
-                if (payload.canonClaims && typeof payload.canonClaims === "object") state.canonClaims = payload.canonClaims;
-                if (payload.canonProfiles && typeof payload.canonProfiles === "object") state.canonProfiles = payload.canonProfiles;
-                if (payload.dormitoryAssignments && typeof payload.dormitoryAssignments === "object") {
+                if (remoteData.canonClaims && typeof remoteData.canonClaims === "object") state.canonClaims = remoteData.canonClaims;
+                if (remoteData.canonProfiles && typeof remoteData.canonProfiles === "object") state.canonProfiles = remoteData.canonProfiles;
+                if (remoteData.dormitoryAssignments && typeof remoteData.dormitoryAssignments === "object") {
                     state.dormitoryAssignments = {
-                        girls: Array.isArray(payload.dormitoryAssignments.girls) ? payload.dormitoryAssignments.girls : [],
-                        boys: Array.isArray(payload.dormitoryAssignments.boys) ? payload.dormitoryAssignments.boys : []
+                        girls: Array.isArray(remoteData.dormitoryAssignments.girls) ? remoteData.dormitoryAssignments.girls : [],
+                        boys: Array.isArray(remoteData.dormitoryAssignments.boys) ? remoteData.dormitoryAssignments.boys : []
                     };
                 }
-                if (Array.isArray(payload.ocs)) state.ocs = payload.ocs;
-                if (payload.sceneTurns && typeof payload.sceneTurns === "object") state.sceneTurns = payload.sceneTurns;
-                if (Array.isArray(payload.events)) state.events = payload.events;
-                if (Array.isArray(payload.doubts)) state.doubts = payload.doubts;
-                if (payload.bannedUsers && typeof payload.bannedUsers === "object") state.bannedUsers = payload.bannedUsers;
+                if (Array.isArray(remoteData.ocs)) state.ocs = remoteData.ocs;
+                if (remoteData.sceneTurns && typeof remoteData.sceneTurns === "object") state.sceneTurns = remoteData.sceneTurns;
+                if (Array.isArray(remoteData.events)) {
+                    state.events = remoteData.events.filter(e => e.id !== "evt-1" && e.title !== "BAILE DE BOAS-VINDAS");
+                }
+                if (Array.isArray(remoteData.doubts)) state.doubts = remoteData.doubts;
+                if (remoteData.bannedUsers && typeof remoteData.bannedUsers === "object") state.bannedUsers = remoteData.bannedUsers;
 
                 try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
 
+                populateProgenitorsDropdown();
                 renderCanonGrid();
                 renderOcs();
                 renderActiveScene();
@@ -782,47 +703,14 @@
             }
         }
 
-        async function pullSharedState(showFeedback = false) {
-            const url = getSharedEndpoint();
-            if (!url) return false;
-            try {
-                const res = await fetch(url, { method: "GET", headers: { "Accept": "application/json" } });
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const data = await res.json();
-                applySharedSnapshot(data);
-                updateSyncBadge("Sincronizado Online", true);
-                if (showFeedback) showToast("Dados atualizados com os outros jogadores!", "success");
-                return true;
-            } catch (err) {
-                updateSyncBadge("Falha na sincronização (verifique CORS/URL)", false);
-                if (showFeedback) showToast("Não foi possível buscar os dados remotos agora.", "error");
-                return false;
-            }
-        }
-
-        async function pushSharedState(showFeedback = false) {
-            const url = getSharedEndpoint();
-            if (!url || isApplyingRemoteState) return false;
-            try {
-                const res = await fetch(url, {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(serializeSharedSnapshot())
-                });
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                updateSyncBadge("Salvo Online para Todos", true);
-                return true;
-            } catch (err) {
-                updateSyncBadge("Salvo Localmente (Servidor indisponível)", false);
-                if (showFeedback) showToast("Salvo no navegador; verifique o endpoint remoto.", "error");
-                return false;
-            }
-        }
-
-        function scheduleSharedPush() {
-            if (!getSharedEndpoint() || isApplyingRemoteState) return;
-            if (syncTimer) clearTimeout(syncTimer);
-            syncTimer = setTimeout(() => { pushSharedState(false); }, 350);
+        function scheduleFirestorePush() {
+            if (isApplyingRemoteState) return;
+            if (firestoreSaveTimer) clearTimeout(firestoreSaveTimer);
+            firestoreSaveTimer = setTimeout(async () => {
+                if (typeof window.__savePortalToFirebase === "function") {
+                    await window.__savePortalToFirebase(serializeSharedSnapshot());
+                }
+            }, 250);
         }
 
         function safeParseJSON(raw, fallback) { try { return raw ? JSON.parse(raw) : fallback; } catch (e) { return fallback; } }
@@ -846,17 +734,12 @@
             };
         }
 
-        function saveState() {
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
-            scheduleSharedPush();
-        }
-
         let state = { ...createInitialState(), ...safeParseJSON(localStorage.getItem(STORAGE_KEY), {}) };
 
         if (state.events && state.events.some(e => e.id === "evt-1" || e.title === "BAILE DE BOAS-VINDAS")) {
             state.events = state.events.filter(e => e.id !== "evt-1" && e.title !== "BAILE DE BOAS-VINDAS");
             if (state.selectedEventId === "evt-1") state.selectedEventId = "";
-            saveState();
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
         }
 
         if (!state.canonProfiles || typeof state.canonProfiles !== "object") state.canonProfiles = {};
@@ -865,6 +748,11 @@
         }
         if (!Array.isArray(state.dormitoryAssignments.girls)) state.dormitoryAssignments.girls = [];
         if (!Array.isArray(state.dormitoryAssignments.boys)) state.dormitoryAssignments.boys = [];
+
+        function saveState() {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+            scheduleFirestorePush();
+        }
 
         function showToast(msg, type = "info") {
             const container = document.getElementById("toast-container");
@@ -1767,12 +1655,6 @@
                 img,
                 time: new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
             });
-
-            // Sincroniza o novo turno via Firebase Realtime Database
-            if (typeof window.atualizarTurno === "function") {
-                window.atualizarTurno({ author, text, sceneId, time: new Date().toLocaleTimeString("pt-BR") });
-            }
-
             saveState();
             document.getElementById("scene-turn-text").value = "";
             document.getElementById("scene-turn-image").value = "";
@@ -1944,10 +1826,6 @@
         }
 
         window.addEventListener("DOMContentLoaded", () => {
-            const endpointInput = document.getElementById("shared-api-url-input");
-            const savedUrl = getSharedEndpoint();
-            if (endpointInput && savedUrl) endpointInput.value = savedUrl;
-
             populateProgenitorsDropdown();
             populateOcClubsCheckboxes();
             renderLoreClubs();
@@ -1960,19 +1838,76 @@
             updateAdminUI();
             checkBanScreen();
             switchTab(state.activeTab || "lore");
+        });
+    </script>
 
-            if (savedUrl) {
-                updateSyncBadge("Sincronizando...", true);
-                pullSharedState(false);
-                setInterval(() => {
-                    if (!document.hidden && getSharedEndpoint()) {
-                        pullSharedState(false);
-                    }
-                }, 8000);
-            } else {
-                updateSyncBadge("Modo Local (Apenas este navegador)", false);
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-analytics.js";
+        import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCsTBxlZuGKqu5gmnqEtq3wA2qPYlI-Lt8",
+            authDomain: "bem-vindo-colegio-auradon.firebaseapp.com",
+            projectId: "bem-vindo-colegio-auradon",
+            storageBucket: "bem-vindo-colegio-auradon.firebasestorage.app",
+            messagingSenderId: "1092314990057",
+            appId: "1:1092314990057:web:da969a37a8daf9d87ef778",
+            measurementId: "G-EL47BPGP3J"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        try { getAnalytics(app); } catch (e) {}
+        const db = getFirestore(app);
+        const portalDocRef = doc(db, "portal_rpg", "estado_global");
+
+        window.__savePortalToFirebase = async function(snapshot) {
+            try {
+                await setDoc(portalDocRef, snapshot, { merge: false });
+                if (typeof updateSyncBadge === "function") {
+                    updateSyncBadge("Sincronizado em Tempo Real (Firebase)", true);
+                }
+            } catch (err) {
+                if (typeof updateSyncBadge === "function") {
+                    updateSyncBadge("Modo Local (Verifique Regras do Firestore)", false);
+                }
+            }
+        };
+
+        try {
+            const initialSnap = await getDoc(portalDocRef);
+            if (initialSnap.exists() && typeof applySharedSnapshot === "function") {
+                applySharedSnapshot(initialSnap.data());
+            } else if (typeof serializeSharedSnapshot === "function") {
+                await setDoc(portalDocRef, serializeSharedSnapshot(), { merge: false });
+            }
+            if (typeof updateSyncBadge === "function") {
+                updateSyncBadge("Sincronizado em Tempo Real (Firebase)", true);
+            }
+        } catch (err) {
+            if (typeof updateSyncBadge === "function") {
+                updateSyncBadge("Modo Local (Ative o Firestore no Console)", false);
+            }
+        }
+
+        onSnapshot(portalDocRef, (snap) => {
+            if (!snap.exists()) return;
+            const remoteData = snap.data();
+            if (typeof applySharedSnapshot === "function") {
+                applySharedSnapshot(remoteData);
+            }
+            if (typeof updateSyncBadge === "function") {
+                updateSyncBadge("Sincronizado em Tempo Real (Firebase)", true);
+            }
+        }, () => {
+            if (typeof updateSyncBadge === "function") {
+                updateSyncBadge("Modo Local (Verifique Regras do Firestore)", false);
             }
         });
     </script>
 </body>
 </html>
+```[cite: 1]
